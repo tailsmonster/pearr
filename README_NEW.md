@@ -4,9 +4,9 @@
 
 ## Team
 
-- **Product Owner**: teamMember
-- **Scrum Master**: teamMember
-- **Development Team Members**: teamMember, teamMember
+- **Product Owner**: Nico Aroca
+- **Scrum Master**: Allan Ramirez
+- **Development Team Members**: Cris Martinez, Allan Ramirez, Nico Aroca
 
 ## Table of Contents
 

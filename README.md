@@ -1,6 +1,6 @@
 # PEAR NYC
 
-> Providing low-income parents information about fun extra curricular activities about their
+> PEAR is an application that helps low-income families find enrichment programs for their children to support their development and close the achievement and play gap.
 
 ## The NCA Association
 

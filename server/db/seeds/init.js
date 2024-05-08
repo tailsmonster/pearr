@@ -1,5 +1,4 @@
 const { hashPassword } = require("../../utils/auth-utils");
-const User = require("../models/User");
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
@@ -13,9 +12,8 @@ exports.seed = async (knex) => {
     "comments",
     "recommends",
   ];
-  for (const table of tables) {
-    await knex(table).del();
-  }
+
+  tables.forEach((table) => { knex(table).del(); });
 
   await knex.raw("ALTER SEQUENCE organizations_id_seq RESTART WITH 1"); // resets the incrementing id to 1
   await knex.raw("ALTER SEQUENCE users_id_seq RESTART WITH 1"); // resets the incrementing id to 1

@@ -13,7 +13,9 @@ class Organization {
     this.borough = borough;
   }
 
-  isValidPassword = async (password) => authUtils.isValidPassword(password, this.#passwordHash);
+  async isValidPassword(password) {
+    return authUtils.isValidPassword(password, this.#passwordHash);
+  }
 
   static async list() {
     const query = "SELECT * FROM organizations";
@@ -22,30 +24,62 @@ class Organization {
   }
 
   static async findById(id) {
-    const query = 'SELECT * FROM organizations WHERE id = ?';
+    const query = "SELECT * FROM organizations WHERE id = ?";
     const { rows } = await knex.raw(query, [id]);
     const org = rows[0];
     return org ? new Organization(org) : null;
   }
 
   static async findByUsername(username) {
-    const query = 'SELECT * FROM organizations WHERE username = ?';
-    const {rows} = await knex.raw(query,[username]);
+    const query = "SELECT * FROM organizations WHERE username = ?";
+    const { rows } = await knex.raw(query, [username]);
     const org = rows[0];
     return org ? new Organization(org) : null;
   }
 
-  static async create({ username, password_hash, pfp_url, website_url, borough }) {
+  static async create({
+    username,
+    password_hash,
+    pfp_url,
+    website_url,
+    borough,
+  }) {
     const passwordHash = await authUtils.hashPassword(password_hash);
     const query = `INSERT INTO organizations (username, password_hash, pfp_url, website_url, borough) 
     VALUES(?,?,?,?,?) 
     RETURNING *`;
-    const {rows} = await knex.raw(query, [username, passwordHash, pfp_url, website_url , borough])
+    const { rows } = await knex.raw(query, [
+      username,
+      passwordHash,
+      pfp_url,
+      website_url,
+      borough,
+    ]);
     const org = rows[0];
     return new Organization(org);
   }
 
-  static async update({username, password_hash, pfp_url}) {
+  static async update({ id, username, password_hash, pfp_url }) {
+    const oldData = await Organization.findById(id);
+    const query = `
+    UPDATE organizations
+    SET username = ?, password_hash = ?, pfp_url = ?
+    WHERE id = ?
+    RETURNING *
+    `;
+    const { rows } = await knex.raw(query, [
+      username || oldData.username,
+      password_hash ? authUtils.hashPassword(password_hash) : oldData.#passwordHash,
+      pfp_url || oldData.pfpUrl,
+      id,
+    ]);
+    const updatedOrg = rows[0];
+    return updatedOrg ? new Organization(updatedOrg) : null;
+  }
 
+  static deleteAll() {
+    return knex('organizations').del();
   }
 }
+
+module.exports = Organization;

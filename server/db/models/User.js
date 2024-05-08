@@ -66,7 +66,7 @@ class User {
     return updatedUser ? new User(updatedUser) : null;
   }
 
-  static async deleteAll() {
+  static deleteAll() {
     return knex('users').del();
   }
 }

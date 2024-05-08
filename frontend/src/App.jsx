@@ -18,6 +18,8 @@ import ProgramsPage from './pages/programs/Programs.jsx';
 import ProgramPage from './pages/programs/Program.jsx'; 
 import NotFoundPage from './pages/error/NotFound.jsx';
 import AccessDeniedPage from './pages/error/AccessDenied.jsx';
+import AboutPage from './pages/home/About.jsx';
+
 // import UsersPage from './pages/Users';
 // import UserPage from './pages/User';
 

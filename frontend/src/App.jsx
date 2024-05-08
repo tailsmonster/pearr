@@ -50,18 +50,23 @@ export default function App() {
         <Route path='/edit/users/:user-id' element={<EditUserPage />} />
 
         <Route path='/edit/orgs/:org-id' element={<EditOrgPage />} />
-        <Route path='/edit/orgd/:org-id/programs' element={<YourProgramsPage />} />
-        <Route path='/edit/orgd/:org-id/programs/add' element={<AddProgramPage />} />
-        <Route path='/edit/orgd/:org-id/programs/:program-id' element={<EditProgramPage />} />
+        <Route path='/edit/orgs/:org-id/programs' element={<YourProgramsPage />} />
+        <Route path='/edit/orgs/:org-id/programs/add' element={<AddProgramPage />} />
+        <Route path='/edit/orgs/:org-id/programs/:program-id' element={<EditProgramPage />} />
 
+        {/* Programs */}
         <Route path='/programs' element={<ProgramsPage />} />
         <Route path='/programs/:program-id' element={<ProgramPage />} />
 
+        {/* Misc */}
+        <Route path='/about' element={<AboutPage />} />
+        <Route path='/access-denied' element={<AccessDeniedPage />} />
+        <Route path='/*' element={<NotFoundPage />} />
 
         
 
-        <Route path='/users' element={<UsersPage />} />
-        <Route path='/users/:id' element={<UserPage />} />
+        {/* <Route path='/users' element={<UsersPage />} />
+        <Route path='/users/:id' element={<UserPage />} /> */}
         {/* critikal error!!! */}
         <Route path='*' element={<NotFoundPage />} />
       </Routes>

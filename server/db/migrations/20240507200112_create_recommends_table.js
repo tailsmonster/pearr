@@ -8,6 +8,7 @@ exports.up = (knex) => knex.schema.createTable("recommends", (table) => {
   table.foreign('program_id').references("id").inTable("programs");
   table.integer("user_id");
   table.foreign('user_id').references("id").inTable("users");
+  table.boolean('recommend');
 });
 
 /**

@@ -1,16 +1,15 @@
 const knex = require("../knex");
 const authUtils = require("../../utils/auth-utils");
+const Program = require("./Program");
 
 class Organization {
   #passwordHash = null;
 
-  constructor({ id, username, password_hash, pfp_url, website_url, borough }) {
+  constructor({ id, username, password_hash, pfp_url }) {
     this.id = id;
     this.username = username;
     this.#passwordHash = password_hash;
     this.pfpUrl = pfp_url;
-    this.websiteUrl = website_url;
-    this.borough = borough;
   }
 
   async isValidPassword(password) {
@@ -57,6 +56,15 @@ class Organization {
     ]);
     const org = rows[0];
     return new Organization(org);
+  }
+
+  static async getProgramsOf(id) {
+    const query = `
+    SELECT * FROM programs
+    WHERE organization_id = ?
+    `;
+    const { rows } = knex.raw(query, [id]);
+    return rows.map((program) => new Program(program));
   }
 
   static async update({ id, username, password_hash, pfp_url }) {

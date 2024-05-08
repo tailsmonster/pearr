@@ -84,6 +84,45 @@ A low income parent wants their child to spend more time in extracurricular acti
 
 <!-- content goes below -->
 
+1. User Story: I’m a low income parent who's heard of PEAR and just landed on the homepage.
+   - When a user first lands on the homepage, they see a big button to sign up, as well as a preview for some of the programs available.
+   - A user can sign up as an organization or a regular user. A little message text is asking them if they are an organization, and if so to hit the toggle. Said toggle on the top of the sign-up page, and the background color changes to let the user know they’re signing up as a user/organization. There’s also a button to
+   - After signing up as a user, they are redirected to the programs page. On the navbar, they can select a button to send them to an EDIT PROFILE PAGE and a button to take them to the top of the programs page. The programs are displayed on the page, and the user can choose any of them.
+   - The user is redirected to a page featuring more information on that specific program. Here are pictures and text relating to the program. The user can also see a comments section about the program.
+   - The User has learned about PEAR and has decided to enroll their child into a program!
+
+- Tables needed for this user story:
+  - Users - (id\*, username, password_hash, pfp_url)
+  - Organizations - (id\*, name, password_hash, pfp_url)
+  - Comments - (id\*, user_id, program_id, body, date)
+  - Programs - (id\*, bio, name, img_url, color, organization_id, )
+
+2. User Story: I’m a parent who discovered and has since enrolled my child into a program on PEAR. I want to leave my raving reviews.
+   - A logged in user is automatically sent to the programs page once they’re logged in.
+   - In the /programs page, the user can look up the program they enrolled their child into using the search bar. They’ll have to type in the name of the program.
+   - Once they find the program, they’ll be able to click on it to be sent to the /programs/{ID} page, id corresponding with the program they chose.
+   - The user can scroll down to the comments section, to enter a text input for a form, as well as a toggle for whether they recommend the program or not.
+   - The user has posted a comment!
+
+- Tables needed for this user story:
+  - Users - (id\*, username, pfp_url)
+  - Organizations - (id\*, name, password_hash, pfp_url)
+  - Comments - (id\*, user_id, program_id, body, date)
+  - Programs - (id\*, bio, name, img_url, color, organization_id, )
+
+3. User Story: I’m an organizer who wants to promote my program on PEAR
+   - An organizer lands on the home page, where they click the sign up button to create an ‘organization’ account
+   - They click on the toggle to sign up as an organization.
+   - They are redirected to a page where they can create a brand new program
+   - They can click a button to make a new program. From there, they will enter information about their program.
+   - After submitting, their program is now live for everyone to see
+
+- Tables needed for this user story:
+  - Users - (id\*, username, password_hash, pfp_url)
+  - Organizations - (id\*, name, password_hash, pfp_url)
+  - Comments - (id\*, user_id, program_id, body, date)
+  - Programs - (id\*, bio, name, img_url, color, organization_id, )
+
 <!-- content goes above -->
 
 ## 🧗‍♂️ Key Technical Challenge
@@ -101,7 +140,7 @@ A low income parent wants their child to spend more time in extracurricular acti
 <!-- content goes below -->
 
 - Users can add follows to certain topics, then be notified when a new program is posted related to certain topics.
-- A mobile app found on an app store would help us reach a wider user base as well as making our resource more accessible to those who lack a computer / inexperienced ,using a web browser
+- A mobile app found on an app store would help us reach a wider user base as well as making our resource more accessible to those who lack a computer / inexperienced, using a web browser
 
 <!-- content goes above -->
 

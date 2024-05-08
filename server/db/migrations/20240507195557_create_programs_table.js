@@ -6,7 +6,7 @@ exports.up = function(knex) {
   return knex.schema.createTable("programs", (table) => {
     table.increments("id").primary();
     table.string("name").notNullable();
-    table.string("bio").notNullable();
+    table.text("bio").notNullable();
     table.integer("organization_id");
     table.foreign('organization_id').references('id').inTable('organizations');
     table.string("img_url").notNullable();

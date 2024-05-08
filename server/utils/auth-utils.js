@@ -23,6 +23,7 @@ const isAuthorized = (userId, session) => {
   return Number(userId) === Number(session.userId);
 };
 
+
 module.exports = {
   hashPassword,
   isValidPassword,

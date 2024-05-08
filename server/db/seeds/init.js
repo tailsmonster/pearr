@@ -26,14 +26,14 @@ exports.seed = async (knex) => {
   await knex("organizations").insert([
     {
       username: "Marcy Lab School",
-      password_hash: hashPassword("everyone Except Nico13$"),
+      password_hash: await hashPassword("everyone Except Nico13$"),
       pfp_url: "https://avatars.githubusercontent.com/u/54635790?s=200&v=4",
       website_url: "https://www.marcylabschool.org/",
       borough: "Brooklyn",
     },
     {
       username: "Randy Lab School",
-      password_hash: hashPassword("Who needs a raise, 15 an hour$$$"),
+      password_hash: await hashPassword("Who needs a raise, 15 an hour$$$"),
       pfp_url:
         "https://static.wikia.nocookie.net/b__/images/e/e2/Btd6monkey.png/revision/latest/scale-to-width-down/90?cb=20180426113758&path-prefix=bloons",
       website_url: "https://bloons.fandom.com/wiki/Bloons_Wiki",
@@ -44,11 +44,11 @@ exports.seed = async (knex) => {
   await knex("users").insert([
     {
       username: "real_Gonzo",
-      password_hash: hashPassword("goons4Lyfe!!!"),
+      password_hash: await hashPassword("goons4Lyfe!!!"),
     },
     {
       username: "TheOfficialAllan",
-      password_hash: hashPassword("MushroomsRTHe(*est"),
+      password_hash: await hashPassword("MushroomsRTHe(*est"),
       pfp_url:
         "https://static.wikia.nocookie.net/b__/images/e/e1/Bomb_Shooter.png/revision/latest/scale-to-width-down/100?cb=20180616145810&path-prefix=bloons",
     },

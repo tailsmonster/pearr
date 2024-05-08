@@ -17,27 +17,23 @@ exports.seed = async (knex) => {
     await knex(table).del();
   }
 
-  await knex.raw("ALTER SEQUENCE organizations_id_seq RESTART WITH 1"); //resets the incrementing id to 1
-  await knex.raw("ALTER SEQUENCE users_id_seq RESTART WITH 1"); //resets the incrementing id to 1
-  await knex.raw("ALTER SEQUENCE programs_id_seq RESTART WITH 1"); //resets the incrementing id to 1
-  await knex.raw("ALTER SEQUENCE comments_id_seq RESTART WITH 1"); //resets the incrementing id to 1
-  await knex.raw("ALTER SEQUENCE recommends_id_seq RESTART WITH 1"); //resets the incrementing id to 1
+  await knex.raw("ALTER SEQUENCE organizations_id_seq RESTART WITH 1"); // resets the incrementing id to 1
+  await knex.raw("ALTER SEQUENCE users_id_seq RESTART WITH 1"); // resets the incrementing id to 1
+  await knex.raw("ALTER SEQUENCE programs_id_seq RESTART WITH 1"); // resets the incrementing id to 1
+  await knex.raw("ALTER SEQUENCE comments_id_seq RESTART WITH 1"); // resets the incrementing id to 1
+  await knex.raw("ALTER SEQUENCE recommends_id_seq RESTART WITH 1"); // resets the incrementing id to 1
 
   await knex("organizations").insert([
     {
       username: "Marcy Lab School",
       password_hash: await hashPassword("everyone Except Nico13$"),
       pfp_url: "https://avatars.githubusercontent.com/u/54635790?s=200&v=4",
-      website_url: "https://www.marcylabschool.org/",
-      borough: "Brooklyn",
     },
     {
       username: "Randy Lab School",
       password_hash: await hashPassword("Who needs a raise, 15 an hour$$$"),
       pfp_url:
         "https://static.wikia.nocookie.net/b__/images/e/e2/Btd6monkey.png/revision/latest/scale-to-width-down/90?cb=20180426113758&path-prefix=bloons",
-      website_url: "https://bloons.fandom.com/wiki/Bloons_Wiki",
-      borough: "Manhattan",
     },
   ]);
 
@@ -68,14 +64,19 @@ exports.seed = async (knex) => {
         "https://static.wikia.nocookie.net/b__/images/e/e2/Btd6monkey.png/revision/latest/scale-to-width-down/90?cb=20180426113758&path-prefix=bloons",
       color: "white",
       rating: 4.8,
+      website_url: "https://www.marcylabschool.org/",
+      borough: "Brooklyn",
     },
     {
       name: "Randy Lab School",
       bio: `GIVE ME A RAISE. GIVE ME A RAISE GIVE ME A RAISE`,
       organization_id: 2,
-      img_url: "https://static.wikia.nocookie.net/b__/images/f/ff/BTD6_Sniper_Monkey.png/revision/latest/scale-to-width-down/100?cb=20180616150336&path-prefix=bloons",
+      img_url:
+        "https://static.wikia.nocookie.net/b__/images/f/ff/BTD6_Sniper_Monkey.png/revision/latest/scale-to-width-down/100?cb=20180616150336&path-prefix=bloons",
       color: "Red",
-      rating: 5
+      rating: 5,
+      website_url: "https://bloons.fandom.com/wiki/Bloons_Wiki",
+      borough: "Manhattan",
     },
   ]);
 
@@ -84,26 +85,26 @@ exports.seed = async (knex) => {
       program_id: 1,
       user_id: 2,
       body: "You should give Randy a raise",
-      date : JSON.stringify(new Date())
+      date: JSON.stringify(new Date()),
     },
     {
       program_id: 1,
       user_id: 1,
       body: "Randy will NEVER get a raise",
-      date : JSON.stringify( new Date())
+      date: JSON.stringify(new Date()),
     },
     {
       program_id: 2,
       user_id: 1,
       body: "Hey now...",
-      date: JSON.stringify(new Date())
-    }, 
+      date: JSON.stringify(new Date()),
+    },
     {
       program_id: 2,
       user_id: 2,
       body: "Now THIS is where you'll get that raise",
-      date: JSON.stringify(new Date())
-    }
+      date: JSON.stringify(new Date()),
+    },
   ]);
 
   await knex("recommends").insert([
@@ -120,5 +121,4 @@ exports.seed = async (knex) => {
       user_id: 2,
     },
   ]);
-
 };

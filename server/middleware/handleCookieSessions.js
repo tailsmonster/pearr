@@ -1,4 +1,5 @@
 const cookieSession = require('cookie-session');
+
 const handleCookieSessions = cookieSession({
   name: 'session',
   secret: process.env.SESSION_SECRET,
@@ -6,7 +7,7 @@ const handleCookieSessions = cookieSession({
   // which means until we close the browser. We like this for now!
   // But in real life you'd set the cookie to expire,
   // and implement an auto re-auth flow, but that's too much at this point.
-  keys: ['']
+  keys: [''],
   // maxAge: 1000 * 60 * 60 * 24  // 24 hours
 });
 

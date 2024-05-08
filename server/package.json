@@ -11,6 +11,7 @@
     "migrate": "knex migrate:latest",
     "migrate:make": "knex migrate:make",
     "migrate:rollback": "knex migrate:rollback",
+    "remake": "knex migrate:rollback && knex migrate:latest && knex seed:run",
     "seed": "knex seed:run",
     "seed:make": "knex seed:make",
     "lint": "eslint . --fix"

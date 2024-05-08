@@ -10,6 +10,7 @@ exports.up = (knex) => knex.schema.createTable("comments", (table) => {
   table.foreign('user_id').references("id").inTable("users");
   table.string("body").notNullable();
   table.date("date").notNullable();
+  table.boolean('edited');
 });
 
 /**

@@ -1,0 +1,61 @@
+const knex = require('../knex');
+
+class Recommend {
+  constructor({ program_id, user_id, recommend }) {
+    this.program_id = program_id;
+    this.user_id = user_id;
+    this.recommend = recommend;
+  }
+
+  static async list() {
+    const query = "SELECT * FROM recommends";
+    const { rows } = await knex.raw(query);
+    return rows.map((recommend) => new Recommend(recommend));
+  }
+
+  static async findByProgramId(program_id) {
+    const query = "SELECT * FROM recommends WHERE program_id = ?";
+    const { rows } = await knex.raw(query, [program_id]);
+    return rows.map((rec) => new Recommend(rec));
+  }
+
+  static async findByUserId(user_id) {
+    const query = "SELECT * FROM recommends WHERE user_id = ?";
+    const { rows } = await knex.raw(query, [user_id]);
+    return rows.map((rec) => new Recommend(rec));
+  }
+
+  static async create({ program_id, user_id, recommend }) {
+    const query = `
+    INSERT INTO recommends(program_id, user_id, recommend)
+    VALUES (?, ?, ?)`;
+    const { rows } = await knex.raw(query, [program_id, user_id, recommend]);
+    const recommendOutput = rows[0];
+    return recommendOutput ? new Recommend(recommendOutput) : null;
+  }
+
+  static async update(id) {
+    const query = `
+    UPDATE recommends
+    SET recommend = ?
+    WHERE id = ?`;
+    const { rows } = await knex.raw(query, [id]);
+    const recommend = rows[0];
+    return recommend ? new Recommend(recommend) : null;
+  }
+
+  static deleteAll() {
+    knex('recommends').del();
+  }
+
+  static async deleteRecommend(id) {
+    const query = `
+    DELETE FROM recommends
+    WHERE id = ?`;
+    const { rows } = await knex.raw(query, [id]);
+    const recommend = rows[0];
+    return recommend ? new Recommend(recommend) : null;
+  }
+}
+
+module.exports = Recommend;

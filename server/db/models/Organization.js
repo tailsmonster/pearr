@@ -77,7 +77,9 @@ class Organization {
     `;
     const { rows } = await knex.raw(query, [
       username || oldData.username,
-      password_hash ? authUtils.hashPassword(password_hash) : oldData.#passwordHash,
+      password_hash
+        ? authUtils.hashPassword(password_hash)
+        : oldData.#passwordHash,
       pfp_url || oldData.pfpUrl,
       id,
     ]);
@@ -86,7 +88,31 @@ class Organization {
   }
 
   static deleteAll() {
-    return knex('organizations').del();
+    return knex("organizations").del();
+  }
+
+  static async deleteAccount(id) {
+    const programsQuery = `
+    DELETE FROM programs
+    WHERE organization_id = ?
+    RETURNING *
+    `;
+    const { programRows } = await knex.raw(programsQuery, [id]);
+
+    programRows.forEach(async (program) => {
+      const commentQuery = `
+      DELETE FROM comments
+      WHERE program_id = ?
+      `;
+      await knex.raw(commentQuery, [program.id]);
+    });
+
+    const organizationQuery = `
+    DELETE FROM organizations
+    WHERE id = ?
+    `;
+
+    await knex.raw(organizationQuery, [id]);
   }
 }
 

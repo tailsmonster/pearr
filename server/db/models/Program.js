@@ -94,6 +94,16 @@ class Program {
   static deleteAll() {
     return knex('programs').del();
   }
+
+  static async deleteProgram(id) {
+    const query = `
+    DELETE FROM programs
+    WHERE id = ?
+    `;
+    const { rows } = knex.raw(query, [id]);
+    const program = rows[0];
+    return program ? new Program(program) : null;
+  }
 }
 
 module.exports = Program;

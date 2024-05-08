@@ -37,7 +37,7 @@ export default function App() {
     <main>
       <Routes>
         {/* home page */}
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<HomePage />} />
 
         {/* signing/logging in */}
         <Route path='/signup' element={<SignUpPage />} />
@@ -45,14 +45,18 @@ export default function App() {
 
         {/* edit stuff */}
 
-        <Route path='/edit' element={<UsersPage />} />
+        <Route path='/edit' element={<EditLandingPage />} />
 
-        <Route path='/edit/users/:user-id' element={<UsersPage />} />
+        <Route path='/edit/users/:user-id' element={<EditUserPage />} />
 
-        <Route path='/edit/orgs/:org-id' element={<UsersPage />} />
-        <Route path='/edit/orgd/:org-id/programs' element={<UsersPage />} />
-        <Route path='/edit/orgd/:org-id/programs/add' element={<UsersPage />} />
-        <Route path='/edit/orgd/:org-id/programs/edit' element={<UsersPage />} />
+        <Route path='/edit/orgs/:org-id' element={<EditOrgPage />} />
+        <Route path='/edit/orgd/:org-id/programs' element={<YourProgramsPage />} />
+        <Route path='/edit/orgd/:org-id/programs/add' element={<AddProgramPage />} />
+        <Route path='/edit/orgd/:org-id/programs/:program-id' element={<EditProgramPage />} />
+
+        <Route path='/programs' element={<ProgramsPage />} />
+        <Route path='/programs/:program-id' element={<ProgramPage />} />
+
 
         
 

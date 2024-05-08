@@ -36,14 +36,14 @@
 
 From within the root directory:
 
-```sh
+```shgfg
 npm i
 
 ```
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECTS_TAB).
+View the project roadmap [here](https://github.com/orgs/NCA-Association/projects/1/views/1).
 
 ## Contributing
 

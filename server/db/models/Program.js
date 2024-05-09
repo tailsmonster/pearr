@@ -1,0 +1,109 @@
+const knex = require("../knex");
+
+class Program {
+  constructor({
+    name,
+    bio,
+    website_url,
+    borough,
+    organization_id,
+    img_url,
+    color,
+    rating,
+  }) {
+    this.name = name;
+    this.bio = bio;
+    this.websiteUrl = website_url;
+    this.borough = borough;
+    this.organizationId = organization_id;
+    this.imgUrl = img_url;
+    this.color = color;
+    this.rating = rating;
+  }
+
+  static async list() {
+    const query = "SELECT * FROM programs";
+    const { rows } = await knex.raw(query);
+    return rows.map((program) => new Program(program));
+  }
+
+  static async findById(id) {
+    const query = "SELECT * FROM programs WHERE id = ?";
+    const { rows } = await knex.raw(query, [id]);
+    const program = rows[0];
+    return program ? new Program(program) : null;
+  }
+
+  static async findByName(name) {
+    const query = "SELECT * FROM programs WHERE name = ?";
+    const { rows } = await knex.raw(query, [name]);
+    const program = rows[0];
+    return program ? new Program(program) : null;
+  }
+
+  static async create({
+    name,
+    bio,
+    website_url,
+    borough,
+    organization_id,
+    img_url,
+    color,
+    rating,
+  }) {
+    const query = `
+    INSERT INTO programs (name, bio, website_url, borough, organization_id, img_url, color, rating)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    RETURNING *
+    `;
+    const { rows } = knex.raw(query, [
+      name,
+      bio,
+      website_url,
+      borough,
+      organization_id,
+      img_url,
+      color,
+      rating,
+    ]);
+    const program = rows[0];
+    return program ? new Program(program) : null;
+  }
+
+  static async update({ id, name, bio, website_url, borough, img_url, color }) {
+    const oldData = await Program.findById(id);
+    const query = `
+    UPDATE programs
+    SET name = ?, bio = ?, website_url = ?, borough = ?, img_url = ?, color =?
+    WHERE id = ?
+    RETURNING *
+    `;
+    const { rows } = await knex.raw(query, [
+      name || oldData.name,
+      bio || oldData.bio,
+      website_url || oldData.websiteUrl,
+      borough || oldData.borough,
+      img_url || oldData.imgUrl,
+      color || oldData.color,
+      id,
+    ]);
+    const program = rows[0];
+    return program ? new Program(program) : null;
+  }
+
+  static deleteAll() {
+    return knex('programs').del();
+  }
+
+  static async deleteProgram(id) {
+    const query = `
+    DELETE FROM programs
+    WHERE id = ?
+    `;
+    const { rows } = knex.raw(query, [id]);
+    const program = rows[0];
+    return program ? new Program(program) : null;
+  }
+}
+
+module.exports = Program;

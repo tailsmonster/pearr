@@ -5,6 +5,12 @@ exports.createUser = async (req, res) => {
   const { username, password } = req.body;
 
   // TODO: check if username is taken, and if it is what should you return?
+  const isAvailable = await User.findByUsername(username);
+  if (isAvailable !== null) {
+    res.stats(400);
+    res.ok = false;
+  }
+
   const user = await User.create(username, password);
   req.session.userId = user.id;
 
@@ -35,6 +41,6 @@ exports.updateUser = async (req, res) => {
   if (!isAuthorized(id, req.session)) return res.sendStatus(403);
 
   const updatedUser = await User.update(id, username);
-  if (!updatedUser) return res.sendStatus(404)
+  if (!updatedUser) return res.sendStatus(404);
   res.send(updatedUser);
 };

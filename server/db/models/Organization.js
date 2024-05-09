@@ -31,28 +31,20 @@ class Organization {
 
   static async findByUsername(username) {
     const query = "SELECT * FROM organizations WHERE username = ?";
-    const { rows } = await knex.raw(query, [username]);
+    const { rows } = await knex.raw(query, [username || '-1']);
     const org = rows[0];
     return org ? new Organization(org) : null;
   }
 
-  static async create({
-    username,
-    password_hash,
-    pfp_url,
-    website_url,
-    borough,
-  }) {
-    const passwordHash = await authUtils.hashPassword(password_hash);
-    const query = `INSERT INTO organizations (username, password_hash, pfp_url, website_url, borough) 
-    VALUES(?,?,?,?,?) 
+  static async create(username, password, pfp_url) {
+    const passwordHash = await authUtils.hashPassword(password);
+    const query = `INSERT INTO organizations (username, password_hash, pfp_url) 
+    VALUES(?,?,?) 
     RETURNING *`;
     const { rows } = await knex.raw(query, [
       username,
       passwordHash,
       pfp_url,
-      website_url,
-      borough,
     ]);
     const org = rows[0];
     return new Organization(org);
@@ -67,7 +59,7 @@ class Organization {
     return rows.map((program) => new Program(program));
   }
 
-  static async update({ id, username, password_hash, pfp_url }) {
+  static async update(id, username, password, pfp_url) {
     const oldData = await Organization.findById(id);
     const query = `
     UPDATE organizations
@@ -77,8 +69,8 @@ class Organization {
     `;
     const { rows } = await knex.raw(query, [
       username || oldData.username,
-      password_hash
-        ? authUtils.hashPassword(password_hash)
+      password
+        ? authUtils.hashPassword(password)
         : oldData.#passwordHash,
       pfp_url || oldData.pfpUrl,
       id,

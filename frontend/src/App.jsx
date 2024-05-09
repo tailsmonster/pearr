@@ -6,12 +6,12 @@ import { checkForLoggedInUser } from "./adapters/auth-adapter";
 
 //Page Imports
 import HomePage from "./pages/Home.jsx";
-import SignUpPage from "./pages/authorization/SignUp.jsx";
+import SignUpPage from "./pages/SignUp.jsx";
 import LoginPage from "./pages/Login.jsx";
-import EditUserPage from "./pages/edit/EditUserPage.jsx";
-import YourProgramsPage from "./pages/edit/org/YourPrograms.jsx";
-import AddProgramPage from "./pages/edit/org/AddProgram.jsx";
-import EditProgramPage from "./pages/edit/org/EditProgram.jsx";
+import EditUserPage from "./pages/EditUserPage.jsx";
+// import YourProgramsPage from "./pages/YourPrograms.jsx";
+// import AddProgramPage from "./pages/edit/org/AddProgram.jsx";
+// import EditProgramPage from "./pages/edit/org/EditProgram.jsx";
 import ProgramsPage from "./pages/ProgramInfo.jsx";
 import ProgramPage from "./pages/Program.jsx";
 import NotFoundPage from "./components/NotFound.jsx";
@@ -42,19 +42,19 @@ export default function App() {
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* edit stuff */}
-          <Route path="/edit" element={<EditLandingPage />} />
-          <Route
+          <Route path="/edit" element={<EditUserPage />} />
+          {/* <Route
             path="/edit/orgs/:org-id/programs"
             element={<YourProgramsPage />}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/edit/orgs/:org-id/programs/add"
             element={<AddProgramPage />}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/edit/orgs/:org-id/programs/:program-id"
             element={<EditProgramPage />}
-          />
+          /> */}
           {/* Programs */}
           <Route path="/programs" element={<ProgramsPage />} />
           <Route path="/programs/:program-id" element={<ProgramPage />} />2

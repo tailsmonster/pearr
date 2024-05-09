@@ -5,18 +5,18 @@ import { Routes, Route } from "react-router-dom";
 import { checkForLoggedInUser } from "./adapters/auth-adapter";
 
 //Page Imports
-import HomePage from "./pages/home/Home.jsx";
+import HomePage from "./pages/Home.jsx";
 import SignUpPage from "./pages/authorization/SignUp.jsx";
-import LoginPage from "./pages/authorization/Login.jsx";
-import EditLandingPage from "./pages/edit/EditLandingPage.jsx";
+import LoginPage from "./pages/Login.jsx";
+import EditUserPage from "./pages/edit/EditUserPage.jsx";
 import YourProgramsPage from "./pages/edit/org/YourPrograms.jsx";
 import AddProgramPage from "./pages/edit/org/AddProgram.jsx";
 import EditProgramPage from "./pages/edit/org/EditProgram.jsx";
-import ProgramsPage from "./pages/programs/Programs.jsx";
-import ProgramPage from "./pages/programs/Program.jsx";
-import NotFoundPage from "./pages/error/NotFound.jsx";
-import AccessDeniedPage from "./pages/error/AccessDenied.jsx";
-import AboutPage from "./pages/home/About.jsx";
+import ProgramsPage from "./pages/ProgramInfo.jsx";
+import ProgramPage from "./pages/Program.jsx";
+import NotFoundPage from "./components/NotFound.jsx";
+import AccessDeniedPage from "./components/AccessDenied.jsx";
+import AboutPage from "./pages/About.jsx";
 
 // import UsersPage from './pages/Users';
 // import UserPage from './pages/User';

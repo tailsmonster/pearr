@@ -8,10 +8,11 @@ class User {
   // Instead, it is used by each of the User static methods to hide the hashed
   // password of users before sending user data to the client. Since #passwordHash
   // is private, only the isValidPassword instance method can access that value.
-  constructor({ id, username, password_hash }) {
+  constructor({ id, username, password_hash, pfp_url }) {
     this.id = id;
     this.username = username;
     this.#passwordHash = password_hash;
+    this.pfpUrl = pfp_url || '';
   }
 
   // This instance method takes in a plain-text password and returns true if it matches
@@ -59,14 +60,14 @@ class User {
       SET username=?
       WHERE id=?
       RETURNING *
-    `
-    const { rows } = await knex.raw(query, [username, id])
+    `;
+    const { rows } = await knex.raw(query, [username, id]);
     const updatedUser = rows[0];
     return updatedUser ? new User(updatedUser) : null;
-  };
+  }
 
-  static async deleteAll() {
-    return knex('users').del()
+  static deleteAll() {
+    return knex('users').del();
   }
 }
 

@@ -25,6 +25,7 @@ const UpdateForm = () => {
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          name='username'
         />
       </div>
       <div>
@@ -34,6 +35,7 @@ const UpdateForm = () => {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          name='password'
         />
       </div>
       <div>
@@ -43,6 +45,7 @@ const UpdateForm = () => {
           id="profilePicture"
           value={profilePicture}
           onChange={(e) => setProfilePicture(e.target.value)}
+          name='pfp_url'
         />
       </div>
       <button type="submit">Update</button>

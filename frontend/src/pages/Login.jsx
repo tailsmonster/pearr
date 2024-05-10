@@ -7,6 +7,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const [errorText, setErrorText] = useState("");
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const [isOrganization, setIsOrganization] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,29 +22,74 @@ export default function LoginPage() {
   if (currentUser) return <Navigate to="/" />;
 
   return (
-    <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit} aria-labelledby="giogin-heading">
-        <h2 id="login-heading">Log back in!</h2>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          autoComplete="username"
-          id="username"
-          name="username"
-        />
-
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          autoComplete="current-password"
-          id="password"
-          name="password"
-        />
-
-        <button>Log in!</button>
-      </form>
-      {!!errorText && <p>{errorText}</p>}
-    </>
+    <section className="hero is-fullheight">
+      <div className="hero-body">
+        <div className="container">
+          <div className="columns is-centered">
+            <div className="column is-5-tablet is-4-desktop is-3-widescreen">
+              <h1 className="title has-text-centered">PEAR NYC</h1>
+              <div className="box">
+                <h2 className="subtitle has-text-centered">Login</h2>
+                <div className="buttons is-centered">
+                  <button
+                    className={`button ${!isOrganization ? "is-primary" : ""}`}
+                    onClick={() => setIsOrganization(false)}
+                  >
+                    User
+                  </button>
+                  <button
+                    className={`button ${isOrganization ? "is-primary" : ""}`}
+                    onClick={() => setIsOrganization(true)}
+                  >
+                    Organization
+                  </button>
+                </div>
+                <form onSubmit={handleSubmit} aria-labelledby="login-heading">
+                  <div className="field">
+                    <label htmlFor="username" className="label">
+                      Username:
+                    </label>
+                    <div className="control">
+                      <input
+                        type="text"
+                        autoComplete="username"
+                        id="username"
+                        name="username"
+                        className="input"
+                      />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label htmlFor="password" className="label">
+                      Password:
+                    </label>
+                    <div className="control">
+                      <input
+                        type="password"
+                        autoComplete="current-password"
+                        id="password"
+                        name="password"
+                        className="input"
+                      />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <div className="control">
+                      <button className="button is-primary is-fullwidth">
+                        Login
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                {!!errorText && <p className="has-text-danger">{errorText}</p>}
+                <p className="has-text-centered">
+                  New? <a href="/signup">Sign up today!</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

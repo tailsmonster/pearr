@@ -41,7 +41,7 @@ class Program {
     return program ? new Program(program) : null;
   }
 
-  static async create({
+  static async create(
     name,
     bio,
     website_url,
@@ -50,7 +50,7 @@ class Program {
     img_url,
     color,
     rating,
-  }) {
+  ) {
     const query = `
     INSERT INTO programs (name, bio, website_url, borough, organization_id, img_url, color, rating)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
@@ -70,7 +70,7 @@ class Program {
     return program ? new Program(program) : null;
   }
 
-  static async update({ id, name, bio, website_url, borough, img_url, color }) {
+  static async update(id, name, bio, website_url, borough, img_url, color) {
     const oldData = await Program.findById(id);
     const query = `
     UPDATE programs
@@ -92,7 +92,7 @@ class Program {
   }
 
   static deleteAll() {
-    return knex('programs').del();
+    return knex("programs").del();
   }
 
   static async deleteProgram(id) {

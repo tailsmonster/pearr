@@ -36,3 +36,9 @@ exports.updateOrganization = async (req, res) => {
   if (updatedOrganization === null) return res.sendStatus(404);
   res.send(updatedOrganization);
 };
+
+exports.showOrganizationPrograms = async (req) => {
+  const { id } = req.params;
+  const programs = await Organization.getProgramsOf(id);
+  return programs;
+};

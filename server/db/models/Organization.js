@@ -12,7 +12,7 @@ class Organization {
     this.pfpUrl = pfp_url;
   }
 
-  async isValidPassword(password) {
+  isValidPassword(password) {
     return authUtils.isValidPassword(password, this.#passwordHash);
   }
 

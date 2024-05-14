@@ -11,7 +11,7 @@ export const getAllOrganizations = async () => {
   return organizations || [];;
 }
 
-export const getUser = async (id) => await fetchHandler(`${baseUrl}/${id}`);
+export const logOrganization = async (id) => await fetchHandler(`${baseUrl}/${id}`);
 
 export const updateOrganization = async ({id, username, password, pfp_url}) => (
   fetchHandler(`${baseUrl}/${id}`, getPatchOptions({id,username, password,pfp_url}))

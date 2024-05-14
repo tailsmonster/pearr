@@ -1,0 +1,9 @@
+.button.is-user {
+    background-color: lightgreen;
+    color: white;
+  }
+  
+  .button.is-organization {
+    background-color: orange;
+    color: white;
+  }

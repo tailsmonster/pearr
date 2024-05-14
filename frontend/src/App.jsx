@@ -39,7 +39,7 @@ export default function App() {
           {/* home page */}
           <Route path="/" element={<HomePage />} />
           {/* signing/logging in */}
-          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* edit stuff */}
           <Route path="/edit" element={<EditUserPage />} />

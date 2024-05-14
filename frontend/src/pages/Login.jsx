@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
-import { logUserIn } from "../adapters/auth-adapter";
+import { logUserIn, logOrganizationIn } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
+import "../Login.css";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -13,10 +14,12 @@ export default function LoginPage() {
     event.preventDefault();
     setErrorText("");
     const formData = new FormData(event.target);
-    const [user, error] = await logUserIn(Object.fromEntries(formData));
+    const [user, error] = isOrganization
+      ? await logOrganizationIn(Object.fromEntries(formData))
+      : await logUserIn(Object.fromEntries(formData));
     if (error) return setErrorText(error.message);
     setCurrentUser(user);
-    navigate(`/users/${user.id}`);
+    navigate("/");
   };
 
   if (currentUser) return <Navigate to="/" />;
@@ -32,13 +35,13 @@ export default function LoginPage() {
                 <h2 className="subtitle has-text-centered">Login</h2>
                 <div className="buttons is-centered">
                   <button
-                    className={`button ${!isOrganization ? "is-primary" : ""}`}
+                    className={`button ${!isOrganization ? "is-user" : ""}`}
                     onClick={() => setIsOrganization(false)}
                   >
                     User
                   </button>
                   <button
-                    className={`button ${isOrganization ? "is-primary" : ""}`}
+                    className={`button ${isOrganization ? "is-organization" : ""}`}
                     onClick={() => setIsOrganization(true)}
                   >
                     Organization
@@ -47,7 +50,7 @@ export default function LoginPage() {
                 <form onSubmit={handleSubmit} aria-labelledby="login-heading">
                   <div className="field">
                     <label htmlFor="username" className="label">
-                      Username:
+                      {isOrganization ? "Organization Name" : "Username"}
                     </label>
                     <div className="control">
                       <input
@@ -61,7 +64,7 @@ export default function LoginPage() {
                   </div>
                   <div className="field">
                     <label htmlFor="password" className="label">
-                      Password:
+                      Password
                     </label>
                     <div className="control">
                       <input

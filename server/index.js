@@ -9,6 +9,8 @@ const authRouter = require('./routers/authRouter');
 const userRouter = require('./routers/userRouter');
 const organizationRouter = require('./routers/organizationRouter');
 const programRouter = require("./routers/programRouter");
+const commentRouter = require('./routers/commentRouter');
+const recommendRouter = require('./routers/recommendRouter');
 
 const app = express();
 
@@ -22,6 +24,8 @@ app.use('/api', authRouter);
 app.use('/api/users', userRouter);
 app.use('/api/organizations', organizationRouter);
 app.use('/api/programs', programRouter);
+app.use('/api/comments', commentRouter);
+app.use('/api/recommends', recommendRouter);
 
 // Requests meant for the API will be sent along to the router.
 // For all other requests, send back the index.html file in the dist folder.

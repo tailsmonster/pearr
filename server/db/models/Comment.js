@@ -1,7 +1,7 @@
 const knex = require("../knex");
 
 class Comment {
-  constructor({ program_id, user_id, body, date }) {
+  constructor(program_id, user_id, body, date) {
     this.program_id = program_id;
     this.user_id = user_id;
     this.body = body;
@@ -39,7 +39,7 @@ class Comment {
     return comment !== null ? new Comment(comment) : null;
   }
 
-  static async update({ id, body }) {
+  static async update(id, body) {
     const query = `
     UPDATE comments
     SET body = ?, edited = TRUE

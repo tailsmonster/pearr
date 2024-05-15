@@ -1,3 +1,4 @@
+const Organization = require('../db/models/Organization');
 const User = require('../db/models/User');
 
 // This controller takes the provided username and password and finds
@@ -17,6 +18,20 @@ exports.loginUser = async (req, res) => {
   res.send(user);
 };
 
+exports.logInOrganization = async (req,res) => {
+  const {username, password} = req.body;
+
+  const organization = await Organization.findByUsername(username);
+  if (!organization) return res.sendStatus(404);
+
+  const isPasswordValid = await organization.isPasswordValid(password);
+  if (!isPasswordValid) return res.sendStatus(401);
+
+  req.session.organizationId = organization.id;
+  res.send(organization);
+  
+};
+
 // This controller sets `req.session` to null, destroying the cookie
 // which is the thing that keeps them logged in.
 exports.logoutUser = (req, res) => {
@@ -31,4 +46,10 @@ exports.showMe = async (req, res) => {
 
   const user = await User.find(req.session.userId);
   res.send(user);
+};
+exports.showOrganization = async (req, res) => {
+  if (!req.session.organizationId) return res.sendStatus(401);
+
+  const organization = await Organization.findById(req.session.userId);
+  res.send(organization);
 };

@@ -6,11 +6,13 @@ const authRouter = express.Router();
 /**
  * Returns logged in user
  */
-authRouter.get('/me', authControllers.showMe);
+authRouter.get('/user', authControllers.showMe);
+authRouter.get('/organization', authControllers.showMe);
 /**
  * Logs in user
  */
 authRouter.post('/login', authControllers.loginUser);
+authRouter.post('/loginOrganization', authControllers.logInOrganization);
 /**
  * Resets session
  */

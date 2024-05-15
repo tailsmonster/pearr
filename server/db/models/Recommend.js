@@ -25,6 +25,20 @@ class Recommend {
     return rows.map((rec) => new Recommend(rec));
   }
 
+  static async findById(id) {
+    const query = 'SELECT * FROM recommends WHERE id = ?';
+    const { rows } = await knex.raw(query, [id]);
+    const recommend = rows[0];
+    return recommend ? new Recommend(recommend) : null;
+  }
+
+  static async findSpecific(user_id, program_id) {
+    const query = `SELECT * FROM recommends WHERE program_id = ? AND user_id = ?`;
+    const { rows } = await knex.raw(query, program_id, user_id);
+    const recommend = rows[0];
+    return recommend ? new Recommend(recommend) : null;
+  }
+
   static async create({ program_id, user_id, recommend }) {
     const query = `
     INSERT INTO recommends(program_id, user_id, recommend)
@@ -34,12 +48,12 @@ class Recommend {
     return recommendOutput ? new Recommend(recommendOutput) : null;
   }
 
-  static async update(id) {
+  static async update(newRec, id) {
     const query = `
     UPDATE recommends
     SET recommend = ?
     WHERE id = ?`;
-    const { rows } = await knex.raw(query, [id]);
+    const { rows } = await knex.raw(query, [newRec, id]);
     const recommend = rows[0];
     return recommend ? new Recommend(recommend) : null;
   }

@@ -1,5 +1,7 @@
 const knex = require('../knex');
 const authUtils = require('../../utils/auth-utils');
+const Recommend = require('./Recommend');
+const Comment = require('./Comment');
 
 class User {
   #passwordHash = null; // a private property
@@ -64,6 +66,18 @@ class User {
     const { rows } = await knex.raw(query, [username, id]);
     const updatedUser = rows[0];
     return updatedUser ? new User(updatedUser) : null;
+  }
+
+  static async getAllRecommends(id) {
+    const query = `SELECT * FROM recommends where user_id = ?`;
+    const { rows } = await knex.raw(query, [id]);
+    return rows.map((rec) => new Recommend(rec));
+  }
+
+  static async getAllComments(id) {
+    const query = "SELECT * FROM comments where user_id = ?";
+    const { rows } = await knex.raw(query, [id]);
+    return rows.map((com) => new Comment(com));
   }
 
   static deleteAll() {

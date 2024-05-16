@@ -12,8 +12,8 @@ import EditAccountPage from "./pages/EditAccountPage.jsx";
 // import YourProgramsPage from "./pages/YourPrograms.jsx";
 // import AddProgramPage from "./pages/edit/org/AddProgram.jsx";
 // import EditProgramPage from "./pages/edit/org/EditProgram.jsx";
-import ProgramsPage from "./pages/ProgramInfo.jsx";
-import ProgramPage from "./pages/ProgramsList.jsx";
+import AllProgramsPage from "./pages/AllProgramsList.jsx";
+import IndividualProgramPage from "./pages/IndividualProgramPage.jsx";
 import NotFoundPage from "./components/NotFound.jsx";
 import AccessDeniedPage from "./components/AccessDenied.jsx";
 import AboutPage from "./pages/About.jsx";
@@ -56,8 +56,8 @@ export default function App() {
             element={<EditProgramPage />}
           /> */}
           {/* Programs */}
-          <Route path="/programs" element={<ProgramsPage />} />
-          <Route path="/programs/:program-id" element={<ProgramPage />} />2
+          <Route path="/programs" element={<AllProgramsPage />} />
+          <Route path="/programs/:program-id" element={<IndividualProgramPage />} />2
           {/* Misc */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/access-denied" element={<AccessDeniedPage />} />

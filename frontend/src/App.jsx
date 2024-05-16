@@ -16,6 +16,7 @@ import AllProgramsPage from "./pages/AllProgramsList.jsx";
 import IndividualProgramPage from "./pages/IndividualProgramPage.jsx";
 import NotFoundPage from "./components/NotFound.jsx";
 import AccessDeniedPage from "./components/AccessDenied.jsx";
+import ProgramsAddPage from "./pages/ProgramsAddPage.jsx";
 import AboutPage from "./pages/About.jsx";
 
 // import UsersPage from './pages/Users';
@@ -24,12 +25,23 @@ import AboutPage from "./pages/About.jsx";
 //Component Imports
 import UserContext from "./contexts/current-user-context";
 import SiteHeadingAndNav from "./components/SiteHeadingAndNav";
+import { getOrganization } from "./adapters/organization-adapter.js";
 
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
   useEffect(() => {
-    checkForLoggedInUser().then(setCurrentUser);
-  }, [setCurrentUser]);
+    const getUser = async () => {
+      const [org, id] = await checkForLoggedInUser();
+      if (id === -1) {
+        return setCurrentUser(null);
+      }
+      if (org) {
+        return setCurrentUser(await getOrganization(id));
+      }
+      return setCurrentUser(await getUser(id))
+
+    }
+  }, []);
 
   return (
     <>
@@ -58,6 +70,7 @@ export default function App() {
           {/* Programs */}
           <Route path="/programs" element={<AllProgramsPage />} />
           <Route path="/programs/:id" element={<IndividualProgramPage />} />2
+          <Route path="/programs/add" element={<ProgramsAddPage />} />2
           {/* Misc */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/access-denied" element={<AccessDeniedPage />} />

@@ -22,7 +22,7 @@ export default function LoginPage() {
     navigate("/");
   };
 
-  if (currentUser) return <Navigate to="/" />;
+  if (currentUser !== null) return <Navigate to="/" />;
 
   return (
     <section className="hero is-fullheight">

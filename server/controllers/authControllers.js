@@ -15,6 +15,7 @@ exports.loginUser = async (req, res) => {
   if (!isPasswordValid) return res.sendStatus(401);
 
   req.session.userId = user.id;
+  req.session.organization = false;
   res.send(user);
 };
 
@@ -24,10 +25,11 @@ exports.logInOrganization = async (req, res) => {
   const organization = await Organization.findByUsername(username);
   if (!organization) return res.sendStatus(404);
 
-  const isPasswordValid = await organization.isPasswordValid(password);
+  const isPasswordValid = await organization.isValidPassword(password);
   if (!isPasswordValid) return res.sendStatus(401);
 
   req.session.organizationId = organization.id;
+  req.session.organization = true;
   res.send(organization);
 };
 
@@ -41,14 +43,25 @@ exports.logoutUser = (req, res) => {
 // This controller returns 401 if the client is NOT logged in (doesn't have a cookie)
 // or returns the user based on the userId stored on the client's cookie
 exports.showMe = async (req, res) => {
-  if (!req.session.userId) return res.sendStatus(401);
+  if (!req.session.userId || !req.session.organizationId) return res.sendStatus(401);
 
-  const user = await User.find(req.session.userId);
+  const user = await User.find(req.session.userId) || await Organization.findById(req.session.organizationId);
   res.send(user);
 };
+
 exports.showOrganization = async (req, res) => {
   if (!req.session.organizationId) return res.sendStatus(401);
 
   const organization = await Organization.findById(req.session.userId);
   res.send(organization);
 };
+
+exports.getLoggedIn = async (req,res) => {
+  if (req.session.organizationId) {
+    return res.send([true,req.session.organizationId])
+  }
+  if (req.session.userId) {
+    return res.send([false,req.session.userId]);
+  }
+  return res.send([false,-1]);
+}

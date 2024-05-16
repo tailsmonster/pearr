@@ -8,10 +8,10 @@ import { getOrganization } from '../adapters/organization-adapter';
 export default function EditAccountPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [profilePicture, setProfilePicture] = useState();
-  console.log(currentUser);
+  const [profilePicture, setProfilePicture] = useState('');
+  // console.log(currentUser);
   
   useEffect(() => {
     const getUser = async () => {
@@ -20,7 +20,8 @@ export default function EditAccountPage() {
       return navigate("/access-denied");
       }
       const account = org ? await getOrganization(id) : getUser(id);
-      setUsername(account.username);
+      setCurrentUser(account);
+      // setUsername(account.username);
     };
     getUser();
   },[])

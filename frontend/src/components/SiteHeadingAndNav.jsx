@@ -10,17 +10,13 @@ export default function SiteHeadingAndNav() {
     <nav>
       <ul>
         {/* <li><NavLink to='/'>Home</NavLink></li> */}
-
+        <li><NavLink to='/about'>About</NavLink></li>
+        <li><NavLink to='/programs'>Programs</NavLink></li>
         {
-          currentUser
-            ? <>
-              <li><NavLink to='/about'>About</NavLink></li>
-              <li><NavLink to='/programs'>Programs</NavLink></li>
+          currentUser !== null
+            ? 
               <li><NavLink to='/edit' end={true}>Profile</NavLink></li>
-            </>
             : <>
-              <li><NavLink to='/about'>About</NavLink></li>
-              <li><NavLink to='/programs'>Programs</NavLink></li>
               <li><NavLink to='/login'>Login</NavLink></li>
               <li><NavLink to='/signup'>Sign Up</NavLink></li>
             </>

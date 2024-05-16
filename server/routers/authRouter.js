@@ -8,6 +8,7 @@ const authRouter = express.Router();
  */
 authRouter.get('/user', authControllers.showMe);
 authRouter.get('/organization', authControllers.showMe);
+authRouter.get('/me',authControllers.getLoggedIn)
 /**
  * Logs in user
  */

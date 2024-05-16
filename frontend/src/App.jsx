@@ -36,11 +36,13 @@ export default function App() {
         return setCurrentUser(null);
       }
       if (org) {
+        console.log(org,id)
         return setCurrentUser(await getOrganization(id));
       }
       return setCurrentUser(await getUser(id))
 
-    }
+    };
+    getUser();
   }, []);
 
   return (

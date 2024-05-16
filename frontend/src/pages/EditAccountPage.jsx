@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
 import { getUser, updateUsername } from '../adapters/user-adapter';
+import { checkForLoggedInUser } from '../adapters/auth-adapter';
+import { getOrganization } from '../adapters/organization-adapter';
 
 export default function EditAccountPage() {
   const navigate = useNavigate();
@@ -9,11 +11,18 @@ export default function EditAccountPage() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState('');
   const [profilePicture, setProfilePicture] = useState();
-
+  console.log(currentUser);
+  
   useEffect(() => {
-    if (currentUser === null) {
-      navigate('/access-denied');
-    }
+    const getUser = async () => {
+      const [org, id] = await checkForLoggedInUser();
+      if (id === -1) {
+      return navigate("/access-denied");
+      }
+      const account = org ? await getOrganization(id) : getUser(id);
+      setUsername(account.username);
+    };
+    getUser();
   },[])
 
   const handleSubmit = async (e) => {

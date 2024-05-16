@@ -1,4 +1,5 @@
 const knex = require("../knex");
+const Recommend = require("./Recommend");
 
 class Program {
   constructor({
@@ -12,6 +13,7 @@ class Program {
     color,
     rating,
   }) {
+
     this.id = id;
     this.name = name;
     this.bio = bio;
@@ -44,21 +46,21 @@ class Program {
   }
 
   static async create(
-    name,
-    bio,
-    website_url,
-    borough,
-    organization_id,
-    img_url,
-    color,
-    rating,
+    name = '',
+    bio = '',
+    website_url = '',
+    borough = '',
+    organization_id = '',
+    img_url = '',
+    color = '',
+    rating = ''
   ) {
     const query = `
     INSERT INTO programs (name, bio, website_url, borough, organization_id, img_url, color, rating)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     RETURNING *
     `;
-    const { rows } = knex.raw(query, [
+    const { rows } = await knex.raw(query, [
       name,
       bio,
       website_url,
@@ -66,7 +68,7 @@ class Program {
       organization_id,
       img_url,
       color,
-      rating,
+      rating
     ]);
     const program = rows[0];
     return program ? new Program(program) : null;
@@ -105,6 +107,15 @@ class Program {
     const { rows } = knex.raw(query, [id]);
     const program = rows[0];
     return program ? new Program(program) : null;
+  }
+
+  static async getRecommends(id) {
+    const inTable = knex.raw("SELECT * FROM programs WHERE id = ?", [id]);
+    if (!inTable) return null;
+
+    const query = "SELECT * FROM recommends WHERE program_id = ?";
+    const { rows } = await knex.raw(query, [id]);
+    return rows.map((rec) => new Recommend(rec));
   }
 }
 

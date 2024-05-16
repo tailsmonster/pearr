@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import CurrentUserContext from '../contexts/current-user-context';
+import { getUser, updateUsername } from '../adapters/user-adapter';
 
 export default function EditAccountPage() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
+  const navigate = useNavigate();
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const [username, setUsername] = useState(currentUser.username);
   const [password, setPassword] = useState('');
-  const [profilePicture, setProfilePicture] = useState('');
+  const [profilePicture, setProfilePicture] = useState(currentUser.pfp_url);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform form submission logic here
-    console.log('Form submitted:', { username, email, password, profilePicture });
-    // Reset form fields
-    setUsername('');
-    setEmail('');
-    setPassword('');
-    setProfilePicture('');
+    const updatedUser = {
+      id: currentUser.id,
+      username,
+      password,
+      pfp_url: profilePicture,
+    };
+    await updateUsername({ id: currentUser.id, username });
+    const [user] = await getUser(currentUser.id);
+    setCurrentUser(user);
+    navigate(`/users/${user.id}`);
   };
 
   return (
@@ -37,27 +44,13 @@ export default function EditAccountPage() {
           </div>
 
           <div className="field">
-            <label htmlFor="email" className="label">Email</label>
-            <div className="control">
-              <input
-                id="email"
-                className="input"
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="field">
             <label htmlFor="password" className="label">Password</label>
             <div className="control">
               <input
                 id="password"
                 className="input"
                 type="password"
-                placeholder="Enter your password"
+                placeholder="Enter your new password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />

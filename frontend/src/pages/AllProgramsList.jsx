@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllPrograms } from '../adapters/program-adapter.js';
 import CurrentUserContext from '../contexts/current-user-context';
-
+import "./AllProgramsList.css"
 
 const AllProgramsPage = () => {
 
@@ -33,7 +33,7 @@ const AllProgramsPage = () => {
                         return (
                             <li key={idx}>
                               <div>
-                                <img src={program.imgUrl} alt={program.id} />
+                                <img id="li-thumbnail" src={program.imgUrl} alt={program.id} />
                                 <Link to={`/programs/${program.id}`}>{program.name}</Link>
                                 {/* <p>{program.name}</p> */}
                               </div>

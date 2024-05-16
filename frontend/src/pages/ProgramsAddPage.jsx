@@ -11,8 +11,15 @@ const ProgramsAddPage = () => {
   const [about, setAbout] = useState('');
   const [borough, setBorough] = useState('');
   const [url, setUrl] = useState('');
-  const [color, setColor] = useState('');
-  const [rating, setRating] = useState(0);
+  const [color, setColor] = useState('#000000');
+
+  const boroughs = [
+    'Bronx',
+    'Brooklyn',
+    'Manhattan',
+    'Queens',
+    'Staten Island',
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +31,6 @@ const ProgramsAddPage = () => {
       organization_id: currentUser.id,
       img_url: picture,
       color,
-      rating,
     };
     await createProgram(newProgram);
     navigate('/programs');
@@ -79,14 +85,20 @@ const ProgramsAddPage = () => {
           <div className="field">
             <label htmlFor="borough" className="label">Borough</label>
             <div className="control">
-              <input
-                id="borough"
-                className="input"
-                type="text"
-                placeholder="Enter borough"
-                value={borough}
-                onChange={(e) => setBorough(e.target.value)}
-              />
+              <div className="select">
+                <select
+                  id="borough"
+                  value={borough}
+                  onChange={(e) => setBorough(e.target.value)}
+                >
+                  <option value="">Select a borough</option>
+                  {boroughs.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
 
@@ -110,24 +122,9 @@ const ProgramsAddPage = () => {
               <input
                 id="color"
                 className="input"
-                type="text"
-                placeholder="Enter program color"
+                type="color"
                 value={color}
                 onChange={(e) => setColor(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div className="field">
-            <label htmlFor="rating" className="label">Rating</label>
-            <div className="control">
-              <input
-                id="rating"
-                className="input"
-                type="number"
-                placeholder="Enter program rating"
-                value={rating}
-                onChange={(e) => setRating(Number(e.target.value))}
               />
             </div>
           </div>

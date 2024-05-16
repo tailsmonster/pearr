@@ -6,6 +6,10 @@ import CurrentUserContext from '../contexts/current-user-context';
 
 const AllProgramsPage = () => {
 
+    function redirectToPage() {
+        window.location.href = "https://www.example.com";
+      }
+
     const [programs, setPrograms] = useState([])
     const [error, setError] = useState('')
     useEffect(() => {

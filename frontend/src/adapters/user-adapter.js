@@ -4,10 +4,7 @@ import { fetchHandler, getPostOptions, getPatchOptions } from "../utils";
 
 const baseUrl = "/api/users";
 
-export const createUser = async ({ username, password }) =>
-  console.log(
-    await fetchHandler(baseUrl, getPostOptions({ username, password }))
-  );
+export const createUser  = async ({ username, password }) => await fetchHandler(baseUrl, getPostOptions({ username, password }))
 
 export const getAllUsers = async () => {
   const [users] = await fetchHandler(baseUrl);

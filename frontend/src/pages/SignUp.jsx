@@ -23,14 +23,14 @@ export default function SignUpPage() {
 
     let user, error;
     if (isOrgSignUp) {
-      [user, error] = await createOrganization({ username, password, pfp_url: "", isOrganization: true });
+      organization = await createOrganization({ username, password, pfp_url: "", isOrganization: true });
     } else {
-      [user, error] = await createUser({ username, password });
+      user = await createUser({ username, password });
     }
     if (error) return setErrorText(error.message);
 
     setCurrentUser(user);
-    setIsOrganization(isOrgSignUp);
+    // setIsOrganization(isOrgSignUp);
     navigate("/");
   };
 

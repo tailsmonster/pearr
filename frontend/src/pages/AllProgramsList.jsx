@@ -38,6 +38,7 @@ const AllProgramsPage = () => {
                     })
                 }
             </ul>
+            <button>Add Program</button>
         </>
     )
 }

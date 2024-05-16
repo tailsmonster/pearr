@@ -14,7 +14,7 @@ const IndividualProgramPage = () => {
     useEffect(() => {
         const getProgramInfo = async () => {
             const program = await getProgramById(id);
-            if (program) setProgramInfo(program);
+            if (program) setProgramInfo(program[0]);
             console.log(program)
         }
         getProgramInfo();
@@ -24,21 +24,10 @@ const IndividualProgramPage = () => {
     console.log(programInfo)
     return (
         <>
-            {/* <h2>Look at these cool pictures of the great {p}!</h2>
-            <ul>
-                {
-                    pics.map((pic, idx) => {
-                        return (
-                            <li key={idx}>
-                                <img src={pic} alt="picture of dog" />
-                            </li>
-                        )
-                    })
-                }
-            </ul> */}
-            <p>{programInfo.name}</p>
-
-
+            <h2 id="program-title">{programInfo.name}</h2>
+            <div id="program-info">
+              <img src="" alt="" />
+            </div>
         </>
     )
 };

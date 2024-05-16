@@ -7,11 +7,11 @@ import "../Signup.css";
 
 export default function SignUpPage() {
   const navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser, setIsOrganization } = useContext(CurrentUserContext);
   const [errorText, setErrorText] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isOrganization, setIsOrganization] = useState(false);
+  const [isOrgSignUp, setIsOrgSignUp] = useState(false);
 
   if (currentUser) return <Navigate to="/" />;
 
@@ -22,14 +22,15 @@ export default function SignUpPage() {
       return setErrorText("Missing username or password");
 
     let user, error;
-    if (isOrganization) {
-      [user, error] = await createOrganization({ username, password, pfp_url: "" });
+    if (isOrgSignUp) {
+      [user, error] = await createOrganization({ username, password, pfp_url: "", isOrganization: true });
     } else {
       [user, error] = await createUser({ username, password });
     }
     if (error) return setErrorText(error.message);
 
     setCurrentUser(user);
+    setIsOrganization(isOrgSignUp);
     navigate("/");
   };
 
@@ -50,14 +51,14 @@ export default function SignUpPage() {
                 <h2 className="subtitle has-text-centered">Sign Up</h2>
                 <div className="buttons is-centered">
                   <button
-                    className={`button ${!isOrganization ? "is-user" : ""}`}
-                    onClick={() => setIsOrganization(false)}
+                    className={`button ${!isOrgSignUp ? "is-user" : ""}`}
+                    onClick={() => setIsOrgSignUp(false)}
                   >
                     User
                   </button>
                   <button
-                    className={`button ${isOrganization ? "is-organization" : ""}`}
-                    onClick={() => setIsOrganization(true)}
+                    className={`button ${isOrgSignUp ? "is-organization" : ""}`}
+                    onClick={() => setIsOrgSignUp(true)}
                   >
                     Organization
                   </button>
@@ -69,7 +70,7 @@ export default function SignUpPage() {
                 >
                   <div className="field">
                     <label htmlFor="username" className="label">
-                      {isOrganization ? "Organization Name" : "Username"}
+                      {isOrgSignUp ? "Organization Name" : "Username"}
                     </label>
                     <div className="control">
                       <input

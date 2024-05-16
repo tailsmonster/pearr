@@ -51,6 +51,7 @@ exports.updateProgram = async (req, res) => {
   res.send(updatedProgram);
 };
 
-exports.listAllPrograms = async () => (
-  Program.list()
-);
+exports.listAllPrograms = async (req,res) => {
+  const programs = await Program.list();
+  res.send(programs);
+};

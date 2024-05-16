@@ -8,8 +8,7 @@ export const createProgram = async ({name,bio, website_url,borough, organization
 
 export const getAllPrograms = async () => {
   const [programs] = await fetchHandler(baseUrl)
-  console.log(programs);
-  return programs || [];
+  return programs ;
 }
 
 export const getProgramById  = async (id) => {

@@ -2,6 +2,7 @@ const knex = require("../knex");
 
 class Program {
   constructor({
+    id,
     name,
     bio,
     website_url,
@@ -11,6 +12,7 @@ class Program {
     color,
     rating,
   }) {
+    this.id = id;
     this.name = name;
     this.bio = bio;
     this.websiteUrl = website_url;

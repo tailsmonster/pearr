@@ -32,7 +32,7 @@ exports.createProgram = async (req, res) => {
 };
 
 exports.showProgram = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   const program = await Program.findById(id);
   if (program === null) return res.sendStatus(404);
 

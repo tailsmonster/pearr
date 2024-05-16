@@ -57,7 +57,7 @@ export default function App() {
           /> */}
           {/* Programs */}
           <Route path="/programs" element={<AllProgramsPage />} />
-          <Route path="/programs/:program-id" element={<IndividualProgramPage />} />2
+          <Route path="/programs/:id" element={<IndividualProgramPage />} />2
           {/* Misc */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/access-denied" element={<AccessDeniedPage />} />

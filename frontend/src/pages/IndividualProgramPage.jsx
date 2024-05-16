@@ -5,18 +5,19 @@ import { getProgramById } from "../adapters/program-adapter";
 
 
 const IndividualProgramPage = () => {
-    const { program } = useParams()
+    const {id} = useParams();
     // const breed = breed.find((breed) => breed.name = breedName)
 
     const [programInfo, setProgramInfo] = useState([])
     const [error, setError] = useState('')
+
     useEffect(() => {
         const getProgramInfo = async () => {
-            const [data, error] = await handleFetch(getProgramById(program))
-            if (data) setProgramInfo(Object.values(data.message));
-            if (error) setError(error);
+            const program = await getProgramById(id);
+            if (program) setProgramInfo(program);
+            console.log(program)
         }
-        getProgramInfo()
+        getProgramInfo();
     }, [])
 
 

@@ -108,7 +108,7 @@ exports.seed = async (knex) => {
     "https://www.marcylabschool.org/",
     "Brooklyn",
     1,
-    "https://static.wikia.nocookie.net/b__/images/e/e2/Btd6monkey.png/revision/latest/scale-to-width-down/90?cb=20180426113758&path-prefix=bloons",
+    "https://www.marcylabschool.org/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F5tpkas7gb5io%2F4jXk6I0OfjAJNYxGL7VpeI%2F0c885a5f54e37aa58a7bfdfe351b7583%2Fbreakthrough-fellows.webp&w=3840&q=75",
     "white",
     4.8
   );
@@ -119,7 +119,7 @@ exports.seed = async (knex) => {
     "https://bloons.fandom.com/wiki/Bloons_Wiki",
     "Manhattan",
     2,
-    "https://static.wikia.nocookie.net/b__/images/f/ff/BTD6_Sniper_Monkey.png/revision/latest/scale-to-width-down/100?cb=20180616150336&path-prefix=bloons",
+    "https://nypost.com/wp-content/uploads/sites/2/2021/01/spoon-bridgerton-01.jpg?quality=75&strip=all&w=1024",
     "black",
     5.0
   );

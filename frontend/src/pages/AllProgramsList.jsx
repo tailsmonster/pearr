@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-// import {fetchHandler} from '../utils.js'
-import {getAllPrograms} from '../adapters/program-adapter.js'
+import { useState, useEffect, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getAllPrograms } from '../adapters/program-adapter.js';
+import CurrentUserContext from '../contexts/current-user-context';
 
 
 const AllProgramsPage = () => {

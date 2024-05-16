@@ -16,6 +16,7 @@ import AllProgramsPage from "./pages/AllProgramsList.jsx";
 import IndividualProgramPage from "./pages/IndividualProgramPage.jsx";
 import NotFoundPage from "./components/NotFound.jsx";
 import AccessDeniedPage from "./components/AccessDenied.jsx";
+import ProgramsAddPage from "./pages/ProgramsAddPage.jsx";
 import AboutPage from "./pages/About.jsx";
 
 // import UsersPage from './pages/Users';
@@ -69,6 +70,7 @@ export default function App() {
           {/* Programs */}
           <Route path="/programs" element={<AllProgramsPage />} />
           <Route path="/programs/:id" element={<IndividualProgramPage />} />2
+          <Route path="/programs/add" element={<ProgramsAddPage />} />2
           {/* Misc */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/access-denied" element={<AccessDeniedPage />} />

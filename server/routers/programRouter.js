@@ -11,6 +11,6 @@ programRouter.post("/", programControllers.createProgram);
 programRouter.get("/", checkAuthentication, programControllers.listAllPrograms);
 programRouter.get("/:id", checkAuthentication, programControllers.showProgram);
 programRouter.patch("/:id", checkAuthentication, programControllers.updateProgram);
-programRouter.get('/recommends/:id', checkAuthentication, programControllers);
+programRouter.get('/recommends/:id', checkAuthentication, programControllers.getRecommends);
 
 module.exports = programRouter;

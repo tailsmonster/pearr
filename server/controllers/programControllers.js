@@ -51,9 +51,9 @@ exports.updateProgram = async (req, res) => {
   res.send(updatedProgram);
 };
 
-exports.listAllPrograms = async () => (
-  Program.list()
-);
+exports.listAllPrograms = async () => {
+  res.send(await Program.list())
+};
 
 exports.getRecommends = async (req, res) => {
   const { id } = req.params;

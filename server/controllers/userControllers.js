@@ -43,3 +43,9 @@ exports.updateUser = async (req, res) => {
   if (!updatedUser) return res.sendStatus(404);
   res.send(updatedUser);
 };
+
+exports.getAllRecommends = async (req, res) => {
+  const { id } = req.params;
+  const recommends = await User.getAllRecommends(id);
+  res.send(recommends);
+};

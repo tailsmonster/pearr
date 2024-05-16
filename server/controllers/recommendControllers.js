@@ -1,4 +1,3 @@
-const knex = require("../db/knex");
 const Recommend = require("../db/models/Recommend");
 const User = require('../db/models/User');
 

@@ -18,8 +18,8 @@ exports.loginUser = async (req, res) => {
   res.send(user);
 };
 
-exports.logInOrganization = async (req,res) => {
-  const {username, password} = req.body;
+exports.logInOrganization = async (req, res) => {
+  const { username, password } = req.body;
 
   const organization = await Organization.findByUsername(username);
   if (!organization) return res.sendStatus(404);
@@ -29,7 +29,6 @@ exports.logInOrganization = async (req,res) => {
 
   req.session.organizationId = organization.id;
   res.send(organization);
-  
 };
 
 // This controller sets `req.session` to null, destroying the cookie

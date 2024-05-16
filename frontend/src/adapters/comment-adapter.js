@@ -5,11 +5,9 @@ const baseUrl = "/api/comments";
 export const createComment = async (programId, userId, body) => {
   const time = new Date();
   console.log(time);
-  console.log(
-    await fetchHandler(
-      baseUrl,
-      getPostOptions({ programId, userId, body, time })
-    )
+  return await fetchHandler(
+    baseUrl,
+    getPostOptions({ programId, userId, body, time })
   );
 };
 
@@ -19,12 +17,10 @@ export const getAllUserComments = async (id) => {
   return comments || [];
 };
 
-export const getSpecificComment = async (id) => {
-  console.log(await fetchHandler(`${baseUrl}/${id}`));
-};
+export const getSpecificComment = async (id) => await fetchHandler(`${baseUrl}/${id}`);
 
 export const updateComment = async (id, body) => {
   const time = new Date();
-  console.log(time)
-  console.log(await fetchHandler(`${baseUrl}/${id}`, getPostOptions({ body, time })));
+  console.log(time);
+  return await fetchHandler(`${baseUrl}/${id}`, getPostOptions({ body, time }))
 };

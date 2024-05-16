@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getProgramById } from "../adapters/program-adapter";
 // import handleFetch from '../Utils/handleFetch.js'
 
@@ -37,10 +37,8 @@ const IndividualProgramPage = () => {
           <p>{programInfo.borough}</p>
           
           <h4>Website:</h4>
-          <a useRef={programInfo.websiteUrl}>{programInfo.websiteUrl}</a>
+          <a ref={useRef(programInfo.websiteUrl)}>{programInfo.websiteUrl}</a>
         </div>
-
-
       </section>
     </>
   )

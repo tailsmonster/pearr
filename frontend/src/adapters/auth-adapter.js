@@ -9,7 +9,7 @@ export const checkForLoggedInUser = async () => {
 };
 
 export const logUserIn = async ({ username, password }) => (
-  console.log(await fetchHandler(`${baseUrl}/login`, getPostOptions({ username, password })))
+  await fetchHandler(`${baseUrl}/login`, getPostOptions({ username, password }))
 );
 
 export const logOrganizationIn = async ({}) => {

@@ -8,6 +8,7 @@ export const createOrganization = async ({username, password, pfp_url}) => (
 
 export const getAllOrganizations = async () => {
   const [organizations] = await fetchHandler(baseUrl);
+  console.log(organizations);
   return organizations || [];;
 }
 

@@ -1,4 +1,5 @@
 const knex = require("../knex");
+const Recommend = require("./Recommend");
 
 class Program {
   constructor({
@@ -103,6 +104,15 @@ class Program {
     const { rows } = knex.raw(query, [id]);
     const program = rows[0];
     return program ? new Program(program) : null;
+  }
+
+  static async getRecommends(id) {
+    const inTable = knex.raw("SELECT * FROM programs WHERE id = ?", [id]);
+    if (!inTable) return null;
+
+    const query = "SELECT * FROM recommends WHERE program_id = ?";
+    const { rows } = await knex.raw(query, [id]);
+    return rows.map((rec) => new Recommend(rec));
   }
 }
 

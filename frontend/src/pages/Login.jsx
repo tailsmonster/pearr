@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
 import { logUserIn,logOrganizationIn } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
-import "../Login.css";
+import "./Login.css";
 
 export default function LoginPage() {
   const navigate = useNavigate();

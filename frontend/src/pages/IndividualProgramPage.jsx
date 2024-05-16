@@ -23,7 +23,7 @@ const IndividualProgramPage = () => {
 
   console.log(programInfo)
   return (
-      <>
+    <>
       <section id='info'>
         <h2 id="program-title">{programInfo.name}</h2>
         <div id="p1">
@@ -35,7 +35,7 @@ const IndividualProgramPage = () => {
           <br />
           <h4>Location:</h4>
           <p>{programInfo.borough}</p>
-          
+          <br />
           <h4>Website:</h4>
           <a ref={useRef(programInfo.websiteUrl)}>{programInfo.websiteUrl}</a>
         </div>

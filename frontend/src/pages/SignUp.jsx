@@ -3,7 +3,7 @@ import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createUser } from "../adapters/user-adapter";
 import { createOrganization } from "../adapters/organization-adapter";
-import "../Signup.css";
+import "./SignUp.css";
 
 export default function SignUpPage() {
   const navigate = useNavigate();

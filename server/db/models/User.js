@@ -1,5 +1,7 @@
 const knex = require('../knex');
 const authUtils = require('../../utils/auth-utils');
+const Recommend = require('./Recommend');
+const Comment = require('./Comment');
 
 class User {
   #passwordHash = null; // a private property
@@ -42,13 +44,13 @@ class User {
     return user ? new User(user) : null;
   }
 
-  static async create(username, password) {
+  static async create(username, password, pfp_url = '') {
     // hash the plain-text password using bcrypt before storing it in the database
     const passwordHash = await authUtils.hashPassword(password);
 
-    const query = `INSERT INTO users (username, password_hash)
-      VALUES (?, ?) RETURNING *`;
-    const { rows } = await knex.raw(query, [username, passwordHash]);
+    const query = `INSERT INTO users (username, password_hash, pfp_url)
+      VALUES (?, ?, ?) RETURNING *`;
+    const { rows } = await knex.raw(query, [username, passwordHash,pfp_url]);
     const user = rows[0];
     return new User(user);
   }
@@ -64,6 +66,18 @@ class User {
     const { rows } = await knex.raw(query, [username, id]);
     const updatedUser = rows[0];
     return updatedUser ? new User(updatedUser) : null;
+  }
+
+  static async getAllRecommends(id) {
+    const query = `SELECT * FROM recommends where user_id = ?`;
+    const { rows } = await knex.raw(query, [id]);
+    return rows.map((rec) => new Recommend(rec));
+  }
+
+  static async getAllComments(id) {
+    const query = "SELECT * FROM comments where user_id = ?";
+    const { rows } = await knex.raw(query, [id]);
+    return rows.map((com) => new Comment(com));
   }
 
   static deleteAll() {

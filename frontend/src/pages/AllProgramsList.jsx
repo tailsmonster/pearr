@@ -12,10 +12,8 @@ const AllProgramsPage = () => {
         const getPrograms = async () => {
             const data = await getAllPrograms()
             console.log(data);
-            if (data) {
-              setPrograms(data)
-            };
-            // if (error) setError(error);
+            if (data) setPrograms(data);
+            if (error) setError(error);
         }
         getPrograms()
         console.log(programs)
@@ -31,7 +29,7 @@ const AllProgramsPage = () => {
                         return (
                             <li key={idx}>
                               <div>
-                                <img src={program.img_url} alt={program.id} />
+                                <img src={program.imgUrl} alt={program.id} />
                                 <Link to={`/programs/${program.id}`}>{program.name}</Link>
                                 {/* <p>{program.name}</p> */}
                               </div>

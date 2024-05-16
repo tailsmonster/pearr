@@ -23,7 +23,7 @@ export default function EditProgramPage() {
       setAbout(fetchedProgram.about);
       setBorough(fetchedProgram.borough);
       setUrl(fetchedProgram.url);
-    };
+    };c
 
     fetchProgram();
   }, [id]);

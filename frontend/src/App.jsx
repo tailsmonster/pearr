@@ -26,23 +26,24 @@ import AboutPage from "./pages/About.jsx";
 import UserContext from "./contexts/current-user-context";
 import SiteHeadingAndNav from "./components/SiteHeadingAndNav";
 import { getOrganization } from "./adapters/organization-adapter.js";
+import { getUser } from "./adapters/user-adapter.js";
 
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
   useEffect(() => {
-    const getUser = async () => {
+    const getAccount = async () => {
       const [org, id] = await checkForLoggedInUser();
+      console.log(org,id)
       if (id === -1) {
         return setCurrentUser(null);
       }
       if (org) {
-        console.log(org,id)
         return setCurrentUser(await getOrganization(id));
       }
       return setCurrentUser(await getUser(id))
 
     };
-    getUser();
+    getAccount();
   }, []);
 
   return (

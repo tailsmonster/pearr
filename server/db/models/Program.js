@@ -52,12 +52,11 @@ class Program {
     borough = "",
     organization_id = "",
     img_url = "",
-    color = "",
-    rating = ""
+    color = ""
   ) {
     const query = `
-    INSERT INTO programs (name, bio, website_url, borough, organization_id, img_url, color, rating)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO programs (name, bio, website_url, borough, organization_id, img_url, color)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
     RETURNING *
     `;
     const { rows } = await knex.raw(query, [
@@ -67,8 +66,7 @@ class Program {
       borough,
       organization_id,
       img_url,
-      color,
-      rating,
+      color
     ]);
     const program = rows[0];
     return program ? new Program(program) : null;

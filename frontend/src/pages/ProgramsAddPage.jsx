@@ -1,24 +1,24 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import CurrentUserContext from "../contexts/current-user-context";
-import { createProgram } from "../adapters/program-adapter";
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import CurrentUserContext from '../contexts/current-user-context';
+import { createProgram } from '../adapters/program-adapter';
 
 const ProgramsAddPage = () => {
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
-  const [name, setName] = useState("");
-  const [picture, setPicture] = useState("");
-  const [about, setAbout] = useState("");
-  const [borough, setBorough] = useState("");
-  const [url, setUrl] = useState("");
-  const [color, setColor] = useState("#000000");
+  const [name, setName] = useState('');
+  const [picture, setPicture] = useState('');
+  const [about, setAbout] = useState('');
+  const [borough, setBorough] = useState('');
+  const [url, setUrl] = useState('');
+  const [color, setColor] = useState('#000000');
 
   const boroughs = [
-    "Bronx",
-    "Brooklyn",
-    "Manhattan",
-    "Queens",
-    "Staten Island",
+    'Bronx',
+    'Brooklyn',
+    'Manhattan',
+    'Queens',
+    'Staten Island',
   ];
 
   const handleSubmit = async (e) => {
@@ -28,12 +28,12 @@ const ProgramsAddPage = () => {
       bio: about,
       website_url: url,
       borough,
-      organization_id: currentUser.id,
+      organization_id: 2,
       img_url: picture,
       color,
     };
     await createProgram(newProgram);
-    navigate("/programs");
+    navigate('/programs');
   };
 
   return (
@@ -42,9 +42,7 @@ const ProgramsAddPage = () => {
         <h1 className="title">Add Program</h1>
         <form onSubmit={handleSubmit}>
           <div className="field">
-            <label htmlFor="name" className="label">
-              Name
-            </label>
+            <label htmlFor="name" className="label">Name</label>
             <div className="control">
               <input
                 id="name"
@@ -58,9 +56,7 @@ const ProgramsAddPage = () => {
           </div>
 
           <div className="field">
-            <label htmlFor="picture" className="label">
-              Picture
-            </label>
+            <label htmlFor="picture" className="label">Picture</label>
             <div className="control">
               <input
                 id="picture"
@@ -74,9 +70,7 @@ const ProgramsAddPage = () => {
           </div>
 
           <div className="field">
-            <label htmlFor="about" className="label">
-              About
-            </label>
+            <label htmlFor="about" className="label">About</label>
             <div className="control">
               <textarea
                 id="about"
@@ -89,9 +83,7 @@ const ProgramsAddPage = () => {
           </div>
 
           <div className="field">
-            <label htmlFor="borough" className="label">
-              Borough
-            </label>
+            <label htmlFor="borough" className="label">Borough</label>
             <div className="control">
               <div className="select">
                 <select
@@ -111,9 +103,7 @@ const ProgramsAddPage = () => {
           </div>
 
           <div className="field">
-            <label htmlFor="url" className="label">
-              URL
-            </label>
+            <label htmlFor="url" className="label">URL</label>
             <div className="control">
               <input
                 id="url"
@@ -127,9 +117,7 @@ const ProgramsAddPage = () => {
           </div>
 
           <div className="field">
-            <label htmlFor="color" className="label">
-              Color
-            </label>
+            <label htmlFor="color" className="label">Color</label>
             <div className="control">
               <input
                 id="color"
@@ -143,9 +131,7 @@ const ProgramsAddPage = () => {
 
           <div className="field">
             <div className="control">
-              <button type="submit" className="button is-primary">
-                Add Program
-              </button>
+              <button type="submit" className="button is-primary">Add Program</button>
             </div>
           </div>
         </form>

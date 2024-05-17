@@ -1,6 +1,7 @@
 const knex = require("../knex");
 
 class Comment {
+  
   constructor(program_id, user_id, body, date) {
     this.program_id = program_id;
     this.user_id = user_id;

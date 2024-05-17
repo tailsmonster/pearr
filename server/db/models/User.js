@@ -44,7 +44,7 @@ class User {
     return user ? new User(user) : null;
   }
 
-  static async create(username, password, pfp_url = '') {
+  static async create(username, password, pfp_url = '-1') {
     // hash the plain-text password using bcrypt before storing it in the database
     const passwordHash = await authUtils.hashPassword(password);
 

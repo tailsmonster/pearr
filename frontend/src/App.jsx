@@ -27,6 +27,7 @@ import UserContext from "./contexts/current-user-context";
 import SiteHeadingAndNav from "./components/SiteHeadingAndNav";
 import { getOrganization } from "./adapters/organization-adapter.js";
 import { getUser } from "./adapters/user-adapter.js";
+import MakeComment from "./components/MakeComment.jsx";
 
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
@@ -77,6 +78,7 @@ export default function App() {
           {/* Misc */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/access-denied" element={<AccessDeniedPage />} />
+          <Route path="/make-comment" element={<MakeComment/>}/>
           <Route path="/*" element={<NotFoundPage />} />
           {/* <Route path='/users' element={<UsersPage />} />
         <Route path='/users/:id' element={<UserPage />} /> */}

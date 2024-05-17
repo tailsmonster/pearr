@@ -28,6 +28,7 @@ exports.logInOrganization = async (req, res) => {
   const isPasswordValid = await organization.isValidPassword(password);
   if (!isPasswordValid) return res.sendStatus(401);
 
+  console.log(organization);
   req.session.organizationId = organization.id;
   req.session.organization = true;
   res.send(organization);

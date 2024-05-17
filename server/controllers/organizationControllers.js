@@ -8,7 +8,9 @@ exports.createOrg = async (req, res) => {
   if (!isAvailable || !username || !password) return res.sendStatus(400);
 
   const organization = await Organization.create(username, password, pfp_url);
-  req.session.orgId = organization.id;
+  req.session.organizationId = organization.id;
+  console.log(organization.id);
+  console.log(req.session.organizationId)
 
   res.send(organization);
 };

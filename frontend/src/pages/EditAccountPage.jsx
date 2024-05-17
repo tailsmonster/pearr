@@ -4,6 +4,7 @@ import CurrentUserContext from '../contexts/current-user-context';
 import { getUser, updateUsername } from '../adapters/user-adapter';
 import { checkForLoggedInUser } from '../adapters/auth-adapter';
 import { getOrganization } from '../adapters/organization-adapter';
+import { logUserOut } from '../adapters/auth-adapter';
 
 export default function EditAccountPage() {
   const navigate = useNavigate();
@@ -94,6 +95,7 @@ export default function EditAccountPage() {
           </div>
         </form>
       </div>
+      <button onClick={logUserOut}>Log Out</button>
     </section>
   );
 }

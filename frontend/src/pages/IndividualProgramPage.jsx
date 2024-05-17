@@ -1,14 +1,20 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { getProgramById } from "../adapters/program-adapter";
 import "./IndividualProgramPage.css";
 import { getAllProgramComments } from "../adapters/comment-adapter";
+import CurrentUserContext from "../contexts/current-user-context";
+import MakeComment from "../components/MakeComment";
+import { getUser } from "../adapters/user-adapter";
+import { getOrganization } from "../adapters/organization-adapter";
+import { checkForLoggedInUser } from "../adapters/auth-adapter";
 // import handleFetch from '../Utils/handleFetch.js'
 
 const IndividualProgramPage = () => {
   const { id } = useParams();
+  const [isOrganization, setIsOrganization] = useState(false);
+  const {currentUser, setCurrentUser} = useContext(CurrentUserContext);
   // const breed = breed.find((breed) => breed.name = breedName)
-
   const [programInfo, setProgramInfo] = useState([]);
   const [error, setError] = useState("");
   const [comments, setComments] = useState([]);
@@ -22,6 +28,22 @@ const IndividualProgramPage = () => {
 
       console.log(commentData);
     };
+    const getAccount = async () => {
+      const [org, id] = await checkForLoggedInUser();
+      console.log(org,id)
+      if (id === -1) {
+        setIsOrganization(false);
+        return setCurrentUser(null);
+      }
+      if (org) {
+        setIsOrganization(true);
+        return setCurrentUser(await getOrganization(id));
+      }
+      setIsOrganization(false);
+      return setCurrentUser(await getUser(id))
+
+    };
+    getAccount();
     getProgramInfo();
   }, []);
 
@@ -47,6 +69,7 @@ const IndividualProgramPage = () => {
           <a ref={useRef(programInfo.websiteUrl)}>{programInfo.websiteUrl}</a>
         </div>
       </section>
+      {currentUser !== null && currentUser.id !== -1 && <MakeComment id={+id}/>}
       <section id="comments">
         <ul>
           {comments.map((comment, idx) => {

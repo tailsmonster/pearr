@@ -1,11 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
+import { getOrganization } from '../adapters/organization-adapter';
 import { createProgram } from '../adapters/program-adapter';
+import { getUser } from '../adapters/user-adapter';
+import { checkForLoggedInUser } from '../adapters/auth-adapter';
 
 const ProgramsAddPage = () => {
   const navigate = useNavigate();
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const [name, setName] = useState('');
   const [picture, setPicture] = useState('');
   const [about, setAbout] = useState('');
@@ -21,6 +24,24 @@ const ProgramsAddPage = () => {
     'Staten Island',
   ];
 
+  useEffect(() => {
+    const getAccount = async () => {
+      const [org, id] = await checkForLoggedInUser();
+      if (!org && id === -1) {
+        setCurrentUser(null);
+        return navigate('/');
+      }
+      if (!org) {
+        const user = await getUser(id);
+        setCurrentUser(user);
+         return navigate('/');
+      }
+      const organization = await getOrganization(id);
+      setCurrentUser(organization);
+    };
+    getAccount();
+  },[])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newProgram = {
@@ -28,7 +49,7 @@ const ProgramsAddPage = () => {
       bio: about,
       website_url: url,
       borough,
-      organization_id: 2,
+      organization_id: currentUser.organizationId,
       img_url: picture,
       color,
     };

@@ -3,7 +3,7 @@ import { fetchHandler, getPostOptions } from "../utils";
 const baseUrl = "/api/comments";
 
 export const createComment = async (programId, userId, body) => {
-  const time = new Date();
+  const time = JSON.stringify(new Date().toLocaleString());
   console.log(time);
   return await fetchHandler(
     baseUrl,

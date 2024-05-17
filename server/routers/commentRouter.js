@@ -4,7 +4,7 @@ const checkAuthentication = require('../middleware/checkAuthentication');
 
 const commentRouter = express.Router();
 
-commentRouter.post("/", commentControllers.createComment);
+commentRouter.post("/", checkAuthentication, commentControllers.createComment);
 
 // These actions require users to be logged in (authentication)
 // Express lets us pass a piece of middleware to run for a specific endpoint

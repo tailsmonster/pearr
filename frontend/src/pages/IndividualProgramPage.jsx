@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { getProgramById } from "../adapters/program-adapter";
+import "./IndividualProgramPage.css";
 // import handleFetch from '../Utils/handleFetch.js'
 
 
@@ -27,7 +28,7 @@ const IndividualProgramPage = () => {
       <section id='info'>
         <h2 id="program-title">{programInfo.name}</h2>
         <div id="p1">
-          <img src={programInfo.imgUrl} alt={`${programInfo} picture!`} />
+          <img id="pr-thumbnail" src={programInfo.imgUrl} alt={`${programInfo} picture!`} />
         </div>
         <div id="p2">
           <h4>About:</h4>
@@ -35,10 +36,12 @@ const IndividualProgramPage = () => {
           <br />
           <h4>Location:</h4>
           <p>{programInfo.borough}</p>
-          <br />
           <h4>Website:</h4>
           <a ref={useRef(programInfo.websiteUrl)}>{programInfo.websiteUrl}</a>
         </div>
+      </section>
+      <section id="comments">
+
       </section>
     </>
   )

@@ -14,7 +14,7 @@ export default function EditAccountPage() {
   // console.log(currentUser);
   
   useEffect(() => {
-    const getUser = async () => {
+    const getAccount = async () => {
       const [org, id] = await checkForLoggedInUser();
       if (id === -1) {
       return navigate("/access-denied");
@@ -23,7 +23,7 @@ export default function EditAccountPage() {
       setCurrentUser(account);
       // setUsername(account.username);
     };
-    getUser();
+    getAccount();
   },[])
 
   const handleSubmit = async (e) => {

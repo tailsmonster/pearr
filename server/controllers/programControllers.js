@@ -64,5 +64,6 @@ exports.getRecommends = async (req, res) => {
 exports.getAllComments = async (req, res) => {
   const { id } = req.params;
   const comments = await Program.getComments(id);
+  res.status(200);
   res.send(comments);
 };

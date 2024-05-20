@@ -39,7 +39,7 @@ class Recommend {
     return recommend ? new Recommend(recommend) : null;
   }
 
-  static async create({ program_id, user_id, recommend }) {
+  static async create({ program_id, user_id,  recommend }) {
     const query = `
     INSERT INTO recommends(program_id, user_id, recommend)
     VALUES (?, ?, ?)`;

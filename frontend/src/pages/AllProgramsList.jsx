@@ -11,15 +11,14 @@ const AllProgramsPage = () => {
 
   const [programs, setPrograms] = useState([]);
   const [error, setError] = useState("");
+  const {isOrganization} = useContext(CurrentUserContext);
   useEffect(() => {
     const getPrograms = async () => {
       const data = await getAllPrograms();
-      console.log(data);
       if (data) setPrograms(data);
       if (error) setError(error);
     };
     getPrograms();
-    console.log(programs);
   }, []);
 
   return (
@@ -38,9 +37,11 @@ const AllProgramsPage = () => {
           );
         })}
       </ul>
+      {isOrganization && 
       <Link to="/programs/add">
         <button>Add Program Button</button>
       </Link>
+      }
     </>
   );
 };

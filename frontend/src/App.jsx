@@ -32,19 +32,19 @@ import MakeComment from "./components/MakeComment.jsx";
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
   useEffect(() => {
-    const getAccount = async () => {
-      const [org, id] = await checkForLoggedInUser();
-      console.log(org,id)
-      if (id === -1) {
-        return setCurrentUser(null);
-      }
-      if (org) {
-        return setCurrentUser(await getOrganization(id));
-      }
-      return setCurrentUser(await getUser(id))
+    // const getAccount = async () => {
+    //   const [org, id] = await checkForLoggedInUser();
+    //   console.log(org,id)
+    //   if (id === -1) {
+    //     return setCurrentUser(null);
+    //   }
+    //   if (org) {
+    //     return setCurrentUser(await getOrganization(id));
+    //   }
+    //   return setCurrentUser(await getUser(id))
 
-    };
-    getAccount();
+    // };
+    // getAccount();
   }, []);
 
   return (

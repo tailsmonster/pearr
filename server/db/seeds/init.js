@@ -154,6 +154,7 @@ exports.seed = async (knex) => {
   await Comment.create({
     program_id: 1,
     user_id: 2,
+    organization_id: null,
     body: "You should give Randy a raise",
     date: JSON.stringify(new Date()),
   });
@@ -161,6 +162,7 @@ exports.seed = async (knex) => {
   await Comment.create({
     program_id: 1,
     user_id: 1,
+    organization_id: null,
     body: "Randy will NEVER get a raise",
     date: JSON.stringify(new Date()),
   });
@@ -168,6 +170,7 @@ exports.seed = async (knex) => {
   await Comment.create({
     program_id: 2,
     user_id: 1,
+    organization_id: null,
     body: "Hey now...",
     date: JSON.stringify(new Date()),
   });
@@ -175,6 +178,7 @@ exports.seed = async (knex) => {
   await Comment.create({
     program_id: 2,
     user_id: 2,
+    organization_id: null,
     body: "Now THIS is where you'll get that raise",
     date: JSON.stringify(new Date()),
   });

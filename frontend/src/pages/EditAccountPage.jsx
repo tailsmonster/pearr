@@ -1,14 +1,31 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
 import { getUser, updateUsername } from '../adapters/user-adapter';
+import { checkForLoggedInUser } from '../adapters/auth-adapter';
+import { getOrganization } from '../adapters/organization-adapter';
+import { logUserOut } from '../adapters/auth-adapter';
 
 export default function EditAccountPage() {
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-  const [username, setUsername] = useState(currentUser.username);
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [profilePicture, setProfilePicture] = useState(currentUser.pfp_url);
+  const [profilePicture, setProfilePicture] = useState('');
+  // console.log(currentUser);
+  
+  useEffect(() => {
+    const getAccount = async () => {
+      const [org, id] = await checkForLoggedInUser();
+      if (id === -1) {
+      return navigate("/access-denied");
+      }
+      const account = org ? await getOrganization(id) : getUser(id);
+      setCurrentUser(account);
+      // setUsername(account.username);
+    };
+    getAccount();
+  },[])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -78,6 +95,7 @@ export default function EditAccountPage() {
           </div>
         </form>
       </div>
+      <button onClick={logUserOut}>Log Out</button>
     </section>
   );
 }

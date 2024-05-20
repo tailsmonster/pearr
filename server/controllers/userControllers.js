@@ -7,7 +7,7 @@ exports.createUser = async (req, res) => {
   // TODO: check if username is taken, and if it is what should you return?
   const isAvailable = await User.findByUsername(username);
   if (isAvailable !== null) {
-    res.sendStatus(400);
+    return res.sendStatus(400);
   }
 
   const user = await User.create(username, password);
@@ -25,6 +25,7 @@ exports.showUser = async (req, res) => {
   const { id } = req.params;
 
   const user = await User.find(id);
+  console.log(user,id);
   if (!user) return res.sendStatus(404);
 
   res.send(user);

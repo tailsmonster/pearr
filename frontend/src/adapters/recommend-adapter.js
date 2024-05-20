@@ -2,7 +2,7 @@ import { fetchHandler, getPostOptions } from "../utils";
 
 const baseUrl = '/api/recommends';
 
-export const createRecommend = async ({programId,userId, recommend}) => fetchHandler(baseUrl, getPostOptions({programId,userId,recommend}))
+export const createRecommend = async ({programId,userId, recommend}) => fetchHandler(baseUrl, getPostOptions({programId, userId, recommend}))
 
 export const getAllRecommends = async () => {
   const [recommends] = await fetchHandler(baseUrl);

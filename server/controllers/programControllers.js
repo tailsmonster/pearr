@@ -32,7 +32,7 @@ exports.createProgram = async (req, res) => {
 };
 
 exports.showProgram = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   const program = await Program.findById(id);
   if (program === null) return res.sendStatus(404);
 
@@ -54,9 +54,15 @@ exports.updateProgram = async (req, res) => {
 exports.listAllPrograms = async (req,res) => {
   const programs = await Program.list();
   res.send(programs);
-
+}
 exports.getRecommends = async (req, res) => {
   const { id } = req.params;
   const recommends = await Program.getRecommends(id);
   res.send(recommends);
+};
+
+exports.getAllComments = async (req, res) => {
+  const { id } = req.params;
+  const comments = await Program.getComments(id);
+  res.send(comments);
 };

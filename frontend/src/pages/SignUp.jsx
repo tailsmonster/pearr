@@ -3,7 +3,7 @@ import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
 import { createUser } from "../adapters/user-adapter";
 import { createOrganization } from "../adapters/organization-adapter";
-import "../Signup.css";
+import "./SignUp.css";
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -23,12 +23,11 @@ export default function SignUpPage() {
 
     let user, error;
     if (isOrgSignUp) {
-      organization = await createOrganization({ username, password, pfp_url: "", isOrganization: true });
+      [user,error] = await createOrganization({ username, password, pfp_url: "aig" });
     } else {
-      user = await createUser({ username, password });
+      [user,error] = await createUser({ username, password });
     }
     if (error) return setErrorText(error.message);
-
     setCurrentUser(user);
     // setIsOrganization(isOrgSignUp);
     navigate("/");

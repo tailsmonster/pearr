@@ -1,55 +1,66 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
-import { getProgram, updateProgram } from '../adapters/organization-adapter';
+import { getOrganization } from '../adapters/organization-adapter';
+import { createProgram } from '../adapters/program-adapter';
+import { getUser } from '../adapters/user-adapter';
+import { checkForLoggedInUser } from '../adapters/auth-adapter';
 
-export default function EditProgramPage() {
+const ProgramsAddPage = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
-  const { currentUser } = useContext(CurrentUserContext);
-  const [program, setProgram] = useState(null);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const [name, setName] = useState('');
   const [picture, setPicture] = useState('');
   const [about, setAbout] = useState('');
   const [borough, setBorough] = useState('');
   const [url, setUrl] = useState('');
+  const [color, setColor] = useState('#000000');
+
+  const boroughs = [
+    'Bronx',
+    'Brooklyn',
+    'Manhattan',
+    'Queens',
+    'Staten Island',
+  ];
 
   useEffect(() => {
-    const fetchProgram = async () => {
-      const fetchedProgram = await getProgram(id);
-      setProgram(fetchedProgram);
-      setName(fetchedProgram.name);
-      setPicture(fetchedProgram.picture);
-      setAbout(fetchedProgram.about);
-      setBorough(fetchedProgram.borough);
-      setUrl(fetchedProgram.url);
-    };c
-
-    fetchProgram();
-  }, [id]);
+    const getAccount = async () => {
+      const [org, id] = await checkForLoggedInUser();
+      if (!org && id === -1) {
+        setCurrentUser(null);
+        return navigate('/');
+      }
+      if (!org) {
+        const user = await getUser(id);
+        setCurrentUser(user);
+         return navigate('/');
+      }
+      const organization = await getOrganization(id);
+      setCurrentUser(organization);
+    };
+    getAccount();
+  },[])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedProgram = {
-      id,
+    const newProgram = {
       name,
-      picture,
-      about,
+      bio: about,
+      website_url: url,
       borough,
-      url,
+      organization_id: currentUser.organizationId,
+      img_url: picture,
+      color,
     };
-    await updateProgram(updatedProgram);
-    navigate(`/organizations/${currentUser.id}/programs`);
+    await createProgram(newProgram);
+    navigate('/programs');
   };
-
-  if (!program) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <section className="section">
       <div className="container">
-        <h1 className="title">Edit Program</h1>
+        <h1 className="title">Add Program</h1>
         <form onSubmit={handleSubmit}>
           <div className="field">
             <label htmlFor="name" className="label">Name</label>
@@ -95,14 +106,20 @@ export default function EditProgramPage() {
           <div className="field">
             <label htmlFor="borough" className="label">Borough</label>
             <div className="control">
-              <input
-                id="borough"
-                className="input"
-                type="text"
-                placeholder="Enter borough"
-                value={borough}
-                onChange={(e) => setBorough(e.target.value)}
-              />
+              <div className="select">
+                <select
+                  id="borough"
+                  value={borough}
+                  onChange={(e) => setBorough(e.target.value)}
+                >
+                  <option value="">Select a borough</option>
+                  {boroughs.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
 
@@ -121,12 +138,27 @@ export default function EditProgramPage() {
           </div>
 
           <div className="field">
+            <label htmlFor="color" className="label">Color</label>
             <div className="control">
-              <button type="submit" className="button is-primary">Save Changes</button>
+              <input
+                id="color"
+                className="input"
+                type="color"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="field">
+            <div className="control">
+              <button type="submit" className="button is-primary">Add Program</button>
             </div>
           </div>
         </form>
       </div>
     </section>
   );
-}
+};
+
+export default ProgramsAddPage;

@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+html {
+  background-color: #fff2ed;
+}
+#bnr-section {
+  display: flex;
+  background-image: url("https://static01.nyt.com/images/2023/01/25/nyregion/00ny-kids-leaving1/00ny-kids-leaving1-videoSixteenByNineJumbo1600.jpg");
+  background-attachment: scroll;
+  width: 100vw;
+  top: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 180px;
+  padding-bottom: 100px;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+}
+#bnr-section #div-section > * {
+  flex-shrink: 0; /* Prevent flex items from shrinking and causing horizontal overflow */
+}
+#bnr-section #bnr-text-div {
+  padding-left: 20px;
+  background-color: #fff2ed;
+  margin-left: 55%;
+  margin-right: 2%;
+  border-radius: 20px;
+  height: 100%;
+}
+#bnr-section #bnr-text-div #bnr-text {
+  padding-left: 40px;
+  padding-right: 50px;
+  font-family: "Fredoka One", regular;
+  font-size: 50px;
+  font-weight: bold;
+  color: #92b890;
+}
+
+.wave-container {
+  position: relative;
+  width: 100%;
+  height: 200px; /* Adjust height as needed */
+  background: linear-gradient(to bottom, #fff 50%, #88c3e0 50%);
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px; /* Adjust wave height as needed */
+  background: linear-gradient(to right, transparent 50%, #88c3e0 50%);
+  background-size: 100% 50px; /* Adjust background size to match wave height */
+}/*# sourceMappingURL=Home.css.map */

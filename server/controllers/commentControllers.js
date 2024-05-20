@@ -2,13 +2,14 @@ const Comment = require("../db/models/Comment");
 const User = require("../db/models/User");
 
 exports.createComment = async (req, res) => {
-  const { programId, userId, body, date } = req.body;
+  const { programId, userId, body, time } = req.body;
+  console.log(programId,userId,body,time);
 
-  if (!programId || !userId || !body || !date) {
+  if (!programId || !userId || !body || !time) {
     return res.sendStatus(400);
   }
 
-  const comment = await Comment.create(programId, userId, body, date);
+  const comment = await Comment.create({program_id:programId, user_id:userId, body, date:time});
   res.send(comment);
 };
 

@@ -1,10 +1,44 @@
-@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
-html {
-  background-color: #fff2ed;
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+.raleway {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
+
+.libre-baskerville-regular {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-baskerville-regular-italic {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.libre-baskerville-bold {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.open-sans {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+html {
+  background-color: #D8FFC2;
+}
+
 #bnr-section {
   display: flex;
-  background-image: url("https://static01.nyt.com/images/2023/01/25/nyregion/00ny-kids-leaving1/00ny-kids-leaving1-videoSixteenByNineJumbo1600.jpg");
+  background-color: #D8FFC2;
   background-attachment: scroll;
   width: 100vw;
   top: 0px;
@@ -21,34 +55,15 @@ html {
 }
 #bnr-section #bnr-text-div {
   padding-left: 20px;
-  background-color: #fff2ed;
   margin-left: 55%;
   margin-right: 2%;
-  border-radius: 20px;
   height: 100%;
 }
 #bnr-section #bnr-text-div #bnr-text {
   padding-left: 40px;
   padding-right: 50px;
-  font-family: "Fredoka One", regular;
+  font-family: roboto;
   font-size: 50px;
   font-weight: bold;
-  color: #92b890;
-}
-
-.wave-container {
-  position: relative;
-  width: 100%;
-  height: 200px; /* Adjust height as needed */
-  background: linear-gradient(to bottom, #fff 50%, #88c3e0 50%);
-}
-
-.wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50px; /* Adjust wave height as needed */
-  background: linear-gradient(to right, transparent 50%, #88c3e0 50%);
-  background-size: 100% 50px; /* Adjust background size to match wave height */
+  color: black;
 }/*# sourceMappingURL=Home.css.map */

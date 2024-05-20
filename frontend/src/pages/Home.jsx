@@ -5,6 +5,8 @@ import { useState, useEffect, useContext } from "react";
 
 import "./Home.css";
 
+const headliner = "PEAR is a user-friendly platform providing information to help NYC's low-income parents access free resources for their children."
+
 export default function HomePage() {
   const [programs, setPrograms] = useState([]);
   const [error, setError] = useState("");

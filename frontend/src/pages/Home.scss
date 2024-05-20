@@ -1,24 +1,62 @@
-@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+.raleway {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-baskerville-regular {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-baskerville-regular-italic {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.libre-baskerville-bold {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.open-sans {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
 
 
-$primary-green: #92b890;
-$primary-beige: #fff2ed;
 
-$header-font-size: 'Fredoka One', regular;
+$text-white: white;
+$text-black: black;
+$green-1: #D8FFC2;
+$green-2: #68A664;
+$yellow-1: #ffed85;
+$orange-1: #ffa347;
+$brown: #230e05;
+
+
+$header-font-size: 50px;
 
 
 html {
-  background-color:$primary-beige;
-  body {
-    // font-family: 'Roboto', sans-serif; /* Use Roboto font for body text */
-
-  }
+  background-color:$green-1;
+  // font-family: 'Roboto', sans-serif; /* Use Roboto font for body text */
 }
 
 #bnr-section {
   display: flex;
-  background-image: url("https://static01.nyt.com/images/2023/01/25/nyregion/00ny-kids-leaving1/00ny-kids-leaving1-videoSixteenByNineJumbo1600.jpg");
-  // background-color: $primary-green;
+  // background-image: url("https://static01.nyt.com/images/2023/01/25/nyregion/00ny-kids-leaving1/00ny-kids-leaving1-videoSixteenByNineJumbo1600.jpg");
+  background-color: $green-1;
   background-attachment: scroll;
   width: 100vw;
   top: 0px;
@@ -36,36 +74,19 @@ html {
   }
   #bnr-text-div {
     padding-left: 20px;
-    background-color: $primary-beige;
     // margin-left: 30%;
     margin-left: 55%;
     margin-right: 2%;
-    border-radius: 20px;
     height:100%;
 
     #bnr-text {
       padding-left:40px;
       padding-right:50px;
-      font-family: $header-font-size;
-      font-size: 50px;
+      font-family: roboto;
+      font-size: $header-font-size;
       font-weight: bold;
-      color: $primary-green;
+      color: $text-black;
     }
   }
 }
-.wave-container {
-  position: relative;
-  width: 100%;
-  height: 200px; /* Adjust height as needed */
-  background: linear-gradient(to bottom, #fff 50%, #88c3e0 50%);
-}
 
-.wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50px; /* Adjust wave height as needed */
-  background: linear-gradient(to right, transparent 50%, #88c3e0 50%);
-  background-size: 100% 50px; /* Adjust background size to match wave height */
-}

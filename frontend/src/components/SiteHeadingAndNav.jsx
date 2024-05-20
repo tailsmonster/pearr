@@ -21,7 +21,11 @@ export default function SiteHeadingAndNav() {
     // getAccount();
   },[])
   return <header>
-    <a id='logo' href='/'>PEAR</a>
+    <div>
+      <div class="spacer"></div>
+      <a id='logo' href='/'>PEAR</a>
+      <div class="spacer"></div>
+    </div>
     <nav>
       <ul>
         <li><NavLink to='/'>Home</NavLink></li>

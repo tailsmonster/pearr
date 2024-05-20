@@ -1,29 +1,62 @@
-import "./Home.css"
+import { getAllPrograms } from "../adapters/program-adapter.js";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useState, useEffect, useContext } from "react";
+
+import "./Home.css";
 
 const headliner = "PEAR is a user-friendly platform providing information to help NYC's low-income parents access free resources for their children."
 
 export default function HomePage() {
-  return <>
-    <section id="home-bnr" class="home-bnr">
-      <div class="home-spacer1"></div>
-      <div id="bnr-content">
-        <div id="bnr-text-div" class="bnr-p1">
-          <p id="bnr-text" class="bnr-text">{headliner}</p>
-        </div>
-        <div id="bnr-pic-div" class="bnr-p2"></div>
-      </div>
-      <div class="home-spacer1"></div>
-      <div id="home-waves-1"></div>
-    </section>
-    <section id="home-acc-buttons-section">
-      <div id="login-signup-buttons">
-      <div class="home-space2"></div>
-      <button>SIGN UP</button>
-      <button>LOGIN</button>
-      <div class="home-spacer2"></div>
+  const [programs, setPrograms] = useState([]);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    const getPrograms = async () => {
+      const data = await getAllPrograms();
+      console.log(data);
+      if (data) setPrograms(data);
+      if (error) setError(error);
+    };
+    getPrograms();
+    console.log(programs);
+  }, []);
 
-      </div>
-    </section>
-    {/* <div class="wave-container"></div> */}
-  </>;
+  const headliner =
+    "PEAR is a user-friendly platform providing information to help NYC's low-income parents access free resources for their children.";
+
+  return (
+    <>
+      <section id="bnr-section" class="bnr-section">
+        <div id="bnr-text-div">
+          <p id="bnr-text" class="bnr-text">
+            {headliner}
+          </p>
+        </div>
+      </section>
+      <div class="wave-container"></div>
+
+      <section>
+        <div id="program1">
+          {/* <img src={programs[programs.length - 1].imgUrl} alt="hi" /> */}
+
+          <ul>
+        {programs.map((program, idx) => {
+          return (
+            <li key={idx}>
+              <div>
+                <img id="li-thumbnail" src={program.imgUrl} alt={program.id} />
+                <Link to={`/programs/${program.id}`}>{program.name}</Link>
+                {/* <p>{program.name}</p> */}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+
+        </div>
+        <div id="program2"></div>
+        <div id="program3"></div>
+      </section>
+    </>
+  );
 }

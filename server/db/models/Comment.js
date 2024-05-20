@@ -2,7 +2,7 @@ const knex = require("../knex");
 
 class Comment {
   
-  constructor(program_id, user_id, body, date) {
+  constructor (program_id, user_id, organization_id, body, date) {
     this.program_id = program_id;
     this.user_id = user_id;
     this.body = body;
@@ -29,13 +29,14 @@ class Comment {
     return comment ? new Comment(comment) : null;
   }
 
-  static async create({ program_id, user_id, body, date }) {
+  static async create({ program_id, user_id, organization_id, body, date }) {
+    // console.log("TeSTING:", {program_id, user_id, organization_id});
     const query = `
-    INSERT INTO comments (program_id, user_id, body, date, edited)
-    VALUES (?, ?, ?, ?, FALSE)
+    INSERT INTO comments (program_id, user_id, organization_id, body, date, edited)
+    VALUES (?, ?, ?, ?, ?, FALSE)
     RETURNING *
     `;
-    const { rows } = await knex.raw(query, [program_id, user_id, body, date]);
+    const { rows } = await knex.raw(query, [program_id, user_id || null, organization_id || null, body, date]);
     const comment = rows[0];
     return comment !== null ? new Comment(comment) : null;
   }

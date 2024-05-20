@@ -120,9 +120,13 @@ class Program {
     const inTable = await knex.raw("SELECT * FROM programs WHERE id = ?", [id]);
     if (!inTable) return null;
 
-    const query = `SELECT * FROM comments WHERE program_id = ?`;
+    const query = `
+    SELECT * FROM comments 
+    WHERE program_id = ?
+    ORDER BY id DESC`;
     const { rows } = await knex.raw(query, [id]);
-    return rows.map((com) => new Comment(com));
+    // return rows.map((com) => new Comment(com));
+    return rows
   }
 }
 

@@ -41,6 +41,12 @@ export default function EditAccountPage() {
     navigate(`/users/${user.id}`);
   };
 
+  const logOut = async() => {
+    await logUserOut();
+    setCurrentUser(null)
+    navigate('/');
+  }
+
   return (
     <section className="section">
       <div className="container">
@@ -95,7 +101,7 @@ export default function EditAccountPage() {
           </div>
         </form>
       </div>
-      <button onClick={logUserOut}>Log Out</button>
+      <button onClick={logOut}>Log Out</button>
     </section>
   );
 }

@@ -23,8 +23,10 @@ export default function SignUpPage() {
 
     let user, error;
     if (isOrgSignUp) {
+      setIsOrganization(true);
       [user,error] = await createOrganization({ username, password, pfp_url: "aig" });
     } else {
+      setIsOrganization(false);
       [user,error] = await createUser({ username, password });
     }
     if (error) return setErrorText(error.message);

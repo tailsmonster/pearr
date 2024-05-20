@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useState, useEffect, useRef, useContext } from "react";
 import { getProgramById } from "../adapters/program-adapter";
 import "./IndividualProgramPage.css";
@@ -12,8 +12,7 @@ import { checkForLoggedInUser } from "../adapters/auth-adapter";
 
 const IndividualProgramPage = () => {
   const { id } = useParams();
-  const [isOrganization, setIsOrganization] = useState(false);
-  const {currentUser, setCurrentUser} = useContext(CurrentUserContext);
+  const {currentUser, setCurrentUser, isOrganization} = useContext(CurrentUserContext);
   // const breed = breed.find((breed) => breed.name = breedName)
   const [programInfo, setProgramInfo] = useState([]);
   const [error, setError] = useState("");
@@ -22,32 +21,31 @@ const IndividualProgramPage = () => {
     const getProgramInfo = async () => {
       const program = await getProgramById(id);
       if (program) setProgramInfo(program[0]);
-      console.log(program, `BALLSID: ${id}`);
       const [commentData, error] = await getAllProgramComments(id);
       if (commentData) setComments(commentData);
 
-      console.log(commentData);
+      // console.log(commentData);
     };
-    const getAccount = async () => {
-      const [org, id] = await checkForLoggedInUser();
-      console.log(org,id)
-      if (id === -1) {
-        setIsOrganization(false);
-        return setCurrentUser(null);
-      }
-      if (org) {
-        setIsOrganization(true);
-        return setCurrentUser(await getOrganization(id));
-      }
-      setIsOrganization(false);
-      return setCurrentUser(await getUser(id))
+    // const getAccount = async () => {
+    //   const [org, id] = await checkForLoggedInUser();
+    //   console.log(org,id)
+    //   if (id === -1) {
+    //     setIsOrganization(false);
+    //     return setCurrentUser(null);
+    //   }
+    //   if (org) {
+    //     setIsOrganization(true);
+    //     return setCurrentUser(await getOrganization(id));
+    //   }
+    //   setIsOrganization(false);
+    //   return setCurrentUser(await getUser(id))
 
-    };
-    getAccount();
+    // };
+    // getAccount();
     getProgramInfo();
   }, []);
 
-  console.log(programInfo);
+  // console.log(programInfo);
   return (
     <>
       <section id="info">
@@ -69,14 +67,23 @@ const IndividualProgramPage = () => {
           <a ref={useRef(programInfo.websiteUrl)}>{programInfo.websiteUrl}</a>
         </div>
       </section>
-      {currentUser !== null && currentUser.id !== -1 && <MakeComment id={+id}/>}
+      {currentUser !== null && currentUser.id !== -1 && <MakeComment id={+id} setComments={setComments}/>}
       <section id="comments">
         <ul>
           {comments.map((comment, idx) => {
-            console.log(comment)
+            // console.log(comment)
             return (
+
               <li key={idx}>
-                <p>{comment.program_id.body}</p>
+                <p>Id: {comment.id}</p>
+                <p>Program Id: {comment.program_id}</p>
+                <p>User Id: {comment.user_id || 'N/A'}</p>
+                <p>Organization Id: {comment.organization_id || 'N/A'}</p>
+                <p>{comment.body}</p>
+                <p>Date: {comment.date}</p>
+                <p>Edited: {comment.edited.toString()}</p>
+                {!isOrganization && comment.user_id === currentUser.id && <NavLink to='/'><button>Go Home</button></NavLink>}
+                {isOrganization && comment.organization_id === currentUser.id && <NavLink to='/'><button>Go Home</button></NavLink>}
               </li>
             );
           })}

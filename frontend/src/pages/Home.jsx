@@ -5,7 +5,6 @@ import { useState, useEffect, useContext } from "react";
 
 import "./Home.css";
 
-const headliner = "PEAR is a user-friendly platform providing information to help NYC's low-income parents access free resources for their children."
 
 export default function HomePage() {
   const [programs, setPrograms] = useState([]);
@@ -21,21 +20,33 @@ export default function HomePage() {
     console.log(programs);
   }, []);
 
-  const headliner =
-    "PEAR is a user-friendly platform providing information to help NYC's low-income parents access free resources for their children.";
+  const headliner = "Youth Resources for Children in NYC ";
+  const subtitle = "A centralized platform for parents to find ";
 
   return (
     <>
-      <section id="bnr-section" class="bnr-section">
+      <section id="bnr-section" className="bnr-section">
         <div id="bnr-text-div">
-          <p id="bnr-text" class="bnr-text">
-            {headliner}
-          </p>
+          <h2 id="bnr-text" className="bnr-text libre-baskerville-bold">{headliner}</h2>
+          <p id="bnr-subtitle" className="bnr-subtitle">{subtitle}</p>
+        </div>
+        <div>
+          <img src="" alt="" />
         </div>
       </section>
-      <div class="wave-container"></div>
 
-      <section>
+
+      <section id="home-acc-buttons-section">
+        <div id="login-signup-buttons">
+          <div className="home-space2"></div>
+          <button>SIGN UP</button>
+          <button>LOGIN</button>
+          <div className="home-spacer2"></div>
+        </div>
+      </section>
+
+
+      <section id="">
         <div id="program1">
           {/* <img src={programs[programs.length - 1].imgUrl} alt="hi" /> */}
 

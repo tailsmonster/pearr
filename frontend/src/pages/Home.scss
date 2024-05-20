@@ -38,9 +38,10 @@
 
 $text-white: white;
 $text-black: black;
-$green-1: #D8FFC2;
-$green-2: #68A664;
-$yellow-1: #ffed85;
+$green-1: #f9ffc2;
+$green-2: #81a664;
+$beige-1: #fff5bc;
+$yellow-1: #ffeb7a;
 $orange-1: #ffa347;
 $brown: #230e05;
 
@@ -49,7 +50,7 @@ $header-font-size: 50px;
 
 
 html {
-  background-color:$green-1;
+  background-color:$beige-1;
   // font-family: 'Roboto', sans-serif; /* Use Roboto font for body text */
 }
 
@@ -73,15 +74,17 @@ html {
     flex-shrink: 0; /* Prevent flex items from shrinking and causing horizontal overflow */
   }
   #bnr-text-div {
-    padding-left: 20px;
+    // padding-left: 0px;
     // margin-left: 30%;
-    margin-left: 55%;
-    margin-right: 2%;
+    margin-left: 10%;
+    // margin-right: %;
     height:100%;
+    width: 100px;
+
 
     #bnr-text {
-      padding-left:40px;
-      padding-right:50px;
+      // padding-left:40px;
+      // padding-right:50px;
       font-family: roboto;
       font-size: $header-font-size;
       font-weight: bold;

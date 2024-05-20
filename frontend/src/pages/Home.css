@@ -33,12 +33,12 @@
 }
 
 html {
-  background-color: #D8FFC2;
+  background-color: #fff5bc;
 }
 
 #bnr-section {
   display: flex;
-  background-color: #D8FFC2;
+  background-color: #f9ffc2;
   background-attachment: scroll;
   width: 100vw;
   top: 0px;
@@ -54,14 +54,11 @@ html {
   flex-shrink: 0; /* Prevent flex items from shrinking and causing horizontal overflow */
 }
 #bnr-section #bnr-text-div {
-  padding-left: 20px;
-  margin-left: 55%;
-  margin-right: 2%;
+  margin-left: 10%;
   height: 100%;
+  width: 100px;
 }
 #bnr-section #bnr-text-div #bnr-text {
-  padding-left: 40px;
-  padding-right: 50px;
   font-family: roboto;
   font-size: 50px;
   font-weight: bold;

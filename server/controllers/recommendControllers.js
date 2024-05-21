@@ -36,3 +36,10 @@ exports.updateRecommend = async (req, res) => {
   const recommend = await Recommend.update(newRec, id);
   res.send(recommend);
 };
+
+exports.checkIfExists = async (req,res) => {
+  const {program, user} = req.query;
+  if (!program || !user) return res.sendStatus(400);
+  const recommend = await Recommend.findSpecific(+user,+program);
+  res.send(recommend);
+}

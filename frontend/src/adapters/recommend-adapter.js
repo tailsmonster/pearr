@@ -18,3 +18,7 @@ export const getAllRecommendsOfUser = async (id) => {
   const recommends = await fetchHandler(`/api/users/programs/${id}`);
   return recommends || [];
 }
+
+export const doesRecommendExist = async(programId, userId) => await fetchHandler(`${baseUrl}/check?program=${programId}&user=${userId}`);
+
+export const updateRecommend = async(recommendId) => await fetchHandler(`${}`)

@@ -6,6 +6,7 @@ import { getAllProgramComments } from "../adapters/comment-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import MakeComment from "../components/MakeComment";
 import Comment from "../components/Comment";
+import Recommend from "../components/Recommend";
 
 // import handleFetch from '../Utils/handleFetch.js'
 
@@ -70,6 +71,7 @@ const IndividualProgramPage = () => {
           <a ref={useRef(programInfo.websiteUrl)}>{programInfo.websiteUrl}</a>
         </div>
       </section>
+      {!isOrganization && currentUser.id !== -1 && <Recommend programId={id} userId={currentUser.id}/>}
       {currentUser !== null && currentUser.id !== -1 && (
         <MakeComment id={+id} setComments={setComments} />
       )}

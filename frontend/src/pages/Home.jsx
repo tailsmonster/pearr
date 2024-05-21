@@ -1,11 +1,12 @@
 import { getAllPrograms } from "../adapters/program-adapter.js";
 import { Link, useNavigate } from "react-router-dom";
-
+import Waves01SVG from '../components/Waves01SVG.jsx'
 import { useState, useEffect, useContext } from "react";
 
 import "./Home.css";
 
-const headliner = "PEAR is a user-friendly platform providing information to help NYC's low-income parents access free resources for their children."
+
+
 
 export default function HomePage() {
   const [programs, setPrograms] = useState([]);
@@ -14,28 +15,55 @@ export default function HomePage() {
     const getPrograms = async () => {
       const data = await getAllPrograms();
       console.log(data);
-      if (data) setPrograms(data);
+      if (data) setPrograms([data[data.length-1], data[data.length-2]]);
       if (error) setError(error);
     };
     getPrograms();
     console.log(programs);
   }, []);
 
-  const headliner =
-    "PEAR is a user-friendly platform providing information to help NYC's low-income parents access free resources for their children.";
+  const headliner = "Youth Resources for Children in NYC ";
+  const subtitle = "A centralized platform to help parents to find resources for their kids.";
 
   return (
     <>
-      <section id="bnr-section" class="bnr-section">
+      <section id="bnr-section" className="bnr-section">
         <div id="bnr-text-div">
-          <p id="bnr-text" class="bnr-text">
-            {headliner}
-          </p>
+          <h2 id="bnr-text" className="libre-baskerville-bold">{headliner}</h2>
+          <p id="bnr-subtitle" className="open-sans">{subtitle}</p>
+        </div>
+        <div>
+          <img src="" alt="" />
         </div>
       </section>
-      <div class="wave-container"></div>
 
-      <section>
+      <Waves01SVG />
+
+      <section id="home-acc-buttons-section">
+        <div id="login-signup-buttons">
+          {/* <div className="home-space2"></div> */}
+          <div className="buttons1"> 
+            <button id="signup-button" className="raleway">SIGN UP</button>
+          </div>
+          <div className="buttons2">
+            <button id="login-button" className="raleway">LOGIN</button>
+          </div>
+          {/* <div className="home-spacer2"></div> */}
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </section>
+
+
+      <section id="">
         <div id="program1">
           {/* <img src={programs[programs.length - 1].imgUrl} alt="hi" /> */}
 

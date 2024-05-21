@@ -109,20 +109,31 @@ exports.seed = async (knex) => {
     "Brooklyn",
     1,
     "https://www.marcylabschool.org/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2F5tpkas7gb5io%2F4jXk6I0OfjAJNYxGL7VpeI%2F0c885a5f54e37aa58a7bfdfe351b7583%2Fbreakthrough-fellows.webp&w=3840&q=75",
-    "white",
+    "#ffde00",
     4.8
   );
 
   await Program.create(
-    "Randy Lab School",
-    `GIVE ME A RAISE. GIVE ME A RAISE GIVE ME A RAISE`,
-    "https://bloons.fandom.com/wiki/Bloons_Wiki",
+    "AllStarCode",
+    `All Star Code creates economic opportunity for young men of color by developing an entrepreneurial mindset and supplying them with the tools they need to succeed in the innovation economy. Our flagship 6-week Summer Intensive delivers the equivalent of one year of collegiate level computer science education.`,
+    "https://allstarcode.org/",
     "Manhattan",
     2,
-    "https://nypost.com/wp-content/uploads/sites/2/2021/01/spoon-bridgerton-01.jpg?quality=75&strip=all&w=1024",
-    "black",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV_yAHpLI5pyTWGHDfbXP08VwFmtbfpI3Iki9hgNJhMQ&s",
+    "#ff000d",
     5.0
   );
+
+  await Program.create(
+    "NYC Child Care Connect",
+    `NYC Child Care Connect helps you find a child care program in your community. All programs are inspected and regulated by the NYC Health Department. You can also sign up for notifications about specific child care locations.`,
+    "https://access.nyc.gov/programs/nyc-child-care-connect/",
+    "Manhattan",
+    3,
+    "https://uploads-ssl.webflow.com/54b1582d6ce3fe8c3f71ecbe/5bd1dcdd67efa4a762c9265b_ChildCareConnect_thumb.jpg",
+    "#4e6af3",
+    5.0
+  )
 
   // await knex("comments").insert([
   //   {

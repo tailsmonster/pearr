@@ -28,16 +28,16 @@ export default function SiteHeadingAndNav() {
     </div>
     <nav>
       <ul>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/about'>About</NavLink></li>
-        <li><NavLink to='/programs'>Programs</NavLink></li>
+        <li><NavLink to='/'>HOME</NavLink></li>
+        <li><NavLink to='/about'>ABOUT</NavLink></li>
+        <li><NavLink to='/programs'>OPPORTUNITIES</NavLink></li>
         {
           currentUser
             ? 
-              <li><NavLink to='/edit' end={true}>Profile</NavLink></li>
+              <li><NavLink to='/edit' end={true}>PROFILE</NavLink></li>
             : <>
-              <li><NavLink to='/login'>Login</NavLink></li>
-              <li><NavLink to='/signup'>Sign Up</NavLink></li>
+              <li><NavLink to='/login'>LOGIN</NavLink></li>
+              <li><NavLink to='/signup'>SIGN UP</NavLink></li>
             </>
         }
       </ul>

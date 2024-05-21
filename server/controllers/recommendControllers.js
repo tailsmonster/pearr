@@ -9,7 +9,7 @@ exports.createRecommend = async (req, res) => {
     return res.sendStatus(400);
   }
 
-  const recommendMade = await Recommend.create(program_id, user_id, recommend);
+  const recommendMade = await Recommend.create({program_id, user_id, recommend});
   res.send(recommendMade);
 };
 
@@ -31,8 +31,15 @@ exports.showRecommend = async (req, res) => {
 };
 
 exports.updateRecommend = async (req, res) => {
-  const { newRec } = req.body;
+  const { recommend } = req.body;
   const { id } = req.params;
-  const recommend = await Recommend.update(newRec, id);
-  res.send(recommend);
+  const updated = await Recommend.update(recommend, id);
+  res.send(updated);
 };
+
+exports.checkIfExists = async (req,res) => {
+  const {program, user} = req.query;
+  if (!program || !user) return res.sendStatus(400);
+  const recommend = await Recommend.findSpecific(+user,+program);
+  res.send(recommend);
+}

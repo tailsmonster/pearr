@@ -1,25 +1,28 @@
-import { NavLink, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useRef, useContext } from "react";
 import { getProgramById } from "../adapters/program-adapter";
 import "./IndividualProgramPage.css";
 import { getAllProgramComments } from "../adapters/comment-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import MakeComment from "../components/MakeComment";
-import { getUser } from "../adapters/user-adapter";
-import { getOrganization } from "../adapters/organization-adapter";
-import { checkForLoggedInUser } from "../adapters/auth-adapter";
+import Comment from "../components/Comment";
+
 // import handleFetch from '../Utils/handleFetch.js'
 
 const IndividualProgramPage = () => {
+  const { currentUser, isOrganization } = useContext(CurrentUserContext);
   const { id } = useParams();
-  const {currentUser, setCurrentUser, isOrganization} = useContext(CurrentUserContext);
   // const breed = breed.find((breed) => breed.name = breedName)
   const [programInfo, setProgramInfo] = useState([]);
-  const [error, setError] = useState("");
   const [comments, setComments] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const navigate = useNavigate();
+
   useEffect(() => {
     const getProgramInfo = async () => {
+      if(Number.isNaN(+id) || typeof(+id) === 'string') return navigate('/programs');
       const program = await getProgramById(id);
+      if (program[0] === null) navigate('/programs')
       if (program) setProgramInfo(program[0]);
       const [commentData, error] = await getAllProgramComments(id);
       if (commentData) setComments(commentData);
@@ -67,26 +70,15 @@ const IndividualProgramPage = () => {
           <a ref={useRef(programInfo.websiteUrl)}>{programInfo.websiteUrl}</a>
         </div>
       </section>
-      {currentUser !== null && currentUser.id !== -1 && <MakeComment id={+id} setComments={setComments}/>}
+      {currentUser !== null && currentUser.id !== -1 && (
+        <MakeComment id={+id} setComments={setComments} />
+      )}
       <section id="comments">
         <ul>
           {comments.map((comment, idx) => {
-            // console.log(comment)
-            return (
-
-              <li key={idx}>
-                <p>Id: {comment.id}</p>
-                <p>Program Id: {comment.program_id}</p>
-                <p>User Id: {comment.user_id || 'N/A'}</p>
-                <p>Organization Id: {comment.organization_id || 'N/A'}</p>
-                <p>{comment.body}</p>
-                <p>Date: {comment.date}</p>
-                <p>Edited: {comment.edited.toString()}</p>
-                {!isOrganization && comment.user_id === currentUser.id && <NavLink to='/'><button>Go Home</button></NavLink>}
-                {isOrganization && comment.organization_id === currentUser.id && <NavLink to='/'><button>Go Home</button></NavLink>}
-              </li>
-            );
-          })}
+            return <Comment key={idx} comment={comment} setComments={setComments}/>
+          }
+          )}
         </ul>
       </section>
     </>

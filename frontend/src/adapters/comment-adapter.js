@@ -1,8 +1,13 @@
-import { fetchHandler, getPostOptions } from "../utils";
+import { deleteOptions, fetchHandler, getPostOptions } from "../utils";
 
 const baseUrl = "/api/comments";
 
-export const createComment = async (programId, userId, organizationId,  body) => {
+export const createComment = async (
+  programId,
+  userId,
+  organizationId,
+  body
+) => {
   const time = JSON.stringify(new Date().toLocaleString());
   console.log(time);
   return await fetchHandler(
@@ -26,4 +31,8 @@ export const updateComment = async (id, body) => {
   return await fetchHandler(`${baseUrl}/${id}`, getPostOptions({ body, time }));
 };
 
-export const getAllProgramComments = async (id) => await fetchHandler(`/api/programs/comments/${id}`);
+export const getAllProgramComments = async (id) =>
+  await fetchHandler(`/api/programs/comments/${id}`);
+
+export const deleteComment = async (id) =>
+  await fetchHandler(`${baseUrl}/${id}`, deleteOptions);

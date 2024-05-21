@@ -1,5 +1,6 @@
 const { isAuthorized } = require('../utils/auth-utils');
 const User = require('../db/models/User');
+const knex = require('../db/knex');
 
 exports.createUser = async (req, res) => {
   const { username, password } = req.body;
@@ -25,14 +26,14 @@ exports.showUser = async (req, res) => {
   const { id } = req.params;
 
   const user = await User.find(id);
-  console.log(user,id);
+  // console.log(user,id);
   if (!user) return res.sendStatus(404);
 
   res.send(user);
 };
 
 exports.updateUser = async (req, res) => {
-  const { username } = req.body;
+  const { username,password, pfp_url } = req.body;
   const { id } = req.params;
 
   // Not only do users need to be logged in to update a user, they
@@ -40,7 +41,7 @@ exports.updateUser = async (req, res) => {
   // user (users should only be able to change their own profiles)
   if (!isAuthorized(id, req.session)) return res.sendStatus(403);
 
-  const updatedUser = await User.update(id, username);
+  const updatedUser = await User.update(id, username, password, pfp_url);
   if (!updatedUser) return res.sendStatus(404);
   res.send(updatedUser);
 };

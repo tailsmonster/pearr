@@ -3,7 +3,7 @@ const User = require("../db/models/User");
 
 exports.createComment = async (req, res) => {
   const { programId, userId, organizationId, body, time } = req.body;
-  console.log(programId,userId,body,time);
+  // console.log(programId,userId,body,time);
 
   if (!programId || !body || !time) {
     return res.sendStatus(400);
@@ -35,4 +35,10 @@ exports.getAllCommentsOfUser = async (req, res) => {
   const { id } = req.params;
   const comments = await User.getAllComments(id);
   res.send(comments);
+};
+
+exports.deleteComment = async (req,res) => {
+  const {id} = req.params;
+  const comment = await Comment.deleteComment(id);
+  res.send(comment);
 };

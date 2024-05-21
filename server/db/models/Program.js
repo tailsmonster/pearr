@@ -101,8 +101,9 @@ class Program {
     const query = `
     DELETE FROM programs
     WHERE id = ?
+    RETURNING *
     `;
-    const { rows } = knex.raw(query, [id]);
+    const { rows } = await knex.raw(query, [id]);
     const program = rows[0];
     return program ? new Program(program) : null;
   }

@@ -25,21 +25,7 @@ const ProgramsAddPage = () => {
   ];
 
   useEffect(() => {
-    const getAccount = async () => {
-      const [org, id] = await checkForLoggedInUser();
-      if (!org && id === -1) {
-        setCurrentUser(null);
-        return navigate('/');
-      }
-      if (!org) {
-        const user = await getUser(id);
-        setCurrentUser(user);
-         return navigate('/');
-      }
-      const organization = await getOrganization(id);
-      setCurrentUser(organization);
-    };
-    getAccount();
+    
   },[])
 
   const handleSubmit = async (e) => {
@@ -49,7 +35,7 @@ const ProgramsAddPage = () => {
       bio: about,
       website_url: url,
       borough,
-      organization_id: currentUser.organizationId,
+      organization_id: currentUser.id,
       img_url: picture,
       color,
     };

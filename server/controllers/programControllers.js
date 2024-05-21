@@ -1,3 +1,4 @@
+const knex = require("../db/knex");
 const Program = require("../db/models/Program");
 const { isAuthorized } = require("../utils/auth-utils");
 
@@ -41,9 +42,9 @@ exports.showProgram = async (req, res) => {
 
 exports.updateProgram = async (req, res) => {
   const { id } = req.params;
-  const { organizationId, name, bio, website_url, borough, img_url, color } = req.body;
+  const { organization_id, name, bio, website_url, borough, img_url, color } = req.body;
 
-  if (!isAuthorized(organizationId, req.session)) return res.sendStatus(403);
+  if (!isAuthorized(organization_id, req.session)) return res.sendStatus(403);
 
   const updatedProgram = await Program.update(id, name, bio, website_url, borough, img_url, color);
   if (updatedProgram === null) return res.sendStatus(404);
@@ -67,3 +68,17 @@ exports.getAllComments = async (req, res) => {
   res.status(200);
   res.send(comments);
 };
+
+exports.deleteProgram = async (req,res) => {
+  const {id} = req.params;
+  const isAvailable = await Program.findById(id);
+  if (isAvailable === null) return res.sendStatus(404);
+
+  const comments = await knex.raw('DELETE FROM comments WHERE program_id = ?', [id]);
+  const recommends = await knex.raw('DELETE FROM recommends WHERE program_id = ?', [id]);
+  
+  const program = await Program.deleteProgram(id);
+  // console.log(program)
+  if (!program) return res.sendStatus(404);
+  res.send(program);
+}

@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { getUser } from "../adapters/user-adapter";
 import { getOrganization } from "../adapters/organization-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
-import {getAllProgramComments, updateComment} from "../adapters/comment-adapter"
+import { getAllProgramComments, updateComment } from "../adapters/comment-adapter";
 
-const Comment = ({ comment,setComments }) => {
+const Comment = ({ comment, setComments }) => {
   const [author, setAuthor] = useState("");
   const [editing, setEditing] = useState(false);
   const [body, setBody] = useState(comment.body);
@@ -12,9 +12,7 @@ const Comment = ({ comment,setComments }) => {
 
   useEffect(() => {
     const getAuthor = async () => {
-      const [user] =
-        (await getUser(comment.user_id)) ||
-        (await getOrganization(comment.organization_id));
+      const [user] = comment.user_id ? await getUser(comment.user_id) : await getOrganization(comment.organization_id);
       setAuthor(user.username);
     };
     getAuthor();
@@ -23,10 +21,10 @@ const Comment = ({ comment,setComments }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (body === comment.body) {
-      return setEditing(pre => !pre);
+      return setEditing((pre) => !pre);
     }
     const updatedComment = await updateComment(+comment.id, body);
-    setComments(await getAllProgramComments(comment.program_id))
+    setComments(await getAllProgramComments(comment.program_id));
   };
 
   return (
@@ -50,7 +48,7 @@ const Comment = ({ comment,setComments }) => {
           </>
         )}
       </li>
-      {!isOrganization && comment.user_id === currentUser.id && !editing &&(
+      {!isOrganization && comment.user_id === currentUser.id && !editing && (
         <button onClick={() => setEditing((pre) => !pre)}>Edit</button>
       )}
     </>

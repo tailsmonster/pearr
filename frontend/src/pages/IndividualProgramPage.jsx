@@ -76,7 +76,7 @@ const IndividualProgramPage = () => {
       <section id="comments">
         <ul>
           {comments.map((comment, idx) => {
-            return <Comment key={idx} comment={comment}/>
+            return <Comment key={idx} comment={comment} setComments={setComments}/>
           }
           )}
         </ul>

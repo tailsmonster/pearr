@@ -22,6 +22,7 @@ const MakeComment = ({ id, setComments }) => {
     );
     // console.log(comment)
     const [allComments] = await getAllProgramComments(id);
+    setComments([]);
     setComments(allComments);
     setBody("");
   };

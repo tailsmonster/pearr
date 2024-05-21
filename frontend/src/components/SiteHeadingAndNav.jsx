@@ -23,7 +23,7 @@ export default function SiteHeadingAndNav() {
   return <header>
     <div>
       <div class="spacer"></div>
-      <a id='logo' href='/'>PEAR</a>
+      <a id='logo' href='/'>PEACH</a>
       <div class="spacer"></div>
     </div>
     <nav>

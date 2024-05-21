@@ -1,4 +1,4 @@
-import { deleteOptions, fetchHandler, getPostOptions } from "../utils";
+import { deleteOptions, fetchHandler, getPatchOptions, getPostOptions } from "../utils";
 
 const baseUrl = "/api/comments";
 
@@ -26,9 +26,8 @@ export const getSpecificComment = async (id) =>
   await fetchHandler(`${baseUrl}/${id}`);
 
 export const updateComment = async (id, body) => {
-  const time = new Date();
-  console.log(time);
-  return await fetchHandler(`${baseUrl}/${id}`, getPostOptions({ body, time }));
+  const time = new Date().toLocaleString();
+  return await fetchHandler(`${baseUrl}/${id}`, getPatchOptions({ body, time }));
 };
 
 export const getAllProgramComments = async (id) =>

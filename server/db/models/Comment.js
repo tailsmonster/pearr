@@ -1,8 +1,10 @@
 const knex = require("../knex");
 
 class Comment {
-  constructor(program_id, user_id, organization_id, body, date) {
+  constructor({id, program_id, user_id, organization_id, body, date}) {
     this.program_id = program_id;
+    this.organization_id = organization_id;
+    this.id = id,
     this.user_id = user_id;
     this.body = body;
     this.date = date;
@@ -53,7 +55,7 @@ class Comment {
     WHERE id = ?
     RETURNING *
     `;
-    const { rows } = knex.raw(query, [body, id]);
+    const { rows } = await knex.raw(query, [body, id]);
     const comment = rows[0];
     return comment ? new Comment(comment) : null;
   }

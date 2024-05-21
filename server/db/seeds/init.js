@@ -18,8 +18,8 @@ exports.seed = async (knex) => {
     "recommends",
   ];
 
-  tables.forEach((table) => {
-    knex(table).del();
+  tables.forEach(async (table) => {
+    await knex(table).del();
   });
 
   await knex.raw("ALTER SEQUENCE organizations_id_seq RESTART WITH 1"); // resets the incrementing id to 1

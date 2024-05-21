@@ -13,7 +13,15 @@ const IndividualProgramPage = () => {
   const { id } = useParams();
   const [programInfo, setProgramInfo] = useState([]);
   const [comments, setComments] = useState([]);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 23e8336 (FINISHED CRUD)
   const navigate = useNavigate();
+
+  const update = async() => {
+    setComments((await getAllProgramComments(id))[0]);
+  }
 
   useEffect(() => {
     const getProgramInfo = async () => {
@@ -53,16 +61,21 @@ const IndividualProgramPage = () => {
         </div>
       </section>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
       {!isOrganization && currentUser.id !== -1 && <Recommend programId={id} userId={currentUser.id}/>}
 >>>>>>> 7fc609ab6a32af7975b1e9f140e89b3829122e7a
+=======
+      {currentUser !== null && !isOrganization && currentUser.id !== -1 && <Recommend programId={id} userId={currentUser.id}/>}
+>>>>>>> 23e8336 (FINISHED CRUD)
       {currentUser !== null && currentUser.id !== -1 && (
         <MakeComment id={+id} setComments={setComments} />
       )}
 
       <section id="comments">
         <ul>
+<<<<<<< HEAD
 <<<<<<< HEAD
           {comments.map((comment, idx) => (
             <Comment key={idx} comment={comment} setComments={setComments} />
@@ -71,6 +84,9 @@ const IndividualProgramPage = () => {
           {comments?.map((comment, idx) => {
             return <Comment key={idx} comment={comment} setComments={setComments}/>
           }
+=======
+          {comments?.map((comment, idx) => <Comment key={idx} comment={comment} setComments={setComments} update={update}/>
+>>>>>>> 23e8336 (FINISHED CRUD)
           )}
 >>>>>>> 7fc609ab6a32af7975b1e9f140e89b3829122e7a
         </ul>

@@ -26,7 +26,8 @@ exports.showComment = async (req, res) => {
 };
 
 exports.updateComment = async (req, res) => {
-  const { id, body } = req.body;
+  const { body } = req.body;
+  const {id} = req.params;
   const comment = await Comment.update(id, body);
   res.send(comment);
 };

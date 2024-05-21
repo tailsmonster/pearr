@@ -13,8 +13,7 @@ const Comment = ({ comment,setComments }) => {
   useEffect(() => {
     const getAuthor = async () => {
       const [user] =
-        (await getUser(comment.user_id)) ||
-        (await getOrganization(comment.organization_id));
+        comment.user_id ? await getUser(comment.user_id) : await getOrganization(comment.organization_id)
       setAuthor(user.username);
     };
     getAuthor();

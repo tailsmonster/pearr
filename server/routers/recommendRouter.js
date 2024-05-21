@@ -12,5 +12,6 @@ recommendRouter.get("/", checkAuthentication, recommendController.listAllRecomme
 recommendRouter.get("/all/:id", checkAuthentication, recommendController.listAllUserRecommends);
 recommendRouter.get("/:id", checkAuthentication, recommendController.showRecommend);
 recommendRouter.patch("/:id", checkAuthentication, recommendController.updateRecommend);
+recommendRouter.get('/check', checkAuthentication, recommendController.checkIfExists)
 
 module.exports = recommendRouter;

@@ -6,6 +6,7 @@ import { getAllProgramComments } from "../adapters/comment-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import MakeComment from "../components/MakeComment";
 import Comment from "../components/Comment";
+import Recommend from "../components/Recommend";
 
 const IndividualProgramPage = () => {
   const { currentUser, isOrganization } = useContext(CurrentUserContext);
@@ -51,16 +52,27 @@ const IndividualProgramPage = () => {
           <a ref={useRef(programInfo.websiteUrl)}>{programInfo.websiteUrl}</a>
         </div>
       </section>
+<<<<<<< HEAD
 
+=======
+      {!isOrganization && currentUser.id !== -1 && <Recommend programId={id} userId={currentUser.id}/>}
+>>>>>>> 7fc609ab6a32af7975b1e9f140e89b3829122e7a
       {currentUser !== null && currentUser.id !== -1 && (
         <MakeComment id={+id} setComments={setComments} />
       )}
 
       <section id="comments">
         <ul>
+<<<<<<< HEAD
           {comments.map((comment, idx) => (
             <Comment key={idx} comment={comment} setComments={setComments} />
           ))}
+=======
+          {comments?.map((comment, idx) => {
+            return <Comment key={idx} comment={comment} setComments={setComments}/>
+          }
+          )}
+>>>>>>> 7fc609ab6a32af7975b1e9f140e89b3829122e7a
         </ul>
       </section>
     </>

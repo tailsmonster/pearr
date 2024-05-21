@@ -33,19 +33,19 @@
 }
 
 html {
-  background-color: #D8FFC2;
+  background-color: #fff8cf;
 }
 
 #bnr-section {
   display: flex;
-  background-color: #D8FFC2;
+  background-color: #f5ff9b;
   background-attachment: scroll;
-  width: 100vw;
+  width: 100%;
   top: 0px;
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 180px;
-  padding-bottom: 100px;
+  padding-top: 150px;
+  padding-bottom: 70px;
   align-items: center;
   position: relative;
   overflow-x: hidden;
@@ -54,16 +54,76 @@ html {
   flex-shrink: 0; /* Prevent flex items from shrinking and causing horizontal overflow */
 }
 #bnr-section #bnr-text-div {
-  padding-left: 20px;
-  margin-left: 55%;
-  margin-right: 2%;
-  height: 100%;
+  width: 550px;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-bottom: 0px;
 }
 #bnr-section #bnr-text-div #bnr-text {
-  padding-left: 40px;
-  padding-right: 50px;
-  font-family: roboto;
   font-size: 50px;
-  font-weight: bold;
   color: black;
+}
+#bnr-section #bnr-text-div #bnr-subtitle {
+  font-size: 20px;
+}
+
+#home-acc-buttons-section {
+  background-color: #452517;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+#home-acc-buttons-section #login-signup-buttons {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+#home-acc-buttons-section #login-signup-buttons .buttons1 {
+  width: 100%;
+  margin: 20px;
+}
+#home-acc-buttons-section #login-signup-buttons .buttons2 {
+  width: 100%;
+  margin: 20px;
+}
+#home-acc-buttons-section #login-signup-buttons #signup-button {
+  width: 170px;
+  height: 60px;
+  font-size: 18px;
+  background: #ffe760;
+  border: none;
+  border-radius: 50px;
+  color: #000;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+#home-acc-buttons-section #login-signup-buttons #signup-button:hover {
+  box-shadow: inset 0 0 0 2px white;
+  background: #073b4c;
+  color: #fff;
+}
+#home-acc-buttons-section #login-signup-buttons #login-button {
+  width: 170px;
+  height: 60px;
+  font-size: 18px;
+  background: #ffe760;
+  border: none;
+  border-radius: 50px;
+  color: #000;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+#home-acc-buttons-section #login-signup-buttons #login-button:hover {
+  box-shadow: inset 0 0 0 2px white;
+  background: #073b4c;
+  color: #fff;
+}
+
+.wave01 {
+  background-color: #f5ff9b;
 }/*# sourceMappingURL=Home.css.map */

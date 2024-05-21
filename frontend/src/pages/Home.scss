@@ -1,3 +1,15 @@
+$text-white: white;
+$text-black: black;
+$green-1: #f5ff9b;
+$green-2: #81a664;
+$beige-1: #fff8cf;
+$yellow-1: #ffe760;
+$orange-1: #ffa347;
+$brown: #452517;
+
+$header-font-size: 50px;
+$subtitle-font-size: 20px;
+
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 .raleway {
@@ -34,17 +46,6 @@
     "wdth" 100;
 }
 
-$text-white: white;
-$text-black: black;
-$green-1: #f5ff9b;
-$green-2: #81a664;
-$beige-1: #fff8cf;
-$yellow-1: #ffe760;
-$orange-1: #ffa347;
-$brown: #452517;
-
-$header-font-size: 50px;
-$subtitle-font-size: 20px;
 
 
 html {
@@ -98,8 +99,8 @@ html {
   background-color: $brown;
   padding-left:10%;
   padding-right:10%;
-  padding-top:25px;
-  padding-bottom:25px;
+  // padding-top:25px;
+  // padding-bottom:25px;
   display: flex;
   justify-content: space-around;
   #login-signup-buttons {
@@ -108,11 +109,11 @@ html {
     flex-direction: row;
     .buttons1 {
       width: 100%;
-      margin: 20px;
+      // margin: 20px;
     }
     .buttons2 {
       width: 100%;
-      margin: 20px;
+      // margin: 20px;
     }
 
     #signup-button {
@@ -168,3 +169,115 @@ html {
   background-color: $green-1;
 }
 
+.hm-card-0 {
+  max-width: 300px;
+  border-radius: 0.5rem;
+  background-color: yellow;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+  a {
+    text-decoration: none
+  }
+}
+.hm-card-1 {
+  max-width: 300px;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+  a {
+    text-decoration: none
+  }
+}
+.hm-card-2 {
+  max-width: 300px;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+  a {
+    text-decoration: none
+  }
+}
+
+
+.hm-card-0 {
+  padding: 1.1rem;
+  background-color: #2563EB;
+  color:white;
+}
+// .hm-card-1 {
+//   padding: 1.1rem;
+//   background-color: #2563EB;
+//   color:white;
+// }
+// .hm-card-2 {
+//   padding: 1.1rem;
+//   background-color: #2563EB;
+//   color:white;
+// }
+
+.hm-card-img {
+  object-fit: cover;
+  width: 100%;
+  height: 150px;
+  // background-color: rgb(239, 205, 255);
+}
+
+.hm-card-title {
+  // color: #111827;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.hm-card-desc {
+  margin-top: 0.5rem;
+  // color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.action {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #2563EB;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.action span {
+  transition: .3s ease;
+}
+
+.action:hover span {
+  transform: translateX(4px);
+}
+
+
+/* Color Theme Swatches in Hex */
+.Jest-1-hex { color: #4A7F87; }
+.Jest-2-hex { color: #8CBA9B; }
+.Jest-3-hex { color: #EAED8C; }
+.Jest-4-hex { color: #F7A145; }
+.Jest-5-hex { color: #EB6044; }
+
+/* Color Theme Swatches in RGBA */
+.Jest-1-rgba { color: rgba(73, 126, 135, 1); }
+.Jest-2-rgba { color: rgba(140, 186, 154, 1); }
+.Jest-3-rgba { color: rgba(233, 237, 140, 1); }
+.Jest-4-rgba { color: rgba(246, 161, 68, 1); }
+.Jest-5-rgba { color: rgba(235, 96, 68, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Jest-1-hsla { color: hsla(187, 29, 40, 1); }
+.Jest-2-hsla { color: hsla(139, 24, 63, 1); }
+.Jest-3-hsla { color: hsla(61, 72, 73, 1); }
+.Jest-4-hsla { color: hsla(31, 91, 61, 1); }
+.Jest-5-hsla { color: hsla(10, 80, 59, 1); }

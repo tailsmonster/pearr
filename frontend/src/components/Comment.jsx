@@ -31,7 +31,6 @@ const Comment = ({ comment ,update }) => {
     e.preventDefault();
     if (body === comment.body) {
       return setEditing((pre) => !pre);
-      return setEditing((pre) => !pre);
     }
     const updatedComment = await updateComment(comment.id, body);
     const [newComments] = await getAllProgramComments(comment.program_id);
@@ -73,6 +72,7 @@ const Comment = ({ comment ,update }) => {
             )}
             {confirm && (
               <>
+              <h3>Are you sure?</h3>
                 <button onClick={() => setConfirm(false)}>Cancel</button>
                 <button onClick={handleDelete}>Confirm</button>
               </>

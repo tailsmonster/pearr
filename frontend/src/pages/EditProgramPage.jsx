@@ -6,6 +6,7 @@ import { deleteProgram, getProgramById, updateProgram } from '../adapters/progra
 export default function EditProgramPage() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [confirm, setConfirm] = useState(false);
   const { currentUser } = useContext(CurrentUserContext);
   const [program, setProgram] = useState(null);
   const [name, setName] = useState('');
@@ -13,6 +14,7 @@ export default function EditProgramPage() {
   const [about, setAbout] = useState('');
   const [borough, setBorough] = useState('');
   const [url, setUrl] = useState('');
+  
   const boroughs = [
     "Bronx",
     "Brooklyn",

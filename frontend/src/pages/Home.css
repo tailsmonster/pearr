@@ -71,8 +71,6 @@ html {
   background-color: #452517;
   padding-left: 10%;
   padding-right: 10%;
-  padding-top: 25px;
-  padding-bottom: 25px;
   display: flex;
   justify-content: space-around;
 }
@@ -83,11 +81,9 @@ html {
 }
 #home-acc-buttons-section #login-signup-buttons .buttons1 {
   width: 100%;
-  margin: 20px;
 }
 #home-acc-buttons-section #login-signup-buttons .buttons2 {
   width: 100%;
-  margin: 20px;
 }
 #home-acc-buttons-section #login-signup-buttons #signup-button {
   width: 170px;
@@ -126,4 +122,147 @@ html {
 
 .wave01 {
   background-color: #f5ff9b;
+}
+
+.hm-card-0 {
+  max-width: 300px;
+  border-radius: 0.5rem;
+  background-color: yellow;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+}
+.hm-card-0 a {
+  text-decoration: none;
+}
+
+.hm-card-1 {
+  max-width: 300px;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+}
+.hm-card-1 a {
+  text-decoration: none;
+}
+
+.hm-card-2 {
+  max-width: 300px;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+}
+.hm-card-2 a {
+  text-decoration: none;
+}
+
+.hm-card-0 {
+  padding: 1.1rem;
+  background-color: #2563EB;
+  color: white;
+}
+
+.hm-card-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 150px;
+}
+
+.hm-card-title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.hm-card-desc {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.action {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #2563EB;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.action span {
+  transition: 0.3s ease;
+}
+
+.action:hover span {
+  transform: translateX(4px);
+}
+
+/* Color Theme Swatches in Hex */
+.Jest-1-hex {
+  color: #4A7F87;
+}
+
+.Jest-2-hex {
+  color: #8CBA9B;
+}
+
+.Jest-3-hex {
+  color: #EAED8C;
+}
+
+.Jest-4-hex {
+  color: #F7A145;
+}
+
+.Jest-5-hex {
+  color: #EB6044;
+}
+
+/* Color Theme Swatches in RGBA */
+.Jest-1-rgba {
+  color: rgb(73, 126, 135);
+}
+
+.Jest-2-rgba {
+  color: rgb(140, 186, 154);
+}
+
+.Jest-3-rgba {
+  color: rgb(233, 237, 140);
+}
+
+.Jest-4-rgba {
+  color: rgb(246, 161, 68);
+}
+
+.Jest-5-rgba {
+  color: rgb(235, 96, 68);
+}
+
+/* Color Theme Swatches in HSLA */
+.Jest-1-hsla {
+  color: hsl(187, 29%, 40%);
+}
+
+.Jest-2-hsla {
+  color: hsl(139, 24%, 63%);
+}
+
+.Jest-3-hsla {
+  color: hsl(61, 72%, 73%);
+}
+
+.Jest-4-hsla {
+  color: hsl(31, 91%, 61%);
+}
+
+.Jest-5-hsla {
+  color: hsl(10, 80%, 59%);
 }/*# sourceMappingURL=Home.css.map */

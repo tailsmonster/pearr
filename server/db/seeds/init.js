@@ -47,18 +47,18 @@ exports.seed = async (knex) => {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSghCDBAvWKmyHT7w0vvPuGbGFiWKHVM044jraSSk1wOw&s"
   );
 
-  await Organization.create(
-    "Randy Lab School",
-    "1234",
-    "https://i.pinimg.com/736x/9d/1c/5f/9d1c5f14116e7ac62798f733847ac333.jpg"
-  );
-
+  
   await Organization.create(
     "AllStarCode",
     "12345",
     "https://i.pinimg.com/736x/9d/1c/5f/9d1c5f14116e7ac62798f733847ac333.jpg"
   );
-
+  
+  await Organization.create(
+    "NYCGovernment",
+    "1234",
+    "https://i.pinimg.com/736x/9d/1c/5f/9d1c5f14116e7ac62798f733847ac333.jpg"
+  );
   // await knex("users").insert([
   //   {
   //     username: "real_Gonzo",

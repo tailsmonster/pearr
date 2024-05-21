@@ -34,7 +34,7 @@ export default function SiteHeadingAndNav() {
         {
           currentUser
             ? 
-              <li><NavLink to='/edit' end={true}>PROFILE</NavLink></li>
+              <li><NavLink to='/edit' end={true}>{currentUser.username}</NavLink></li>
             : <>
               <li><NavLink to='/login'>LOGIN</NavLink></li>
               <li><NavLink to='/signup'>SIGN UP</NavLink></li>

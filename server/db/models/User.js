@@ -57,8 +57,8 @@ class User {
   // this is an instance method that we can use to update
   static async update(id, username,password, pfp_url) {
     // dynamic queries are easier if you add more properties
-    const oldData = await knex.raw("SELECT * FROM users WHERE id = ?", [id]);
-    const previousData = oldData.rows[0];
+    const previousData = await User.find(id);
+    console.log("OLD USER", previousData);
     const query = `
       UPDATE users
       SET username=?, password_hash = ?, pfp_url = ?
@@ -67,8 +67,8 @@ class User {
     `;
     const { rows } = await knex.raw(query, [
       username || previousData.username,
-      password ? await authUtils.hashPassword(password) : previousData.password,
-      pfp_url || previousData.pfp_url,
+      await authUtils.hashPassword(password),
+      pfp_url || previousData.pfpUrl || -1,
       id
     ]);
     const updatedUser = rows[0];

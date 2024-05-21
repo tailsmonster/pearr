@@ -9,7 +9,7 @@ const Comment = ({ comment,setComments }) => {
   const [editing, setEditing] = useState(false);
   const [body, setBody] = useState(comment.body);
   const { isOrganization, currentUser } = useContext(CurrentUserContext);
-
+  
   useEffect(() => {
     const getAuthor = async () => {
       const [user] =
@@ -50,7 +50,7 @@ const Comment = ({ comment,setComments }) => {
           </>
         )}
       </li>
-      {!isOrganization && comment.user_id === currentUser.id && !editing &&(
+      {currentUser !== null && !isOrganization && comment.user_id === currentUser.id && !editing &&(
         <button onClick={() => setEditing((pre) => !pre)}>Edit</button>
       )}
     </>

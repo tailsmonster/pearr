@@ -23,7 +23,7 @@ export default function HomePage() {
   }, []);
 
   const headliner = "Youth Resources for Children in NYC ";
-  const subtitle = "A centralized platform for parents to find resources for their kids.";
+  const subtitle = "A centralized platform to help parents to find resources for their kids.";
 
   return (
     <>

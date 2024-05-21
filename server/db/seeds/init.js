@@ -43,14 +43,20 @@ exports.seed = async (knex) => {
   // ]);
   await Organization.create(
     "Marcy Lab School",
-    "everyone Except Nico13$",
-    "https://avatars.githubusercontent.com/u/54635790?s=200&v=4"
+    "123",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSghCDBAvWKmyHT7w0vvPuGbGFiWKHVM044jraSSk1wOw&s"
   );
 
   await Organization.create(
     "Randy Lab School",
-    "Who needs a raise, 15 an hour$$$",
-    "https://static.wikia.nocookie.net/b__/images/e/e2/Btd6monkey.png/revision/latest/scale-to-width-down/90?cb=20180426113758&path-prefix=bloons"
+    "1234",
+    "https://i.pinimg.com/736x/9d/1c/5f/9d1c5f14116e7ac62798f733847ac333.jpg"
+  );
+
+  await Organization.create(
+    "AllStarCode",
+    "12345",
+    "https://i.pinimg.com/736x/9d/1c/5f/9d1c5f14116e7ac62798f733847ac333.jpg"
   );
 
   // await knex("users").insert([
@@ -133,7 +139,7 @@ exports.seed = async (knex) => {
     "https://uploads-ssl.webflow.com/54b1582d6ce3fe8c3f71ecbe/5bd1dcdd67efa4a762c9265b_ChildCareConnect_thumb.jpg",
     "#4e6af3",
     5.0
-  )
+  );
 
   // await knex("comments").insert([
   //   {
@@ -166,7 +172,7 @@ exports.seed = async (knex) => {
     program_id: 1,
     user_id: 2,
     organization_id: null,
-    body: "You should give Randy a raise",
+    body: "I love this program. It helped my kids learn to code!",
     date: JSON.stringify(new Date()),
   });
 
@@ -174,7 +180,15 @@ exports.seed = async (knex) => {
     program_id: 1,
     user_id: 1,
     organization_id: null,
-    body: "Randy will NEVER get a raise",
+    body: "I don't like this program. It just wasn't what my son wanted to do.",
+    date: JSON.stringify(new Date()),
+  });
+
+  await Comment.create({
+    program_id: 1,
+    user_id: null,
+    organization_id: 1,
+    body: "Fall '24 Fellowship admissions are now available!",
     date: JSON.stringify(new Date()),
   });
 
@@ -182,15 +196,15 @@ exports.seed = async (knex) => {
     program_id: 2,
     user_id: 1,
     organization_id: null,
-    body: "Hey now...",
+    body: "My daughter loved their summer intensive!",
     date: JSON.stringify(new Date()),
   });
 
   await Comment.create({
-    program_id: 2,
+    program_id: 3,
     user_id: 2,
     organization_id: null,
-    body: "Now THIS is where you'll get that raise",
+    body: "I was able to get care for my baby!",
     date: JSON.stringify(new Date()),
   });
 

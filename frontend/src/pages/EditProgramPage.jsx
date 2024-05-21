@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
-import { getProgram, updateProgram } from '../adapters/organization-adapter';
+import { deleteProgram, getProgramById, updateProgram } from '../adapters/program-adapter';
 
 export default function EditProgramPage() {
   const navigate = useNavigate();
@@ -13,17 +13,26 @@ export default function EditProgramPage() {
   const [about, setAbout] = useState('');
   const [borough, setBorough] = useState('');
   const [url, setUrl] = useState('');
+  const boroughs = [
+    "Bronx",
+    "Brooklyn",
+    "Manhattan",
+    "Queens",
+    "Staten Island",
+  ];
 
   useEffect(() => {
     const fetchProgram = async () => {
-      const fetchedProgram = await getProgram(id);
+      const [fetchedProgram] = await getProgramById(id);
+      if (fetchedProgram === null) navigate('/programs')
+        console.log(fetchedProgram);
       setProgram(fetchedProgram);
       setName(fetchedProgram.name);
-      setPicture(fetchedProgram.picture);
-      setAbout(fetchedProgram.about);
+      setPicture(fetchedProgram.imgUrl);
+      setAbout(fetchedProgram.bio);
       setBorough(fetchedProgram.borough);
-      setUrl(fetchedProgram.url);
-    };c
+      setUrl(fetchedProgram.websiteUrl);
+    };
 
     fetchProgram();
   }, [id]);
@@ -33,14 +42,20 @@ export default function EditProgramPage() {
     const updatedProgram = {
       id,
       name,
-      picture,
-      about,
+      img_url : picture,
+      bio: about,
       borough,
-      url,
+      website_url : url,
+      organization_id : currentUser.id
     };
     await updateProgram(updatedProgram);
-    navigate(`/organizations/${currentUser.id}/programs`);
+    navigate(`/programs`);
   };
+
+  const handleDelete = async () => {
+    const organization = await deleteProgram(id);
+    return navigate('/programs')
+  }
 
   if (!program) {
     return <div>Loading...</div>;
@@ -52,7 +67,9 @@ export default function EditProgramPage() {
         <h1 className="title">Edit Program</h1>
         <form onSubmit={handleSubmit}>
           <div className="field">
-            <label htmlFor="name" className="label">Name</label>
+            <label htmlFor="name" className="label">
+              Name
+            </label>
             <div className="control">
               <input
                 id="name"
@@ -66,7 +83,9 @@ export default function EditProgramPage() {
           </div>
 
           <div className="field">
-            <label htmlFor="picture" className="label">Picture</label>
+            <label htmlFor="picture" className="label">
+              Picture
+            </label>
             <div className="control">
               <input
                 id="picture"
@@ -80,7 +99,9 @@ export default function EditProgramPage() {
           </div>
 
           <div className="field">
-            <label htmlFor="about" className="label">About</label>
+            <label htmlFor="about" className="label">
+              About
+            </label>
             <div className="control">
               <textarea
                 id="about"
@@ -93,21 +114,31 @@ export default function EditProgramPage() {
           </div>
 
           <div className="field">
-            <label htmlFor="borough" className="label">Borough</label>
+            <label htmlFor="borough" className="label">
+              Borough
+            </label>
             <div className="control">
-              <input
-                id="borough"
-                className="input"
-                type="text"
-                placeholder="Enter borough"
-                value={borough}
-                onChange={(e) => setBorough(e.target.value)}
-              />
+              <div className="select">
+                <select
+                  id="borough"
+                  value={borough}
+                  onChange={(e) => setBorough(e.target.value)}
+                >
+                  <option value="">Select a borough</option>
+                  {boroughs.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
 
           <div className="field">
-            <label htmlFor="url" className="label">URL</label>
+            <label htmlFor="url" className="label">
+              URL
+            </label>
             <div className="control">
               <input
                 id="url"
@@ -122,10 +153,13 @@ export default function EditProgramPage() {
 
           <div className="field">
             <div className="control">
-              <button type="submit" className="button is-primary">Save Changes</button>
+              <button type="submit" className="button is-primary">
+                Save Changes
+              </button>
             </div>
           </div>
         </form>
+        <button onClick={handleDelete}>DELETE PROGRAM</button>
       </div>
     </section>
   );

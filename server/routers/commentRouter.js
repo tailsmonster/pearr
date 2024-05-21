@@ -12,5 +12,6 @@ commentRouter.get("/", checkAuthentication, commentControllers.getAllComments);
 commentRouter.get("/:id", checkAuthentication, commentControllers.showComment);
 commentRouter.patch("/:id", checkAuthentication, commentControllers.updateComment);
 commentRouter.get('/all/:id', checkAuthentication, commentControllers.getAllCommentsOfUser);
+commentRouter.delete('/:id', checkAuthentication, commentControllers.deleteComment)
 
 module.exports = commentRouter;

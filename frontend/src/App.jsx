@@ -28,6 +28,7 @@ import SiteHeadingAndNav from "./components/SiteHeadingAndNav";
 import { getOrganization } from "./adapters/organization-adapter.js";
 import { getUser } from "./adapters/user-adapter.js";
 import MakeComment from "./components/MakeComment.jsx";
+import EditProgramPage from "./pages/EditProgramPage.jsx";
 
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
@@ -74,6 +75,7 @@ export default function App() {
           {/* Programs */}
           <Route path="/programs" element={<AllProgramsPage />} />
           <Route path="/programs/:id" element={<IndividualProgramPage />} />2
+          <Route path="/programs/:id/edit" element={<EditProgramPage />} />2
           <Route path="/programs/add" element={<ProgramsAddPage />} />2
           {/* Misc */}
           <Route path="/about" element={<AboutPage />} />

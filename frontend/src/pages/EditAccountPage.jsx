@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
-import { getUser, updateUsername } from '../adapters/user-adapter';
-import { checkForLoggedInUser } from '../adapters/auth-adapter';
-import { getOrganization } from '../adapters/organization-adapter';
+import { getUser, updateUser } from '../adapters/user-adapter';
 import { logUserOut } from '../adapters/auth-adapter';
+import { checkForLoggedInUser } from '../adapters/auth-adapter';
+import {getOrganization} from "../adapters/organization-adapter"
 
 export default function EditAccountPage() {
+  const { currentUser, isOrganization, setIsOrganization, setCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [profilePicture, setProfilePicture] = useState('');
@@ -17,12 +17,22 @@ export default function EditAccountPage() {
   useEffect(() => {
     const getAccount = async () => {
       const [org, id] = await checkForLoggedInUser();
+      console.log(org, id);
       if (id === -1) {
-      return navigate("/access-denied");
+        setIsOrganization(false);
+        setCurrentUser(null);
+        return navigate('/access-denied')
       }
-      const account = org ? await getOrganization(id) : getUser(id);
-      setCurrentUser(account);
-      // setUsername(account.username);
+      if (org) {
+        setIsOrganization(true);
+        const [organization] = await getOrganization(id);
+        console.log(organization);
+        return setCurrentUser(organization);
+      }
+      setIsOrganization(false);
+      const [user] = await getUser(id);
+      console.log(user);
+      return setCurrentUser(user);
     };
     getAccount();
   },[])
@@ -35,10 +45,10 @@ export default function EditAccountPage() {
       password,
       pfp_url: profilePicture,
     };
-    await updateUsername({ id: currentUser.id, username });
+    await updateUser(updatedUser);
     const [user] = await getUser(currentUser.id);
     setCurrentUser(user);
-    navigate(`/users/${user.id}`);
+    navigate('/edit');
   };
 
   const logOut = async() => {

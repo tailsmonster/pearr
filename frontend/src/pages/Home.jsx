@@ -1,9 +1,10 @@
 import { getAllPrograms } from "../adapters/program-adapter.js";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, Link,  useNavigate } from "react-router-dom";
 import Waves01SVG from '../components/Waves01SVG.jsx'
 import { useState, useEffect, useContext } from "react";
 
 import "./Home.css";
+import CurrentUserContext from "../contexts/current-user-context.js";
 
 
 
@@ -11,6 +12,7 @@ import "./Home.css";
 export default function HomePage() {
   const [programs, setPrograms] = useState([]);
   const [error, setError] = useState("");
+  const {currentUser} = useContext(CurrentUserContext);
   useEffect(() => {
     const getPrograms = async () => {
       const data = await getAllPrograms();
@@ -38,15 +40,21 @@ export default function HomePage() {
       </section>
 
       <Waves01SVG />
-
+      {
+        (currentUser === null || currentUser.id === -1) &&
       <section id="home-acc-buttons-section">
         <div id="login-signup-buttons">
           {/* <div className="home-space2"></div> */}
           <div className="buttons1"> 
+          <NavLink to='/signup'>
+
             <button id="signup-button" className="raleway">SIGN UP</button>
+          </NavLink>
           </div>
           <div className="buttons2">
+            <NavLink to='/login'>
             <button id="login-button" className="raleway">LOGIN</button>
+            </NavLink>
           </div>
           {/* <div className="home-spacer2"></div> */}
 
@@ -61,6 +69,7 @@ export default function HomePage() {
 
         </div>
       </section>
+}
 
 
       <section id="">

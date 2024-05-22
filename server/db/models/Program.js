@@ -59,17 +59,22 @@ class Program {
     VALUES (?, ?, ?, ?, ?, ?, ?)
     RETURNING *
     `;
-    const { rows } = await knex.raw(query, [
-      name,
-      bio,
-      website_url,
-      borough,
-      organization_id,
-      img_url,
-      color
-    ]);
-    const program = rows[0];
-    return program ? new Program(program) : null;
+    try {
+      const { rows } = await knex.raw(query, [
+        name,
+        bio,
+        website_url,
+        borough,
+        organization_id,
+        img_url,
+        color
+      ]);
+      const program = rows[0];
+      return program ? new Program(program) : null;
+    } catch (e) {
+      console.log(new Error(e));
+      return new Error(e);
+    }
   }
 
   static async update(id, name, bio, website_url, borough, img_url, color) {
@@ -80,17 +85,22 @@ class Program {
     WHERE id = ?
     RETURNING *
     `;
-    const { rows } = await knex.raw(query, [
-      name || oldData.name,
-      bio || oldData.bio,
-      website_url || oldData.websiteUrl,
-      borough || oldData.borough,
-      img_url || oldData.imgUrl,
-      color || oldData.color,
-      id,
-    ]);
-    const program = rows[0];
-    return program ? new Program(program) : null;
+    try {
+
+      const { rows } = await knex.raw(query, [
+        name || oldData.name,
+        bio || oldData.bio,
+        website_url || oldData.websiteUrl,
+        borough || oldData.borough,
+        img_url || oldData.imgUrl,
+        color || oldData.color,
+        id,
+      ]);
+      const program = rows[0];
+      return program ? new Program(program) : null;
+    } catch(e) {
+      return(e);
+    }
   }
 
   static deleteAll() {

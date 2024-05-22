@@ -39,8 +39,8 @@ const AllProgramsPage = () => {
       <h1>ALL PROGRAMS HERE</h1>
       <ul>
         {programs.map((program, idx) => {
-          console.log(program);
-          console.log(currentUser,isOrganization)
+          // console.log(program);
+          // console.log(currentUser,isOrganization)
           return (
             <li key={idx}>
               <div>

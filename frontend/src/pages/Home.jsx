@@ -1,11 +1,13 @@
 import { getAllPrograms } from "../adapters/program-adapter.js";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, Link,  useNavigate } from "react-router-dom";
+
 import Waves01SVG from '../components/Waves01SVG.jsx'
 import Waves02SVG from '../components/Waves02SVG.jsx'
 import KidCompassSVG from '../components/KidCompassSVG.jsx'
 import { useState, useEffect, useContext } from "react";
 
 import "./Home.css";
+import CurrentUserContext from "../contexts/current-user-context.js";
 
 
 
@@ -13,6 +15,7 @@ import "./Home.css";
 export default function HomePage() {
   const [programs, setPrograms] = useState([]);
   const [error, setError] = useState("");
+  const {currentUser} = useContext(CurrentUserContext);
   useEffect(() => {
     const getPrograms = async () => {
       const data = await getAllPrograms();

@@ -11,7 +11,7 @@ programRouter.post("/",checkAuthentication, programControllers.createProgram);
 programRouter.get("/", programControllers.listAllPrograms);
 programRouter.get("/:id",  programControllers.showProgram);
 programRouter.patch("/:id", checkAuthentication, programControllers.updateProgram);
-programRouter.get('/recommends/:id', checkAuthentication, programControllers.getRecommends);
+programRouter.get('/recommends/:id', programControllers.getRecommends);
 programRouter.get('/comments/:id', programControllers.getAllComments)
 programRouter.delete('/:id', checkAuthentication, programControllers.deleteProgram)
 module.exports = programRouter;

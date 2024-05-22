@@ -1,7 +1,8 @@
 const knex = require('../knex');
 
 class Recommend {
-  constructor({ program_id, user_id, recommend }) {
+  constructor({ id, program_id, user_id, recommend }) {
+    this.id = id
     this.program_id = program_id;
     this.user_id = user_id;
     this.recommend = recommend;
@@ -53,8 +54,11 @@ class Recommend {
     const query = `
     UPDATE recommends
     SET recommend = ?
-    WHERE id = ?`;
+    WHERE id = ?
+    RETURNING *`;
     const { rows } = await knex.raw(query, [newRec, id]);
+    console.log("REC UPDATRE", newRec, id);
+    console.log(rows)
     const recommend = rows[0];
     return recommend ? new Recommend(recommend) : null;
   }

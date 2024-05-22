@@ -23,7 +23,9 @@ export default function SiteHeadingAndNav() {
   return <header>
     <div>
       <div className="spacer"></div>
+
       <a id='logo' href='/'>PEAR</a>
+
       <div className="spacer"></div>
     </div>
     <nav>

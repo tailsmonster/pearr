@@ -1,30 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
-.raleway {
-  font-family: "Raleway", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.libre-baskerville-regular {
-  font-family: "Libre Baskerville", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.libre-baskerville-regular-italic {
-  font-family: "Libre Baskerville", serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.libre-baskerville-bold {
+.title-font {
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
   font-style: normal;
 }
 
-.open-sans {
+.normal-font {
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -33,12 +14,13 @@
 }
 
 html {
-  background-color: #fff8cf;
+  background-color: white;
 }
 
 #bnr-section {
   display: flex;
-  background-color: #f5ff9b;
+  flex-direction: column;
+  background-color: #c1d7c3;
   background-attachment: scroll;
   width: 100%;
   top: 0px;
@@ -52,6 +34,9 @@ html {
 }
 #bnr-section #div-section > * {
   flex-shrink: 0; /* Prevent flex items from shrinking and causing horizontal overflow */
+}
+#bnr-section #top-prt {
+  width: 100%;
 }
 #bnr-section #bnr-text-div {
   width: 550px;
@@ -68,7 +53,7 @@ html {
 }
 
 #home-acc-buttons-section {
-  background-color: #452517;
+  background-color: #3d223e;
   padding-left: 10%;
   padding-right: 10%;
   display: flex;
@@ -121,68 +106,74 @@ html {
 }
 
 .wave01 {
-  background-color: #f5ff9b;
+  background-color: #c1d7c3;
 }
 
-.hm-card-0 {
+#hm-programsUl {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+#hm-programsUl .hm-card-0 {
   max-width: 300px;
   border-radius: 0.5rem;
   background-color: yellow;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   border: 1px solid transparent;
+  margin-left: 5%;
+  background-color: #2563EB;
+  color: white;
 }
-.hm-card-0 a {
+#hm-programsUl .hm-card-0 a {
   text-decoration: none;
 }
-
-.hm-card-1 {
+#hm-programsUl .hm-card-1 {
   max-width: 300px;
   border-radius: 0.5rem;
   background-color: #fff;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   border: 1px solid transparent;
-}
-.hm-card-1 a {
-  text-decoration: none;
-}
-
-.hm-card-2 {
-  max-width: 300px;
-  border-radius: 0.5rem;
-  background-color: #fff;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  border: 1px solid transparent;
-}
-.hm-card-2 a {
-  text-decoration: none;
-}
-
-.hm-card-0 {
+  margin-left: 5%;
   padding: 1.1rem;
   background-color: #2563EB;
   color: white;
 }
-
-.hm-card-img {
+#hm-programsUl .hm-card-1 a {
+  text-decoration: none;
+}
+#hm-programsUl .hm-card-2 {
+  max-width: 300px;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+}
+#hm-programsUl .hm-card-2 a {
+  text-decoration: none;
+}
+#hm-programsUl .hm-card-2 {
+  margin-left: 5%;
+  padding: 1.1rem;
+  background-color: #2563EB;
+  color: white;
+}
+#hm-programsUl .hm-card-img {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
   height: 150px;
 }
-
-.hm-card-title {
+#hm-programsUl .hm-card-title {
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 600;
 }
-
-.hm-card-desc {
+#hm-programsUl .hm-card-desc {
   margin-top: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
-
-.action {
+#hm-programsUl .action {
   display: inline-flex;
   margin-top: 1rem;
   color: #ffffff;
@@ -195,12 +186,10 @@ html {
   padding: 4px 8px;
   border-radius: 4px;
 }
-
-.action span {
+#hm-programsUl .action span {
   transition: 0.3s ease;
 }
-
-.action:hover span {
+#hm-programsUl .action:hover span {
   transform: translateX(4px);
 }
 

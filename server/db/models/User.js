@@ -68,7 +68,7 @@ class User {
     const { rows } = await knex.raw(query, [
       username || previousData.username,
       await authUtils.hashPassword(password),
-      pfp_url || previousData.pfpUrl || -1,
+      pfp_url || previousData.pfpUrl,
       id
     ]);
     const updatedUser = rows[0];

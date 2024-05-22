@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate, NavLink } from "react-router-dom";
 import { logUserIn,logOrganizationIn } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import "./Login.css";
@@ -86,7 +86,7 @@ export default function LoginPage() {
                 </form>
                 {!!errorText && <p className="has-text-danger">{errorText}</p>}
                 <p className="has-text-centered">
-                  New? <a href="/signup">Sign up today!</a>
+                  New? <NavLink to="/signup">Sign up today!</NavLink>
                 </p>
               </div>
             </div>

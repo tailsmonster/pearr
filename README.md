@@ -1,4 +1,4 @@
-# PEAR NYC
+# PEAR
 
 > PEAR is an application that helps low-income families find enrichment programs for their children to support their development and close the achievement and play gap.
 

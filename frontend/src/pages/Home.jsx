@@ -10,6 +10,19 @@ import "./Home.css";
 import CurrentUserContext from "../contexts/current-user-context.js";
 
 
+const nameTextLimiter3000 = (str) => {
+  if (str.length > 26) {
+    str = str.substring(0, 26) + '...';
+  }
+  return str;
+}
+
+const descTextLimiter3000 = (str) => {
+  if (str.length > 300) {
+    str = str.substring(0, 256) + '...';
+  }
+  return str;
+}
 
 
 export default function HomePage() {
@@ -87,9 +100,9 @@ export default function HomePage() {
                     </div>
                     <div className={`hm-card-content`}>
                       <a href="#">
-                        <span className={`hm-card-title`}>{program.name}</span>
+                        <span className={`hm-card-title`}>{nameTextLimiter3000(program.name)}</span>
                       </a>
-                      <p className={`hm-card-desc`}>{program.bio}
+                      <p className={`hm-card-desc`}>{descTextLimiter3000(program.bio)}
                       </p>
 
                       <a className="action" href="">

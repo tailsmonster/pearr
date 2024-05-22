@@ -22,9 +22,9 @@ export default function SiteHeadingAndNav() {
   },[])
   return <header>
     <div>
-      <div class="spacer"></div>
+      <div className="spacer"></div>
       <a id='logo' href='/'>PEACH</a>
-      <div class="spacer"></div>
+      <div className="spacer"></div>
     </div>
     <nav>
       <ul>

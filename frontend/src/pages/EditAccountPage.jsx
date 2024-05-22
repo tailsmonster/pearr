@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
 import { getUser, updateUser } from '../adapters/user-adapter';
 import { logUserOut } from '../adapters/auth-adapter';
-import { checkForLoggedInUser } from '../adapters/auth-adapter';
-import {getOrganization} from "../adapters/organization-adapter"
+import {getOrganization, updateOrganization} from "../adapters/organization-adapter"
 
 export default function EditAccountPage() {
   const { currentUser, isOrganization, setIsOrganization, setCurrentUser } = useContext(CurrentUserContext);
@@ -13,29 +12,6 @@ export default function EditAccountPage() {
   const [password, setPassword] = useState('');
   const [profilePicture, setProfilePicture] = useState('');
   // console.log(currentUser);
-  
-  useEffect(() => {
-    const getAccount = async () => {
-      const [org, id] = await checkForLoggedInUser();
-      console.log(org, id);
-      if (id === -1) {
-        setIsOrganization(false);
-        setCurrentUser(null);
-        return navigate('/access-denied')
-      }
-      if (org) {
-        setIsOrganization(true);
-        const [organization] = await getOrganization(id);
-        console.log(organization);
-        return setCurrentUser(organization);
-      }
-      setIsOrganization(false);
-      const [user] = await getUser(id);
-      console.log(user);
-      return setCurrentUser(user);
-    };
-    getAccount();
-  },[])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,10 +21,17 @@ export default function EditAccountPage() {
       password,
       pfp_url: profilePicture,
     };
+    if (!isOrganization) {
     await updateUser(updatedUser);
     const [user] = await getUser(currentUser.id);
     setCurrentUser(user);
+    } else {
+      const [organization] = await updateOrganization(updatedUser);
+      setCurrentUser(organization);
+    }
     navigate('/edit');
+    setUsername('');
+    setPassword('');
   };
 
   const logOut = async() => {

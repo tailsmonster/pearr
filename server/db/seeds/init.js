@@ -230,8 +230,8 @@ exports.seed = async (knex) => {
   });
   await Recommend.create({
     program_id: 1,
-    user_id: 1,
-    recommend: false
+    user_id: 2,
+    recommend: true
   });
   await Recommend.create({
     program_id: 2,

@@ -22,4 +22,4 @@ export const getAllRecommendsOfUser = async (id) => {
 export const doesRecommendExist = async (programId, userId) =>
   await fetchHandler(`${baseUrl}/check?program=${programId}&user=${userId}`);
 
-export const updateRecommend = async(recommendId,recommend) => await fetchHandler(`${baseUrl}/${recommendId}`,getPatchOptions({recommend}))
+export const updateRecommend = async(recommendId,recommend) => await fetchHandler(`${baseUrl}/${recommendId}`,getPatchOptions({recommend}));

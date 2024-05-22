@@ -19,17 +19,22 @@ exports.createProgram = async (req, res) => {
   const isAvailable = (await Program.findByName(name)) === null;
   if (!isAvailable) return res.sendStatus(400);
 
-  const program = await Program.create(
-    name,
-    bio,
-    website_url,
-    borough,
-    organization_id,
-    img_url,
-    color,
-    rating,
-  );
-  res.send(program);
+  try {
+    const program = await Program.create(
+      name,
+      bio,
+      website_url,
+      borough,
+      organization_id,
+      img_url,
+      color,
+      rating,
+    );
+    res.send(program)
+  } catch (e) {
+    console.log(e);
+    res.send(e);
+  }
 };
 
 exports.showProgram = async (req, res) => {
@@ -59,6 +64,7 @@ exports.listAllPrograms = async (req,res) => {
 exports.getRecommends = async (req, res) => {
   const { id } = req.params;
   const recommends = await Program.getRecommends(id);
+  console.log(recommends);
   res.send(recommends);
 };
 

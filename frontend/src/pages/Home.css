@@ -1,8 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+.bg-brown {
+  background-color: #452517;
+}
+
 .title-font {
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
   font-style: normal;
+}
+
+.subtitle-font {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 40px;
+  margin: 20px 10%;
 }
 
 .normal-font {
@@ -14,7 +26,7 @@
 }
 
 html {
-  background-color: white;
+  background-color: #c1d7c3;
 }
 
 #bnr-section {
@@ -48,7 +60,7 @@ html {
   color: black;
 }
 #bnr-section #bnr-text-div #bnr-subtitle {
-  font-size: 20px;
+  font-size: 40px;
 }
 
 #home-acc-buttons-section {
@@ -94,7 +106,6 @@ html {
   background: #81a664;
   border: none;
   border-radius: 50px;
-  color: white;
   outline: none;
   cursor: pointer;
   transition: all 0.4s;
@@ -102,7 +113,6 @@ html {
 #home-acc-buttons-section #login-signup-buttons #login-button:hover {
   box-shadow: inset 0 0 0 2px white;
   background: #073b4c;
-  color: #fff;
 }
 
 .wave01 {
@@ -112,49 +122,23 @@ html {
 #hm-programsUl {
   display: flex;
   width: 100%;
-  flex-direction: row;
+  justify-content: space-evenly;
 }
-#hm-programsUl .hm-card-0 {
+#hm-programsUl .hm-card {
   max-width: 300px;
   border-radius: 0.5rem;
-  background-color: yellow;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  border: 1px solid transparent;
-  margin-left: 5%;
-  background-color: #2563EB;
-  color: white;
-}
-#hm-programsUl .hm-card-0 a {
-  text-decoration: none;
-}
-#hm-programsUl .hm-card-1 {
-  max-width: 300px;
-  border-radius: 0.5rem;
-  background-color: #fff;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   border: 1px solid transparent;
   margin-left: 5%;
   padding: 1.1rem;
-  background-color: #2563EB;
   color: white;
 }
-#hm-programsUl .hm-card-1 a {
+#hm-programsUl .hm-card a {
   text-decoration: none;
 }
-#hm-programsUl .hm-card-2 {
-  max-width: 300px;
-  border-radius: 0.5rem;
-  background-color: #fff;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  border: 1px solid transparent;
-}
-#hm-programsUl .hm-card-2 a {
-  text-decoration: none;
-}
-#hm-programsUl .hm-card-2 {
+#hm-programsUl .hm-card {
   margin-left: 5%;
   padding: 1.1rem;
-  background-color: #2563EB;
   color: white;
 }
 #hm-programsUl .hm-card-img {

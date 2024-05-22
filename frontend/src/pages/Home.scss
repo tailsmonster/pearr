@@ -2,21 +2,37 @@ $text-white: white;
 $text-black: black;
 $green-1: #c1d7c3;
 $green-2: #d7dbb6;
-$beige-1: white;
+// $beige-1: white;
 $yellow-1: #ffe760;
 $orange-1: #d78050;
-$brown: #3d223e;
+$brown: #452517;
 
 $header-font-size: 50px;
-$subtitle-font-size: 20px;
+$subtitle-font-size: 40px;
+$normal-font-size: 20px;
 
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+.bg-brown {
+  background-color: $brown;
+}
+
 
 
 .title-font {
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
   font-style: normal;
+}
+
+
+.subtitle-font {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: $subtitle-font-size;
+  margin: 20px 10%;
+  
 }
 
 .normal-font {
@@ -31,7 +47,7 @@ $subtitle-font-size: 20px;
 
 
 html {
-  background-color:$beige-1;
+  background-color:$green-1;
   // font-family: 'Roboto', sans-serif; /* Use Roboto font for body text */
 }
 
@@ -135,7 +151,7 @@ html {
       background: #81a664;
       border: none;
       border-radius: 50px;
-      color: white;
+      // color: white;
       outline: none;
       cursor: pointer;
       transition: all 0.4s;
@@ -148,7 +164,7 @@ html {
                   // inset 0 0 0 12px #06d6a0,
                   // inset 0 0 0 16px #118ab2;
       background: #073b4c;
-      color: #fff;
+      // color: #fff;
     }
   }
 
@@ -161,25 +177,12 @@ html {
 #hm-programsUl {
   display: flex;
   width:100%;
-  flex-direction: row;
-  .hm-card-0 {
+  // flex-direction: row;
+  justify-content: space-evenly;
+  .hm-card {
     max-width: 300px;
     border-radius: 0.5rem;
-    background-color: yellow;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    border: 1px solid transparent;
-    a {
-      text-decoration: none
-    }
-    margin-left: 5%;
-    // padding: 1.1rem;
-    background-color: #2563EB;
-    color:white;
-  }
-  .hm-card-1 {
-    max-width: 300px;
-    border-radius: 0.5rem;
-    background-color: #fff;
+    // background-color: #fff;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     border: 1px solid transparent;
     a {
@@ -187,28 +190,17 @@ html {
     }
     margin-left: 5%;
     padding: 1.1rem;
-    background-color: #2563EB;
+    // background-color: #2563EB;
     color:white;
   }
-  .hm-card-2 {
-    max-width: 300px;
-    border-radius: 0.5rem;
-    background-color: #fff;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    border: 1px solid transparent;
-    a {
-      text-decoration: none
-    }
-  }
-  
+
   
 
-  .hm-card-1 {
-  }
-  .hm-card-2 {
+
+  .hm-card {
     margin-left: 5%;
     padding: 1.1rem;
-    background-color: #2563EB;
+    // background-color: #2563EB;
     color:white;
   }
   

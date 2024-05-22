@@ -43,6 +43,8 @@ export default function HomePage() {
             {/* <img src="https://www.freeiconspng.com/thumbs/kids-png/kids-png--8.png" alt="" /> */}
           </div>
         </div>
+        {
+          currentUser === null &&
         <section id="home-acc-buttons-section">
           <div id="login-signup-buttons">
             {/* <div className="home-space2"></div> */}
@@ -59,36 +61,38 @@ export default function HomePage() {
             {/* <div className="home-spacer2"></div> */}
           </div>
         </section>
+}
       </section>
 
-      <Waves01SVG />
+      <div className="bg-brown">
+        <Waves01SVG />
+        <Waves02SVG />
+      </div>
 
-
-      <Waves02SVG />
 
 
 
       <section id="hm-programs-section">
-        <h3>Recently Added:</h3>
-        <div id="hm-programsUl">
+        <h2 className="subtitle-font">Recently Added:</h2>
+    
           {/* <img src={programs[programs.length - 1].imgUrl} alt="hi" /> */}
 
-          <ul>
+          <div id="hm-programsUl">
             {programs.map((program, idx) => {
               return (
-                <li key={idx}>
-                  <div className={`hm-card-${idx}`}>
+                <div key={idx}>
+                  <div className={`hm-card`}>
                     <div className={`hm-card-img`}>
                       <img className={`hm-card-img`}src={program.imgUrl} alt={program.name} />
                     </div>
-                    <div className={`hm-card-content-${idx}`}>
+                    <div className={`hm-card-content`}>
                       <a href="#">
                         <span className={`hm-card-title`}>{program.name}</span>
                       </a>
                       <p className={`hm-card-desc`}>{program.bio}
                       </p>
 
-                      <a className="action" href="#">
+                      <a className="action" href="">
                         Find out more
                         <span aria-hidden="true">
                           →
@@ -103,10 +107,10 @@ export default function HomePage() {
                     <Link to={`/programs/${program.id}`}>{program.name}</Link>
                     <p>{program.name}</p>
                   </div> */}
-                </li>
+                </div>
               );
             })}
-          </ul>
+   
 
         </div>
       </section>

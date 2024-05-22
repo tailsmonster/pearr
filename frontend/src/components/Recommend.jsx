@@ -1,15 +1,18 @@
 import { createRecommend, doesRecommendExist, updateRecommend } from "../adapters/recommend-adapter";
 
-const Recommend = ({programId, userId}) => {
+const Recommend = ({programId, userId, update}) => {
   const handleChange = async (e) => {
     const recommend = e.target.value === "Yes";
     const [recommendation,error] = await doesRecommendExist(programId,userId)
-
+    
     if (!recommendation) {
-      await createRecommend({programId, userId, recommend});
+      const [updated] = await createRecommend({programId, userId, recommend});
+      console.log(updated)
     } else {
-      await updateRecommend(recommendation.program_id,recommend)
+      const [updated] = await updateRecommend(recommendation.id,recommend)
+      console.log(updated)
     }
+    update()
   }
 
   return (

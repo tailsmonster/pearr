@@ -7,13 +7,15 @@ import {
   getAllProgramComments,
   updateComment,
 } from "../adapters/comment-adapter";
+import {doesRecommendExist} from "../adapters/recommend-adapter"
 
-const Comment = ({ comment ,update }) => {
+const Comment = ({ comment , update }) => {
   const [author, setAuthor] = useState("");
   const [editing, setEditing] = useState(false);
   const [body, setBody] = useState(comment.body);
   const { isOrganization, currentUser } = useContext(CurrentUserContext);
   const [confirm, setConfirm] = useState(false);
+  const [recommend, setRecommend] = useState(false);
 
   useEffect(() => {
     setEditing(false)
@@ -22,6 +24,10 @@ const Comment = ({ comment ,update }) => {
         ? await getUser(comment.user_id)
         : await getOrganization(comment.organization_id);
       setAuthor(user.username);
+      if (comment.user_id) {
+      const [recommend] = await doesRecommendExist(comment.program_id, comment.user_id)
+      setRecommend(recommend);
+      }
     };
     getAuthor();
     setBody(comment.body)
@@ -30,7 +36,6 @@ const Comment = ({ comment ,update }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (body === comment.body) {
-      return setEditing((pre) => !pre);
       return setEditing((pre) => !pre);
     }
     const updatedComment = await updateComment(comment.id, body);
@@ -53,6 +58,7 @@ const Comment = ({ comment ,update }) => {
   return (
     <>
       <li>
+        <p>{recommend && `${recommend.recommend}`}</p>
         {author}:{" "}
         {!editing ? (
           comment.body

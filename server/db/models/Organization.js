@@ -55,8 +55,8 @@ class Organization {
     SELECT * FROM programs
     WHERE organization_id = ?
     `;
-    const { rows } = knex.raw(query, [id]);
-    return rows.map((program) => new Program(program));
+    const { rows } = await knex.raw(query, [id]);
+    return rows.map (program => new Program(program));
   }
 
   static async update(id, username, password, pfp_url) {
@@ -69,9 +69,7 @@ class Organization {
     `;
     const { rows } = await knex.raw(query, [
       username || oldData.username,
-      password
-        ? authUtils.hashPassword(password)
-        : oldData.#passwordHash,
+      await authUtils.hashPassword(password),
       pfp_url || oldData.pfpUrl,
       id,
     ]);

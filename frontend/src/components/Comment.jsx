@@ -79,6 +79,7 @@ const Comment = ({ comment , update }) => {
             )}
             {confirm && (
               <>
+              <h3>Are you sure?</h3>
                 <button onClick={() => setConfirm(false)}>Cancel</button>
                 <button onClick={handleDelete}>Confirm</button>
               </>

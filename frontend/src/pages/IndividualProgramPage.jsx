@@ -14,8 +14,10 @@ const IndividualProgramPage = () => {
   const { id } = useParams();
   const [programInfo, setProgramInfo] = useState([]);
   const [comments, setComments] = useState([]);
+
   const [rating, setRating] = useState(null);
   const [allRecommends, setAllRecommends] = useState([]);
+
   const navigate = useNavigate();
 
   const update = async () => {
@@ -85,15 +87,18 @@ const IndividualProgramPage = () => {
         </div>
       </section>
 
+
       {currentUser !== null && !isOrganization && currentUser.id !== -1 && (
         <Recommend programId={id} userId={currentUser.id} update={update} />
       )}
+      
       {currentUser !== null && currentUser.id !== -1 && (
         <MakeComment id={+id} setComments={setComments} />
       )}
 
       <section id="comments">
         <ul>
+
           {comments?.map((comment, idx) => (
             <Comment
               key={idx}

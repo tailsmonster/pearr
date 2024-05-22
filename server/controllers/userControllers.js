@@ -33,7 +33,7 @@ exports.showUser = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-  const { username,password, pfp_url } = req.body;
+  const { username, password, pfp_url } = req.body;
   const { id } = req.params;
 
   // Not only do users need to be logged in to update a user, they

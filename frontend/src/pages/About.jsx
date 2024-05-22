@@ -5,11 +5,12 @@ const AboutUs = () => {
     <section className="section">
       <div className="container">
         <div className="columns is-centered">
-          <div className="column is-8">
-            <h1 className="title font has-text-centered">About Us</h1>
+          <div className="column is-8 abt-box">
+            <h1 className="title font has-text-centered abt-us-txt" >About Us</h1>
+            <div style={{margin: '0 20px'}}>
             <div className="content">
-              <h2 className="subtitle font">Project Purpose</h2>
-              <p>
+              <h2 className="subtitle font" style={{fontSize:'35px', margin: '10px 0', textAlign: 'center'}}>Project Purpose</h2>
+              <p className="abt-text">
                 PEAR NYC is a project aimed at connecting low-income families in
                 New York City with affordable and enriching extracurricular
                 activities for their children. Our goal is to bridge the
@@ -28,9 +29,9 @@ const AboutUs = () => {
             </div>
             <div className="columns">
               <div className="column">
-                <h2 className="subtitle font">Our Team</h2>
+                <h2 className="subtitle font" style={{fontSize:'35px', margin: '10px 0', textAlign: 'center'}}>Our Team</h2>
               <div className="column">
-                <figure className="image is-3by2">
+                <figure className="image is-3by2" style={{display: 'flex', justifyContent: 'center', padding: '20px 0'}}>
                   <img src="https://media.discordapp.net/attachments/1232393999294140529/1242615128835489853/IMG_2810.png?ex=664f23c5&is=664dd245&hm=de354378f84aadae9bc46c0a91c1794f495c6a175458e1cea355e66b244f3289&=&format=webp&quality=lossless&width=960&height=443" alt="Group Picture" />
                 </figure>
               </div>
@@ -43,27 +44,6 @@ const AboutUs = () => {
                 </p>
               </div>
             </div>
-            <div className="content">
-              <h2 className="subtitle">Contact Us</h2>
-              <p>
-                If you have any questions, feedback, or would like to get
-                involved with PEAR NYC, please feel free to reach out to us:
-              </p>
-              <ul>
-                <li>
-                  Email: <a href="mailto:info@pearnyc.org">info@pearnyc.org</a>
-                </li>
-                <li>
-                  LinkedIn:{" "}
-                  <a
-                    href="https://www.linkedin.com/company/pear-nyc"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    PEAR NYC
-                  </a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>

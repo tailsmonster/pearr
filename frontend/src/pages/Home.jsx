@@ -99,18 +99,18 @@ export default function HomePage() {
                       <img className={`hm-card-img`}src={program.imgUrl} alt={program.name} />
                     </div>
                     <div className={`hm-card-content`}>
-                      <a href="#">
+                      <NavLink to={`/opportunities/${program.id}`}>
                         <span className={`hm-card-title`}>{nameTextLimiter3000(program.name)}</span>
-                      </a>
+                      </NavLink>
                       <p className={`hm-card-desc`}>{descTextLimiter3000(program.bio)}
                       </p>
-
-                      <a className="action" href="">
+                      
+                      <NavLink className="action" to={`/opportunities/${program.id}`}>
                         Find out more
                         <span aria-hidden="true">
                           →
                         </span>
-                      </a>
+                      </NavLink>
                     </div>
                   </div>
 

@@ -32,7 +32,7 @@ export default function SiteHeadingAndNav() {
       <ul>
         <li><NavLink to='/'>HOME</NavLink></li>
         <li><NavLink to='/about'>ABOUT</NavLink></li>
-        <li><NavLink to='/programs'>OPPORTUNITIES</NavLink></li>
+        <li><NavLink to='/opportunities'>OPPORTUNITIES</NavLink></li>
         {
           currentUser
             ? 

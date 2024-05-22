@@ -45,7 +45,7 @@ const AllProgramsPage = () => {
             <li key={idx}>
               <div>
                 <img id="li-thumbnail" src={program.imgUrl} alt={program.id} />
-                <Link to={`/programs/${program.id}`}>{program.name}</Link>
+                <Link to={`/opportunities/${program.id}`}>{program.name}</Link>
                 {currentUser !== null && isOrganization && program.organizationId === currentUser.id && <NavLink to={`/programs/${program.id}/edit`}><button>Edit</button></NavLink>}
                 {/* <p>{program.name}</p> */}
               </div>
@@ -54,7 +54,7 @@ const AllProgramsPage = () => {
         })}
       </ul>
       {isOrganization && 
-      <Link to="/programs/add">
+      <Link to="/opportunities/add">
         <button>Add Program Button</button>
       </Link>
       }

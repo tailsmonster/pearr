@@ -14,7 +14,7 @@ const AllProgramsPage = () => {
 
   const [programs, setPrograms] = useState([]);
   const [error, setError] = useState("");
-  const {isOrganization, currentUser, setCurrentUser} = useContext(CurrentUserContext);
+  const {isOrganization, currentUser, setCurrentUser, setIsOrganization} = useContext(CurrentUserContext);
 
   const nameTextLimiter3000 = (str) => {
   if (str.length > 26) {
@@ -33,6 +33,7 @@ const AllProgramsPage = () => {
   useEffect(() => {
     const getThePrograms = async () => {
     const [org,id] = await checkForLoggedInUser();
+    setIsOrganization(org);
       if (org) {
         const [organization] = await getOrganization(id);
         setCurrentUser(organization);

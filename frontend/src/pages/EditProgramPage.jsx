@@ -51,12 +51,12 @@ export default function EditProgramPage() {
       organization_id : currentUser.id
     };
     await updateProgram(updatedProgram);
-    navigate(`/programs`);
+    navigate(`/opportunities`);
   };
 
   const handleDelete = async () => {
     const organization = await deleteProgram(id);
-    return navigate('/programs')
+    return navigate('/opportunities')
   }
 
   if (!program) {

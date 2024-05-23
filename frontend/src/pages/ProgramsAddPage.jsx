@@ -40,7 +40,7 @@ const ProgramsAddPage = () => {
       color,
     };
     await createProgram(newProgram);
-    navigate('/programs');
+    navigate('/opportunities');
   };
 
   return (

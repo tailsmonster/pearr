@@ -127,9 +127,16 @@ const AllProgramsPage = () => {
           );
         })}
       {isOrganization && 
-      <Link to="/opportunities/add">
-        <button>Add Program Button</button>
-      </Link>
+      <div className="programsection">
+        <Link to="/opportunities/add" >
+          {/* <button>Add Program Button</button> */}
+          <div className="add-program-button">
+            <button className="add-programs">
+              <span className="add-prgrm-text">+</span>
+            </button>
+          </div>
+        </Link>
+      </div>
       }
     </>
   );

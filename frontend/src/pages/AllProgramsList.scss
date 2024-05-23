@@ -203,3 +203,44 @@ $normal-font-size: 20px;
     align-items: center;
     justify-content: center;
   }
+
+  // .programsection {
+  //   display: flex;
+  //   align-items: center;
+  // }
+
+  .add-program-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+    // width: 10em;
+    height: 5em;
+    border-radius: 5px;
+    
+    .add-programs {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      width: 2.7em;
+      height: 2.7em;
+      border-radius: 10px;
+      background-color: $green-2;
+      color: white;
+
+      font-family: "Libre Baskerville", serif;
+      font-weight: 600;
+      font-style: normal;
+      font-size: 50px;
+      margin: 20px 10%;
+      margin-top: 150px;
+      
+      border: none;
+      outline: none;
+      // background-color: #c7c3c0;
+      // box-shadow: rgba(0, 0, 0, 0.377) 10px 10px 8px,
+      //   #ffffff 1.5px 1.5px 2px 0px inset, #c7c3c0 -3.2px -3.2px 8px 0px inset;
+      // cursor: pointer;
+      // font-family: Montserrat;
+      transition: 0.1s ease-in-out;
+    }
+  }

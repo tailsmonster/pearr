@@ -1,6 +1,7 @@
+// Login.jsx
 import { useContext, useState } from "react";
 import { useNavigate, Navigate, NavLink } from "react-router-dom";
-import { logUserIn,logOrganizationIn } from "../adapters/auth-adapter";
+import { logUserIn, logOrganizationIn } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import "./Login.css";
 
@@ -30,18 +31,18 @@ export default function LoginPage() {
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-5-tablet is-4-desktop is-3-widescreen">
-              <h1 className="title has-text-centered">PEAR NYC</h1>
-              <div className="box">
+              <div className="box login-box">
+                <h1 className="title has-text-centered pear-nyc-title">PEAR NYC</h1>
                 <h2 className="subtitle has-text-centered">Login</h2>
                 <div className="buttons is-centered">
                   <button
-                    className={`button ${!isOrganization ? "is-user" : ""}`}
+                    className={`button ${!isOrganization ? "is-user" : "is-light"}`}
                     onClick={() => setIsOrganization(false)}
                   >
                     User
                   </button>
                   <button
-                    className={`button ${isOrganization ? "is-organization" : ""}`}
+                    className={`button ${isOrganization ? "is-organization" : "is-light"}`}
                     onClick={() => setIsOrganization(true)}
                   >
                     Organization
@@ -59,6 +60,7 @@ export default function LoginPage() {
                         id="username"
                         name="username"
                         className="input"
+                        placeholder={isOrganization ? "Enter organization name" : "Enter username"}
                       />
                     </div>
                   </div>
@@ -73,6 +75,7 @@ export default function LoginPage() {
                         id="password"
                         name="password"
                         className="input"
+                        placeholder="Enter password"
                       />
                     </div>
                   </div>

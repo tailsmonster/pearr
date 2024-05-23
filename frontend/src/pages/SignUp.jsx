@@ -1,3 +1,4 @@
+// SignUp.jsx
 import { useContext, useState } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
@@ -24,14 +25,13 @@ export default function SignUpPage() {
     let user, error;
     if (isOrgSignUp) {
       setIsOrganization(true);
-      [user,error] = await createOrganization({ username, password, pfp_url: "aig" });
+      [user, error] = await createOrganization({ username, password, pfp_url: "aig" });
     } else {
       setIsOrganization(false);
-      [user,error] = await createUser({ username, password });
+      [user, error] = await createUser({ username, password });
     }
     if (error) return setErrorText(error.message);
     setCurrentUser(user);
-    // setIsOrganization(isOrgSignUp);
     navigate("/");
   };
 
@@ -47,18 +47,18 @@ export default function SignUpPage() {
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-5-tablet is-4-desktop is-3-widescreen">
-              <h1 className="title has-text-centered">PEAR NYC</h1>
-              <div className="box">
+              <div className="box signup-box">
+                <h1 className="title has-text-centered pear-nyc-title">PEAR NYC</h1>
                 <h2 className="subtitle has-text-centered">Sign Up</h2>
                 <div className="buttons is-centered">
                   <button
-                    className={`button ${!isOrgSignUp ? "is-user" : ""}`}
+                    className={`button ${!isOrgSignUp ? "is-user" : "is-light"}`}
                     onClick={() => setIsOrgSignUp(false)}
                   >
                     User
                   </button>
                   <button
-                    className={`button ${isOrgSignUp ? "is-organization" : ""}`}
+                    className={`button ${isOrgSignUp ? "is-organization" : "is-light"}`}
                     onClick={() => setIsOrgSignUp(true)}
                   >
                     Organization
@@ -82,6 +82,7 @@ export default function SignUpPage() {
                         onChange={handleChange}
                         value={username}
                         className="input"
+                        placeholder={isOrgSignUp ? "Enter organization name" : "Enter username"}
                       />
                     </div>
                   </div>
@@ -96,6 +97,7 @@ export default function SignUpPage() {
                         onChange={handleChange}
                         value={password}
                         className="input"
+                        placeholder="Enter password"
                       />
                     </div>
                   </div>

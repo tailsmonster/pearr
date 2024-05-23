@@ -32,7 +32,7 @@ const IndividualProgramPage = () => {
         return navigate("/opportunities");
 
       const [program] = await getProgramById(id);
-      if (program === null) navigate("/programs");
+      if (program === null) navigate("/opportunities");
       if (program) setProgramInfo(program);
 
       const [commentData, error] = await getAllProgramComments(id);

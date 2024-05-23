@@ -112,6 +112,7 @@
   padding: 20px;
   gap: 3px;
   background-color: rgba(124, 124, 122, 0.09);
+  border-radius: 10px;
 }
 #info #tp #p2 #comments #all-comments .single-comment .edited {
   color: #9c9b9b;

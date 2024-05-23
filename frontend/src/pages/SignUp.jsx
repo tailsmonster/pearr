@@ -32,7 +32,7 @@ export default function SignUpPage() {
     }
     if (error) return setErrorText(error.message);
     setCurrentUser(user);
-    navigate("/");
+    navigate("/opportunities");
   };
 
   const handleChange = (event) => {
@@ -71,7 +71,7 @@ export default function SignUpPage() {
                 >
                   <div className="field">
                     <label htmlFor="username" className="label">
-                      {isOrgSignUp ? "Organization Name" : "Username"}
+                      {isOrgSignUp ? "Organization Name:" : "Username:"}
                     </label>
                     <div className="control">
                       <input
@@ -87,7 +87,7 @@ export default function SignUpPage() {
                     </div>
                   </div>
                   <div className="field">
-                    <label htmlFor="password" className="label">Password</label>
+                    <label htmlFor="password" className="label">Password:</label>
                     <div className="control">
                       <input
                         autoComplete="off"

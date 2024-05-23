@@ -60,15 +60,20 @@ $normal-font-size: 20px;
     }
     #p2 {
       display: flex;
-      // width: 500px;
+      margin: 1rem auto;
+      width: 54%;
       flex-direction: column;
-      .prgmInfoAbt {
+      gap: 1rem;
+      .prgInfoAbt {
         display: flex;
         flex-direction: column;
         align-items: center;
-        
-        margin: 50;
-        width: 25%;
+        margin: .5rem auto;
+        width: 90%;
+        #about-text {
+          align-self: center;
+          justify-self: center;
+        }
       }
     }
   }
@@ -85,6 +90,7 @@ $normal-font-size: 20px;
 #comments {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
 }
 
 #comments ul {

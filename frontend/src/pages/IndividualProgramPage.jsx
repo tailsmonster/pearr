@@ -1,13 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useRef, useContext } from "react";
 import { getProgramById } from "../adapters/program-adapter";
-import "./IndividualProgramPage.css";
 import { getAllProgramComments } from "../adapters/comment-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import MakeComment from "../components/MakeComment";
 import Comment from "../components/Comment";
 import Recommend from "../components/Recommend";
 import { getAllRecommendsOfProgram } from "../adapters/recommend-adapter";
+import "./IndividualProgramPage.css";
 
 const IndividualProgramPage = () => {
   const { currentUser, isOrganization } = useContext(CurrentUserContext);
@@ -64,37 +64,39 @@ const IndividualProgramPage = () => {
               alt={`${programInfo} picture!`}
             />
           </div>
-          <div className="p2">
-            <div className="prgInfoAbt">
-              <h4>About:</h4>
-              <p>{programInfo.bio}</p>
-              <br />
+          <div id="p2">
+            <div id="program-info">
+              <div className="prgInfoAbt">
+                <h4 id="about-text">About:</h4>
+                <p>{programInfo.bio}</p>
+              </div>
+              <div className="prgmInfoSameLine">
+                <h4>Location:</h4>
+                <p>{programInfo.borough}</p>
+              </div>
+              <div className="prgmInfoSameLine">
+                <h4>Website:</h4>
+                <a ref={useRef(programInfo.websiteUrl)}>
+                  {programInfo.websiteUrl}
+                </a>
+              </div>
+              <div id="rating" className="prgmInfoSameLine">
+                <h4>Rating:</h4>
+                <p>
+                  {allRecommends.length !== 0
+                    ? (
+                        allRecommends.reduce(
+                          (pre, curr) => (curr.recommend ? pre + 1 : pre),
+                          0
+                        ) / allRecommends.length
+                      ).toFixed(2) *
+                        100 +
+                      "%"
+                    : "N/A"}
+                </p>
+              </div>
             </div>
-            <div className="prgmInfoSameLine">
-              <h4>Location:</h4>
-              <p>{programInfo.borough}</p>
-            </div>
-            <div className="prgmInfoSameLine">
-              <h4>Website:</h4>
-              <a ref={useRef(programInfo.websiteUrl)}>
-                {programInfo.websiteUrl}
-              </a>
-            </div>
-            <div id="rating" className="prgmInfoSameLine">
-              <h4>Rating:</h4>
-              <p>
-                {allRecommends.length !== 0
-                  ? (
-                      allRecommends.reduce(
-                        (pre, curr) => (curr.recommend ? pre + 1 : pre),
-                        0
-                      ) / allRecommends.length
-                    ).toFixed(2) *
-                      100 +
-                    "%"
-                  : "N/A"}
-              </p>
-            </div>
+
             {currentUser !== null &&
               !isOrganization &&
               currentUser.id !== -1 && (
@@ -109,6 +111,9 @@ const IndividualProgramPage = () => {
       </section>
 
       <section id="comments">
+        {currentUser !== null && !isOrganization && currentUser.id !== -1 && (
+          <MakeComment />
+        )}
         <ul>
           {comments?.map((comment, idx) => (
             <Comment

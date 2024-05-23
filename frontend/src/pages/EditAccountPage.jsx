@@ -95,7 +95,7 @@ export default function EditAccountPage() {
             </div>
           </div>
         </form>
-      <button onClick={logOut}>Log Out</button>
+      <button id='logout' onClick={logOut}>Log Out</button>
       </div>
     </section>
   );

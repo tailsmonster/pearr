@@ -96,30 +96,31 @@ export default function HomePage() {
                 <div key={idx}>
                   <div className={`hm-card`}>
                     <div className={`hm-card-img`}>
-                      <img className={`hm-card-img`}src={program.imgUrl} alt={program.name} />
+                      <img
+                        className={`hm-card-img`}
+                        src={program.imgUrl}
+                        alt={program.name}
+                      />
                     </div>
                     <div className={`hm-card-content`}>
-
                       <NavLink to={`/opportunities/${program.id}`}>
-
-                        <span className={`hm-card-title`}>{nameTextLimiter3000(program.name)}</span>
+                        <span className={`hm-card-title`}>
+                          {nameTextLimiter3000(program.name)}
+                        </span>
                       </NavLink>
-                      <p className={`hm-card-desc`}>{descTextLimiter3000(program.bio)}
+                      <p className={`hm-card-desc`}>
+                        {descTextLimiter3000(program.bio)}
                       </p>
 
-
-                      <NavLink className="action" to={`/programs/${program.id}`}>
-
-                      
-
+                      <NavLink
+                        className="action"
+                        to={`/opportunities/${program.id}`}
+                      >
                         Find out more
-                        <span aria-hidden="true">
-                          →
-                        </span>
+                        <span aria-hidden="true">→</span>
                       </NavLink>
                     </div>
                   </div>
-
 
                   {/* <div>
                     <img id="li-thumbnail" src={program.imgUrl} alt={program.id} />

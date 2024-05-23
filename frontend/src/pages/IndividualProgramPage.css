@@ -47,14 +47,21 @@
 }
 #info #tp #p2 {
   display: flex;
+  margin: 1rem auto;
+  width: 54%;
   flex-direction: column;
+  gap: 1rem;
 }
-#info #tp #p2 .prgmInfoAbt {
+#info #tp #p2 .prgInfoAbt {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50;
-  width: 25%;
+  margin: 0.5rem auto;
+  width: 90%;
+}
+#info #tp #p2 .prgInfoAbt #about-text {
+  align-self: center;
+  justify-self: center;
 }
 
 .prgmInfoSameLine {
@@ -68,6 +75,7 @@
 #comments {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
 }
 
 #comments ul {

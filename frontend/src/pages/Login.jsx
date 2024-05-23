@@ -20,7 +20,7 @@ export default function LoginPage() {
       : await logUserIn(Object.fromEntries(formData));
     if (error) return setErrorText(error.message);
     setCurrentUser(user);
-    navigate("/");
+    navigate("/opportunities");
   };
 
   if (currentUser !== null) return <Navigate to="/" />;
@@ -51,7 +51,7 @@ export default function LoginPage() {
                 <form onSubmit={handleSubmit} aria-labelledby="login-heading">
                   <div className="field">
                     <label htmlFor="username" className="label">
-                      {isOrganization ? "Organization Name" : "Username"}
+                      {isOrganization ? "Organization Name:" : "Username:"}
                     </label>
                     <div className="control">
                       <input
@@ -66,7 +66,7 @@ export default function LoginPage() {
                   </div>
                   <div className="field">
                     <label htmlFor="password" className="label">
-                      Password
+                      Password:
                     </label>
                     <div className="control">
                       <input

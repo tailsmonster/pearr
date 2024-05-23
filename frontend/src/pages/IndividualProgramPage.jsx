@@ -29,7 +29,7 @@ const IndividualProgramPage = () => {
   useEffect(() => {
     const getProgramInfo = async () => {
       if (Number.isNaN(+id) || typeof +id === "string")
-        return navigate("/programs");
+        return navigate("/opportunities");
 
       const [program] = await getProgramById(id);
       if (program === null) navigate("/programs");
@@ -110,7 +110,7 @@ const IndividualProgramPage = () => {
             <div id="comments">
               {currentUser !== null &&
                 !isOrganization &&
-                currentUser.id !== -1 && <MakeComment />}
+                currentUser.id !== -1 && <MakeComment id={programInfo.id} setComments={setComments}/>}
               <div id="all-comments">
                 {comments?.map((comment, idx) => (
                   <Comment

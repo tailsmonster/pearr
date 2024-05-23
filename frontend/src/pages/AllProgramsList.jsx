@@ -51,7 +51,7 @@ const AllProgramsPage = () => {
   return (
     <>
     <div id="opportunities-header-wrapper">
-      <h1 className="normal-font" id="opporunities-header">ALL OPPORTUNITIES HERE</h1>
+      <h1 className="normal-font" id="opporunities-header">{isOrganization ? "OUR OPPORTUNITIES HERE" : "ALL OPPORTUNITIES HERE"}</h1>
     </div>
         {programs.map((program, idx) => {
           // console.log(program);

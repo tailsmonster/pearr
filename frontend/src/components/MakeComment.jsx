@@ -30,9 +30,9 @@ const MakeComment = ({ id, setComments }) => {
 
   return (
     <div id="make-comment-wrapper">
-      <form onSubmit={handleSubmit}>
+      <form id=""onSubmit={handleSubmit}>
         {isOrganization && <p>Official Post:</p>}
-        <label htmlFor="form-make-comment-body">Body: </label>
+        <label htmlFor="form-make-comment-body">Comment: </label>
         <input
           type="text"
           name="body"

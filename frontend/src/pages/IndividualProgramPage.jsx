@@ -65,18 +65,18 @@ const IndividualProgramPage = () => {
             />
           </div>
           <div id="p2">
+            <div className="prgInfoAbt">
+              <h4 id="about-text">About:</h4>
+              <p>{programInfo.bio}</p>
+            </div>
             <div id="program-info">
-              <div className="prgInfoAbt">
-                <h4 id="about-text">About:</h4>
-                <p>{programInfo.bio}</p>
-              </div>
               <div className="prgmInfoSameLine">
                 <h4>Location:</h4>
                 <p>{programInfo.borough}</p>
               </div>
               <div className="prgmInfoSameLine">
                 <h4>Website:</h4>
-                <a ref={useRef(programInfo.websiteUrl)}>
+                <a target="_blank" href={programInfo.websiteUrl}>
                   {programInfo.websiteUrl}
                 </a>
               </div>
@@ -96,34 +96,34 @@ const IndividualProgramPage = () => {
                 </p>
               </div>
             </div>
-
             {currentUser !== null &&
               !isOrganization &&
               currentUser.id !== -1 && (
-                <Recommend
-                  programId={id}
-                  userId={currentUser.id}
-                  update={update}
-                />
+                <div id="do-recommend">
+                  <Recommend
+                    programId={id}
+                    userId={currentUser.id}
+                    update={update}
+                  />
+                </div>
               )}
+            <section id="comments">
+              {currentUser !== null &&
+                !isOrganization &&
+                currentUser.id !== -1 && <MakeComment />}
+              <ul>
+                {comments?.map((comment, idx) => (
+                  <Comment
+                    key={idx}
+                    comment={comment}
+                    setComments={setComments}
+                    update={update}
+                  />
+                ))}
+              </ul>
+            </section>
           </div>
         </div>
-      </section>
-
-      <section id="comments">
-        {currentUser !== null && !isOrganization && currentUser.id !== -1 && (
-          <MakeComment />
-        )}
-        <ul>
-          {comments?.map((comment, idx) => (
-            <Comment
-              key={idx}
-              comment={comment}
-              setComments={setComments}
-              update={update}
-            />
-          ))}
-        </ul>
       </section>
     </>
   );

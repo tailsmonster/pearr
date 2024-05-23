@@ -73,10 +73,10 @@ export default function App() {
             element={<EditProgramPage />}
           /> */}
           {/* Programs */}
-          <Route path="/programs" element={<AllProgramsPage />} />
-          <Route path="/programs/:id" element={<IndividualProgramPage />} />2
-          <Route path="/programs/:id/edit" element={<EditProgramPage />} />2
-          <Route path="/programs/add" element={<ProgramsAddPage />} />2
+          <Route path="/opportunities" element={<AllProgramsPage />} />
+          <Route path="/opportunities/:id" element={<IndividualProgramPage />} />2
+          <Route path="/opportunities/:id/edit" element={<EditProgramPage />} />2
+          <Route path="/opportunities/add" element={<ProgramsAddPage />} />2
           {/* Misc */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/access-denied" element={<AccessDeniedPage />} />

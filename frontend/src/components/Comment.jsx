@@ -58,22 +58,24 @@ const Comment = ({ comment , update }) => {
     <>
       <div className="single-comment">
         {/* <p>{recommend && `${recommend.recommend}`}</p> */}
-        <h4>{`${author}:`} {comment.edited && <p className="edited">EDITED</p>}</h4>
-        <div className="no-author">
+        <h4>
+          {`${author}:`} {comment.edited && <p className="edited">EDITED</p>}
+        </h4>
+        <div className="no-author normal-font">
           {!editing ? (
             comment.body
           ) : (
             <>
               <form className="no-author" onSubmit={handleSubmit}>
                 <div id="form-buttons">
-                <input
-                  type="text"
-                  name="body"
-                  id="edit-comment-body"
-                  value={body}
-                  onChange={(e) => setBody(e.target.value)}
-                />
-                <button>Save</button>
+                  <input
+                    type="text"
+                    name="body"
+                    id="edit-comment-body"
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
+                  />
+                  <button>Save</button>
                 </div>
               </form>
               {!confirm && (

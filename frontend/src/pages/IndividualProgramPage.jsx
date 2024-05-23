@@ -66,17 +66,23 @@ const IndividualProgramPage = () => {
           </div>
           <div id="p2">
             <div className="prgInfoAbt">
-              <h4 id="about-text">About:</h4>
-              <p>{programInfo.bio}</p>
+              <h4 id="about-text" className="normal-font">
+                About:
+              </h4>
+              <p className="normal-font">{programInfo.bio}</p>
             </div>
             <div id="program-info">
-              <div className="prgmInfoSameLine">
+              <div className="prgmInfoSameLine normal-font">
                 <h4>Location:</h4>
-                <p>{programInfo.borough}</p>
+                <p className="normal-font">{programInfo.borough}</p>
               </div>
-              <div className="prgmInfoSameLine">
+              <div className="prgmInfoSameLine normal-font">
                 <h4>Website:</h4>
-                <a target="_blank" href={programInfo.websiteUrl}>
+                <a
+                  className="normal-font"
+                  target="_blank"
+                  href={programInfo.websiteUrl}
+                >
                   {programInfo.websiteUrl}
                 </a>
               </div>
@@ -107,22 +113,22 @@ const IndividualProgramPage = () => {
                   />
                 </div>
               )}
-            <div id="comments">
-              {currentUser !== null &&
-                !isOrganization &&
-                currentUser.id !== -1 && <MakeComment id={programInfo.id} setComments={setComments}/>}
-              <div id="all-comments">
-                {comments?.map((comment, idx) => (
-                  <Comment
-                    key={idx}
-                    comment={comment}
-                    setComments={setComments}
-                    update={update}
-                  />
-                ))}
-              </div>
-            </div>
           </div>
+        </div>
+      </section>
+      <section id="comments">
+        {currentUser !== null && !isOrganization && currentUser.id !== -1 && (
+          <MakeComment id={programInfo.id} setComments={setComments} />
+        )}
+        <div id="all-comments">
+          {comments?.map((comment, idx) => (
+            <Comment
+              key={idx}
+              comment={comment}
+              setComments={setComments}
+              update={update}
+            />
+          ))}
         </div>
       </section>
     </>

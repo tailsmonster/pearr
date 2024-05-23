@@ -61,6 +61,7 @@ const Recommend = ({ programId, userId, update }) => {
           <label htmlFor="recommend-form-radio">
             Yes
             <input
+              className="normal-font"
               type="radio"
               name="recommend"
               id="recommend-form-radio1"
@@ -72,6 +73,7 @@ const Recommend = ({ programId, userId, update }) => {
           <label htmlFor="recommend-form-radio">
             No
             <input
+              className="normal-font"
               type="radio"
               name="recommend"
               id="recommend-form-radio2"

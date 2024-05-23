@@ -5,7 +5,6 @@ import {
   getAllProgramComments,
 } from "../adapters/comment-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
-import "./Comment.css"
 
 const MakeComment = ({ id, setComments }) => {
   const [body, setBody] = useState("");
@@ -30,18 +29,21 @@ const MakeComment = ({ id, setComments }) => {
 
   return (
     <div id="make-comment-wrapper">
-      <form id=""onSubmit={handleSubmit}>
+      <form id="" onSubmit={handleSubmit}>
         {isOrganization && <p>Official Post:</p>}
-        <label htmlFor="form-make-comment-body">Comment:</label>
+        <label className="normal-font" htmlFor="form-make-comment-body">
+          Comment:
+        </label>
         <div id="comment-input">
-        <input
-          type="text"
-          name="body"
-          id="form-make-comment-body"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-        ></input>
-        <button className="action">Create</button>
+          <input
+            className="normal-font"
+            type="text"
+            name="body"
+            id="form-make-comment-body"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          ></input>
+          <button className="normal-font">Create</button>
         </div>
       </form>
     </div>

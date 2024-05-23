@@ -46,16 +46,18 @@ $normal-font-size: 20px;
 
   #tp {
     display: flex;
+    gap:20px;
     flex-direction: row;
     #p1 {
       display: flex;
+      margin-left: 1rem;
       #pr-thumbnail {
         object-fit: cover;
         // width: 80%;
         // height: 30%;
         width: 40rem;
         height: 40rem;
-        margin-bottom: 1rem;
+        // margin-bottom: 1rem;
         margin: 20px;
         border-radius: 10px;
         box-shadow: rgba(166, 100, 129, 0.2) 0px 8px 24px;
@@ -77,12 +79,13 @@ $normal-font-size: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
         margin: 0.5rem auto;
         width: 90%;
         #about-text {
           align-self: center;
           justify-self: center;
-          font-size: large;
+          font-size: larger;
           text-align: center;
         }
       }
@@ -91,7 +94,8 @@ $normal-font-size: 20px;
         align-self: center;
         justify-content: space-around;
         flex-direction: row;
-        margin: 0 auto;
+        // margin: 0 auto;
+        gap: 1rem;
         width: 90%;
       }
       #recommend-wrapper {
@@ -106,57 +110,6 @@ $normal-font-size: 20px;
         #radios {
           display: flex;
           gap: 3rem;
-        }
-      }
-
-      #comments {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        margin-left: 2rem;
-        gap: 1rem;
-            width: 100%;
-
-        #all-comments {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          gap: 1rem;
-          .single-comment {
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            gap: 3px;
-            background-color: rgb(124, 124, 122, 0.09);
-            border-radius: 10px;
-            .edited {
-              color: #9c9b9b;
-              display: inline;
-              font-size: smaller;
-            }
-          }
-          .no-author {
-            display: flex;
-            flex-direction: column;
-            form {
-              display: flex;
-              align-items: flex-start;
-              input {
-                padding: 2px;
-                margin: 0;
-              }
-            }
-            #form-buttons {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            }
-            button {
-              width: fit-content;
-              padding: 3px;
-              margin: 0, auto;
-            }
-          }
         }
       }
     }
@@ -203,17 +156,82 @@ li {
   margin-left: 6rem;
 }
 
-.action {
-  display: inline-flex;
-  // margin-top: 1rem;
-  color: #ffffff;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 500;
+// .action {
+//   display: inline-flex;
+//   // margin-top: 1rem;
+//   color: #ffffff;
+//   font-size: 0.875rem;
+//   line-height: 1.25rem;
+//   font-weight: 500;
+//   align-items: center;
+//   gap: 0.25rem;
+//   background-color: #2563eb;
+//   padding: 4px 8px;
+//   border-radius: 4px;
+//   max-height: 100%;
+// }
+
+#comments {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.25rem;
-  background-color: #2563eb;
-  padding: 4px 8px;
-  border-radius: 4px;
-  max-height: 100%;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 0 2rem 3rem;
+  gap:1rem;
+  #make-comment-wrapper {
+    display: flex;
+    form {
+      display: flex;
+      flex-direction: column;
+      input {
+        margin: 0;
+      }
+    }
+    #comment-input {
+      display: flex;
+      button {
+        align-self: center;
+        background-color: #2563eb;
+        padding: 4px 8px;
+        color: #ffffff;
+      }
+    }
+  }
+  #all-comments {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    justify-self: flex-start;
+    width: 100%;
+    gap:10px;
+    .single-comment {
+      display: flex;
+      flex-direction: column;
+      padding: 13px;
+      background-color: rgb(124, 124, 122, 0.09);
+      border-radius: 10px;
+      gap:5px;
+      h4 {
+        display: flex;
+      }
+      .no-author {
+        display: flex;
+        form {
+          align-items: flex-start;
+          input {
+            margin:0;
+            width:max-content
+          }
+        }
+        flex-direction: column;
+        button {
+          max-width: fit-content;
+          padding:2px
+        }
+      }
+    }
+  }
 }

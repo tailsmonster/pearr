@@ -56,34 +56,43 @@ const IndividualProgramPage = () => {
     <>
       <section id="info">
         <h2 id="program-title">{programInfo.name}</h2>
-        <div id="p1">
-          <img
-            id="pr-thumbnail"
-            src={programInfo.imgUrl}
-            alt={`${programInfo} picture!`}
-          />
-        </div>
-        <div id="rating">
-          <h4>Rating:</h4>
-          <p>
-            {allRecommends.length !== 0
-              ? (
-                  allRecommends.reduce(
-                    (pre, curr) => (curr.recommend ? pre + 1 : pre),
-                    0
-                  ) / allRecommends.length
-                ).toFixed(2) * 100 + "%"
-              : "N/A"}
-          </p>
-        </div>
-        <div id="p2">
-          <h4>About:</h4>
-          <p>{programInfo.bio}</p>
-          <br />
-          <h4>Location:</h4>
-          <p>{programInfo.borough}</p>
-          <h4>Website:</h4>
-          <a ref={useRef(programInfo.websiteUrl)}>{programInfo.websiteUrl}</a>
+        <div id="tp">
+          <div id="p1">
+            <img
+              id="pr-thumbnail"
+              src={programInfo.imgUrl}
+              alt={`${programInfo} picture!`}
+            />
+          </div>
+          <div className="p2">
+            <div className="prgInfoAbt">
+              <h4>About:</h4>
+              <p>{programInfo.bio}</p>
+              <br />
+
+            </div>
+            <div className="prgmInfoSameLine">
+              <h4>Location:</h4>
+              <p>{programInfo.borough}</p>
+            </div>
+            <div className="prgmInfoSameLine">
+              <h4>Website:</h4>
+              <a ref={useRef(programInfo.websiteUrl)}>{programInfo.websiteUrl}</a>
+            </div>
+            <div id="rating" className="prgmInfoSameLine">
+              <h4>Rating:</h4>
+              <p>
+                {allRecommends.length !== 0
+                  ? (
+                      allRecommends.reduce(
+                        (pre, curr) => (curr.recommend ? pre + 1 : pre),
+                        0
+                      ) / allRecommends.length
+                    ).toFixed(2) * 100 + "%"
+                  : "N/A"}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

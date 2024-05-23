@@ -4,8 +4,8 @@ import { getAllPrograms } from "../adapters/program-adapter.js";
 import CurrentUserContext from "../contexts/current-user-context";
 import { getOrganization, getPrograms } from "../adapters/organization-adapter.js";
 import { checkForLoggedInUser } from "../adapters/auth-adapter.js";
-import "./AllProgramsList.css";
 import { getUser } from "../adapters/user-adapter.js";
+import "./AllProgramsList.css";
 
 const AllProgramsPage = () => {
   function redirectToPage() {
@@ -15,6 +15,20 @@ const AllProgramsPage = () => {
   const [programs, setPrograms] = useState([]);
   const [error, setError] = useState("");
   const {isOrganization, currentUser, setCurrentUser} = useContext(CurrentUserContext);
+
+  const nameTextLimiter3000 = (str) => {
+  if (str.length > 26) {
+    str = str.substring(0, 26) + '...';
+  }
+  return str;
+}
+  
+  const descTextLimiter3000 = (str) => {
+  if (str.length > 300) {
+    str = str.substring(0, 256) + '...';
+  }
+  return str;
+}
 
   useEffect(() => {
     const getThePrograms = async () => {
@@ -36,23 +50,82 @@ const AllProgramsPage = () => {
 
   return (
     <>
-      <h1>ALL PROGRAMS HERE</h1>
-      <ul>
+    <div id="opportunities-header-wrapper">
+      <h1 className="normal-font" id="opporunities-header">ALL OPPORTUNITIES HERE</h1>
+    </div>
         {programs.map((program, idx) => {
           // console.log(program);
           // console.log(currentUser,isOrganization)
           return (
-            <li key={idx}>
-              <div>
-                <img id="li-thumbnail" src={program.imgUrl} alt={program.id} />
-                <Link to={`/opportunities/${program.id}`}>{program.name}</Link>
-                {currentUser !== null && isOrganization && program.organizationId === currentUser.id && <NavLink to={`/programs/${program.id}/edit`}><button>Edit</button></NavLink>}
+            <div key={idx}>
+                  {/* <>
+                  <div key={idx}>
+                  <div className={`hm-card`}>
+                    <div className={`hm-card-img`}>
+                      <img className={`hm-card-img`}src={program.imgUrl} alt={program.name} />
+                    </div>
+                    <div className={`hm-card-content`}>
+                      <NavLink to={`/opportunities/${program.id}`}>
+                        <span className={`hm-card-title`}>{nameTextLimiter3000(program.name)}</span>
+                      </NavLink>
+                      <p className={`hm-card-desc`}>{descTextLimiter3000(program.bio)}
+                      </p>
+                      
+                      <NavLink className="action" to={`/opportunities/${program.id}`}>
+                        Find out more
+                        <span aria-hidden="true">
+                          →
+                        </span>
+                      </NavLink>
+                      {currentUser !== null && isOrganization && program.organizationId === currentUser.id && <NavLink to={`/programs/${program.id}/edit`}><button>Edit</button></NavLink>}
+                    </div>
+                  </div>
+                </div>
+                  </>  */}
+                  {idx % 2 === 0 ? <>
+                  <div className="opProgram">
+                      <div className="opProgramDescDiv">
+                        <h2 className="normal-font">{program.name}</h2>
+                        <p className="normal-font">{program.bio}</p>
+                      </div>
+                      <div className="opProgramImgDiv">
+                        <div>
+                          <img className="li-card-img" src={program.imgUrl} alt={program.id} />
+                          <Link to={`/opportunities/${program.id}`}>
+                          <button className="action" type='button'>Learn More?</button>
+                          </Link>
+                          {currentUser !== null && isOrganization && program.organizationId === currentUser.id && <NavLink to={`/opportunities/${program.id}/edit`}><button>Edit</button></NavLink>}
+                          
+                        </div>
+                      </div>
+                  </div>
+                  </> 
+                  :
+                  <>
+                    <div className="opProgram">
+                      <div className="opProgramImgDiv">
+                        <div>
+                          <img className="li-card-img" src={program.imgUrl} alt={program.id} />
+                          <Link to={`/opportunities/${program.id}`}>
+                          <button className="action">Learn More?</button>
+                          </Link>
+                          {currentUser !== null && isOrganization && program.organizationId === currentUser.id && <NavLink to={`/opportunities/${program.id}/edit`}><button>Edit</button></NavLink>}
+                        </div>
+                      </div>
+                      <div className="opProgramDescDiv">
+                        <h2 className="normal-font">{program.name}</h2>
+                        <p className="normal-font">{program.bio}</p>
+                      </div>
+                    </div>
+                  </>
+                  }
+                
+                {/* <Link to={`/opportunities/${program.id}`}>{program.name}</Link> */}
+
                 {/* <p>{program.name}</p> */}
-              </div>
-            </li>
+            </div>
           );
         })}
-      </ul>
       {isOrganization && 
       <Link to="/opportunities/add">
         <button>Add Program Button</button>

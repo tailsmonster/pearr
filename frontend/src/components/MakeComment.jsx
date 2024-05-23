@@ -5,6 +5,7 @@ import {
   getAllProgramComments,
 } from "../adapters/comment-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
+import "./Comment.css"
 
 const MakeComment = ({ id, setComments }) => {
   const [body, setBody] = useState("");
@@ -28,7 +29,7 @@ const MakeComment = ({ id, setComments }) => {
   };
 
   return (
-    <div>
+    <div id="make-comment-wrapper">
       <form onSubmit={handleSubmit}>
         {isOrganization && <p>Official Post:</p>}
         <label htmlFor="form-make-comment-body">Body: </label>

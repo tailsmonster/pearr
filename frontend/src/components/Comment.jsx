@@ -54,12 +54,11 @@ const Comment = ({ comment , update }) => {
     setConfirm(false);
     update()
   };
-
   return (
     <>
       <li>
-        <p>{recommend && `${recommend.recommend}`}</p>
-        {author}:{" "}
+        {/* <p>{recommend && `${recommend.recommend}`}</p> */}
+        <h4>{`${author}:`}</h4>
         {!editing ? (
           comment.body
         ) : (

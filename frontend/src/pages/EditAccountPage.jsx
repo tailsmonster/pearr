@@ -4,6 +4,7 @@ import CurrentUserContext from '../contexts/current-user-context';
 import { getUser, updateUser } from '../adapters/user-adapter';
 import { logUserOut } from '../adapters/auth-adapter';
 import {getOrganization, updateOrganization} from "../adapters/organization-adapter"
+import './EditAccount.css'
 
 export default function EditAccountPage() {
   const { currentUser, isOrganization, setIsOrganization, setCurrentUser } = useContext(CurrentUserContext);
@@ -41,7 +42,7 @@ export default function EditAccountPage() {
   }
 
   return (
-    <section className="section">
+    <section className="section edit-account-wrapper">
       <div className="container">
         <h1 className="title">Edit Account</h1>
         <form onSubmit={handleSubmit}>
@@ -94,8 +95,8 @@ export default function EditAccountPage() {
             </div>
           </div>
         </form>
-      </div>
       <button onClick={logOut}>Log Out</button>
+      </div>
     </section>
   );
 }

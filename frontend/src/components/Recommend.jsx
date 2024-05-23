@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react";
 import { createRecommend, doesRecommendExist, updateRecommend } from "../adapters/recommend-adapter";
-
+import "./Recommend.css"
 
 const Recommend = ({programId, userId, update}) => {
   const [recommend, setRecommend] = useState({});
@@ -31,13 +31,15 @@ const Recommend = ({programId, userId, update}) => {
 
   return (
     <>
-    <br />
+    <div id="recommend-wrapper">
       <label htmlFor="recommend-form-radio">Would you recommend this opportunity?</label>
-      <input onChange={handleChange} type="radio" name="recommend" id="recommend-form-radio1" value="Yes"/>
-      <label htmlFor="recommend-form-radio">Yes</label>
-      <input onChange={handleChange} type="radio" name="recommend" id="recommend-form-radio2" value="No"/>
-      <label htmlFor="recommend-form-radio">No</label>
-    <br />
+      <label htmlFor="recommend-form-radio">Yes
+        <input onChange={handleChange} type="radio" name="recommend" id="recommend-form-radio1" value="Yes"/>
+      </label>
+      <label htmlFor="recommend-form-radio">No
+        <input onChange={handleChange} type="radio" name="recommend" id="recommend-form-radio2" value="No"/>
+      </label>
+    </div>
     </>
   );
 }

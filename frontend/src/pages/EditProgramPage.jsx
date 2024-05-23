@@ -26,7 +26,7 @@ export default function EditProgramPage() {
   useEffect(() => {
     const fetchProgram = async () => {
       const [fetchedProgram] = await getProgramById(id);
-      if (fetchedProgram === null) navigate('/programs')
+      if (fetchedProgram === null) navigate('/opportunities')
         console.log(fetchedProgram);
       setProgram(fetchedProgram);
       setName(fetchedProgram.name);

@@ -56,43 +56,50 @@ const Comment = ({ comment , update }) => {
   };
   return (
     <>
-      <li>
+      <div className="single-comment">
         {/* <p>{recommend && `${recommend.recommend}`}</p> */}
-        <h4>{`${author}:`}</h4>
-        {!editing ? (
-          comment.body
-        ) : (
-          <>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="body"
-                id="edit-comment-body"
-                value={body}
-                onChange={(e) => setBody(e.target.value)}
-              />
-              <button>Save</button>
-            </form>
-            {!confirm && (
-              <button onClick={() => setConfirm(true)}>DELETE</button>
+        <h4>{`${author}:`} {comment.edited && <p className="edited">EDITED</p>}</h4>
+        <div className="no-author">
+          {!editing ? (
+            comment.body
+          ) : (
+            <>
+              <form className="no-author" onSubmit={handleSubmit}>
+                <div id="form-buttons">
+                <input
+                  type="text"
+                  name="body"
+                  id="edit-comment-body"
+                  value={body}
+                  onChange={(e) => setBody(e.target.value)}
+                />
+                <button>Save</button>
+                </div>
+              </form>
+              {!confirm && (
+                <button onClick={() => setConfirm(true)}>DELETE</button>
+              )}
+              {confirm && (
+                <>
+                  <h3>Are you sure?</h3>
+                  <button onClick={() => setConfirm(false)}>Cancel</button>
+                  <button onClick={handleDelete}>Confirm</button>
+                </>
+              )}
+            </>
+          )}
+          {currentUser !== null &&
+            !isOrganization &&
+            comment.user_id === currentUser.id &&
+            !editing && (
+              <button onClick={() => setEditing((pre) => !pre)}>Edit</button>
             )}
-            {confirm && (
-              <>
-              <h3>Are you sure?</h3>
-                <button onClick={() => setConfirm(false)}>Cancel</button>
-                <button onClick={handleDelete}>Confirm</button>
-              </>
-            )}
-          </>
-        )}
-      </li>
-      {currentUser !== null &&
-        !isOrganization &&
-        comment.user_id === currentUser.id &&
-        !editing && (
-          <button onClick={() => setEditing((pre) => !pre)}>Edit</button>
-        )}
-      {currentUser !== null && isOrganization && comment.organization_id === currentUser.id && !editing && <button onClick={() => setEditing(true)}>Edit</button>}
+          {currentUser !== null &&
+            isOrganization &&
+            comment.organization_id === currentUser.id &&
+            !editing && <button onClick={() => setEditing(true)}>Edit</button>}
+        </div>
+      </div>
     </>
   );
 };

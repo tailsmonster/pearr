@@ -39,20 +39,23 @@
 #info #tp #p1 #pr-thumbnail {
   -o-object-fit: cover;
      object-fit: cover;
-  width: 100%;
-  height: 80%;
-  max-width: 38lh;
-  width: 100%;
+  width: 40rem;
+  height: 40rem;
   margin-bottom: 1rem;
-  padding: 20px;
-  border-radius: 10%;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(166, 100, 129, 0.2) 0px 8px 24px;
 }
 #info #tp #p2 {
   display: flex;
-  margin: 1rem auto;
-  width: 54%;
+  margin: 20px auto;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-right: 2rem;
 }
 #info #tp #p2 .prgInfoAbt {
   display: flex;
@@ -80,17 +83,72 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 0;
+  margin: 0;
+  height: 100%;
   gap: 1rem;
 }
 #info #tp #p2 #recommend-wrapper #radios {
   display: flex;
   gap: 3rem;
 }
+#info #tp #p2 #comments {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 2rem;
+  gap: 1rem;
+  width: 100%;
+}
+#info #tp #p2 #comments #all-comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+#info #tp #p2 #comments #all-comments .single-comment {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 3px;
+  background-color: rgba(124, 124, 122, 0.09);
+}
+#info #tp #p2 #comments #all-comments .single-comment .edited {
+  color: #9c9b9b;
+  display: inline;
+  font-size: smaller;
+}
+#info #tp #p2 #comments #all-comments .no-author {
+  display: flex;
+  flex-direction: column;
+}
+#info #tp #p2 #comments #all-comments .no-author form {
+  display: flex;
+  align-items: flex-start;
+}
+#info #tp #p2 #comments #all-comments .no-author form input {
+  padding: 2px;
+  margin: 0;
+}
+#info #tp #p2 #comments #all-comments .no-author #form-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#info #tp #p2 #comments #all-comments .no-author button {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 3px;
+  margin: 0, auto;
+}
 
 .prgmInfoSameLine {
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 13px;
+  background-color: rgba(124, 124, 122, 0.09);
+  border-radius: 10px;
 }
 .prgmInfoSameLine h4 {
   padding: 0 8px 0 15px;
@@ -122,4 +180,18 @@ li {
   font-size: 5vh;
   margin-top: 1rem;
   margin-left: 6rem;
+}
+
+.action {
+  display: inline-flex;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #2563eb;
+  padding: 4px 8px;
+  border-radius: 4px;
+  max-height: 100%;
 }/*# sourceMappingURL=IndividualProgramPage.css.map */

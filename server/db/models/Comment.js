@@ -1,13 +1,14 @@
 const knex = require("../knex");
 
 class Comment {
-  constructor({id, program_id, user_id, organization_id, body, date}) {
+  constructor({id, program_id, user_id, organization_id, body, date, edited}) {
     this.program_id = program_id;
     this.organization_id = organization_id;
     this.id = id,
     this.user_id = user_id;
     this.body = body;
     this.date = date;
+    this.edited = edited
   }
 
   static async list() {

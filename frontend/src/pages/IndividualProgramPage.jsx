@@ -107,11 +107,11 @@ const IndividualProgramPage = () => {
                   />
                 </div>
               )}
-            <section id="comments">
+            <div id="comments">
               {currentUser !== null &&
                 !isOrganization &&
                 currentUser.id !== -1 && <MakeComment />}
-              <ul>
+              <div id="all-comments">
                 {comments?.map((comment, idx) => (
                   <Comment
                     key={idx}
@@ -120,8 +120,8 @@ const IndividualProgramPage = () => {
                     update={update}
                   />
                 ))}
-              </ul>
-            </section>
+              </div>
+            </div>
           </div>
         </div>
       </section>

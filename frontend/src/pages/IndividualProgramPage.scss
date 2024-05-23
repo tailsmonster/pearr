@@ -51,26 +51,33 @@ $normal-font-size: 20px;
       display: flex;
       #pr-thumbnail {
         object-fit: cover;
-        width: 100%;
-        height: 80%;
-        max-width: 38lh;
-        width: 100%;
+        // width: 80%;
+        // height: 30%;
+        width: 40rem;
+        height: 40rem;
         margin-bottom: 1rem;
-        padding: 20px;
-        border-radius: 10%;
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: rgba(166, 100, 129, 0.2) 0px 8px 24px;
       }
     }
     #p2 {
       display: flex;
-      margin: 1rem auto;
-      width: 54%;
+      margin: 20px auto;
+      // width: 54%;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1rem;
+      background-color: #f5f5f5;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-right: 2rem;
+      // width: fit-content;
       .prgInfoAbt {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: .5rem auto;
+        margin: 0.5rem auto;
         width: 90%;
         #about-text {
           align-self: center;
@@ -92,10 +99,63 @@ $normal-font-size: 20px;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        padding: 0;
+        margin: 0;
+        height: 100%;
         gap: 1rem;
         #radios {
           display: flex;
-          gap:3rem;
+          gap: 3rem;
+        }
+      }
+
+      #comments {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin-left: 2rem;
+        gap: 1rem;
+            width: 100%;
+
+        #all-comments {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          gap: 1rem;
+          .single-comment {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 3px;
+            background-color: rgb(124, 124, 122, 0.09);
+            .edited {
+              color: #9c9b9b;
+              display: inline;
+              font-size: smaller;
+            }
+          }
+          .no-author {
+            display: flex;
+            flex-direction: column;
+            form {
+              display: flex;
+              align-items: flex-start;
+              input {
+                padding: 2px;
+                margin: 0;
+              }
+            }
+            #form-buttons {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            button {
+              width: fit-content;
+              padding: 3px;
+              margin: 0, auto;
+            }
+          }
         }
       }
     }
@@ -109,6 +169,9 @@ $normal-font-size: 20px;
   h4 {
     padding: 0 8px 0 15px;
   }
+  padding: 13px;
+  background-color: rgb(124, 124, 122, 0.09);
+  border-radius: 10px;
 }
 
 #comments {
@@ -137,4 +200,19 @@ li {
   font-size: 5vh;
   margin-top: 1rem;
   margin-left: 6rem;
+}
+
+.action {
+  display: inline-flex;
+  // margin-top: 1rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #2563eb;
+  padding: 4px 8px;
+  border-radius: 4px;
+  max-height: 100%;
 }

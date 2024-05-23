@@ -32,7 +32,8 @@ const MakeComment = ({ id, setComments }) => {
     <div id="make-comment-wrapper">
       <form id=""onSubmit={handleSubmit}>
         {isOrganization && <p>Official Post:</p>}
-        <label htmlFor="form-make-comment-body">Comment: </label>
+        <label htmlFor="form-make-comment-body">Comment:</label>
+        <div id="comment-input">
         <input
           type="text"
           name="body"
@@ -40,7 +41,8 @@ const MakeComment = ({ id, setComments }) => {
           value={body}
           onChange={(e) => setBody(e.target.value)}
         ></input>
-        <button>Create</button>
+        <button className="action">Create</button>
+        </div>
       </form>
     </div>
   );

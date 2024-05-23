@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>") 
+@import url("https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>"); 
 
 * {
   margin:0;
@@ -16,7 +16,7 @@
 }
 .abt-text{
   font-family: "Inter";
-  font-weight: 100;
+  font-weight: 300;
   font-style: normal;
 }
 .font{

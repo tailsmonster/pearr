@@ -65,10 +65,18 @@
   padding: 0 8px 0 15px;
 }
 
+#comments {
+  display: flex;
+  justify-content: flex-start;
+}
+
 #comments ul {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: 1rem;
+  width: 30rem;
 }
 
 li {

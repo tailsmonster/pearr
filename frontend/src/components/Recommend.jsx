@@ -32,7 +32,7 @@ const Recommend = ({programId, userId, update}) => {
   return (
     <>
     <div id="recommend-wrapper">
-      <label htmlFor="recommend-form-radio">Would you recommend this opportunity?</label>
+      <h3 htmlFor="recommend-form-radio">Would you recommend this opportunity?</h3>
       <label htmlFor="recommend-form-radio">Yes
         <input onChange={handleChange} type="radio" name="recommend" id="recommend-form-radio1" value="Yes"/>
       </label>

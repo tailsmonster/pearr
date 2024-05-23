@@ -69,7 +69,6 @@ const IndividualProgramPage = () => {
               <h4>About:</h4>
               <p>{programInfo.bio}</p>
               <br />
-
             </div>
             <div className="prgmInfoSameLine">
               <h4>Location:</h4>
@@ -77,7 +76,9 @@ const IndividualProgramPage = () => {
             </div>
             <div className="prgmInfoSameLine">
               <h4>Website:</h4>
-              <a ref={useRef(programInfo.websiteUrl)}>{programInfo.websiteUrl}</a>
+              <a ref={useRef(programInfo.websiteUrl)}>
+                {programInfo.websiteUrl}
+              </a>
             </div>
             <div id="rating" className="prgmInfoSameLine">
               <h4>Rating:</h4>
@@ -88,26 +89,27 @@ const IndividualProgramPage = () => {
                         (pre, curr) => (curr.recommend ? pre + 1 : pre),
                         0
                       ) / allRecommends.length
-                    ).toFixed(2) * 100 + "%"
+                    ).toFixed(2) *
+                      100 +
+                    "%"
                   : "N/A"}
               </p>
             </div>
+            {currentUser !== null &&
+              !isOrganization &&
+              currentUser.id !== -1 && (
+                <Recommend
+                  programId={id}
+                  userId={currentUser.id}
+                  update={update}
+                />
+              )}
           </div>
         </div>
       </section>
 
-
-      {currentUser !== null && !isOrganization && currentUser.id !== -1 && (
-        <Recommend programId={id} userId={currentUser.id} update={update} />
-      )}
-      
-      {currentUser !== null && currentUser.id !== -1 && (
-        <MakeComment id={+id} setComments={setComments} />
-      )}
-
       <section id="comments">
         <ul>
-
           {comments?.map((comment, idx) => (
             <Comment
               key={idx}

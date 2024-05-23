@@ -44,7 +44,8 @@ class Recommend {
   static async create({ program_id, user_id,  recommend }) {
     const query = `
     INSERT INTO recommends(program_id, user_id, recommend)
-    VALUES (?, ?, ?)`;
+    VALUES (?, ?, ?)
+    RETURNING *`;
     const { rows } = await knex.raw(query, [program_id, user_id, recommend]);
     const recommendOutput = rows[0];
     return recommendOutput ? new Recommend(recommendOutput) : null;

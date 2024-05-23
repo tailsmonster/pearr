@@ -91,7 +91,7 @@ const IndividualProgramPage = () => {
                 <p>
                   {allRecommends.length !== 0
                     ? (
-                        allRecommends.reduce(
+                        allRecommends?.reduce(
                           (pre, curr) => (curr.recommend ? pre + 1 : pre),
                           0
                         ) / allRecommends.length

@@ -14,7 +14,7 @@ const Recommend = ({ programId, userId, update }) => {
   const [recommend, setRecommend] = useState({});
   const {currentUser,isOrganization, setIsOrganization, setCurrentUser} = useContext(CurrentUserContext);
   const navigate = useNavigate();
-  const [check, setCheck] = useState(true);
+  const [check, setCheck] = useState(null);
 
   useEffect(() => {
     const fetchRecommends = async () => {
@@ -25,7 +25,9 @@ const Recommend = ({ programId, userId, update }) => {
     userId = userId || user.id;
     const [recommendation, error] = await doesRecommendExist(programId, userId);
     setRecommend(recommendation);
-    setCheck(recommendation.recommend);
+    if (recommendation) {
+      setCheck(recommendation.recommend);
+    }
     };
     fetchRecommends();
   }, []);
@@ -35,18 +37,18 @@ const Recommend = ({ programId, userId, update }) => {
     if (isOrganization) navigate('/opportunities');
     const [recommendation, error] = await doesRecommendExist(programId, userId);
     setRecommend(recommendation);
-    e.target.value = 'option1'
 
     if (!recommendation) {
       const [updated] = await createRecommend({ programId, userId, recommend });
-      setRecommend(update);
-      console.log(updated);
+      setRecommend(updated);
+      // setCheck(updated.recommend);
+
     } else {
       const [updated] = await updateRecommend(recommendation.id, recommend);
-      setRecommend(update);
-      setCheck(update.recommend);
+      setRecommend(updated);
+      // setCheck(updated.recommend);
     }
-    setCheck(e.target.value === "Yes");
+    setCheck(recommend);
 
     update();
   };
@@ -66,7 +68,7 @@ const Recommend = ({ programId, userId, update }) => {
               name="recommend"
               id="recommend-form-radio1"
               value="Yes"
-              checked={check}
+              checked={check !== null && check}
               onChange={handleChange}
             />
           </label>
@@ -78,7 +80,7 @@ const Recommend = ({ programId, userId, update }) => {
               name="recommend"
               id="recommend-form-radio2"
               value="No"
-              checked={!check}
+              checked={check !== null && !check}
               onChange={handleChange}
             />
           </label>

@@ -42,17 +42,17 @@ export default function SignUpPage() {
   };
 
   return (
-    <section className="hero is-fullheight">
+    <section className="hero is-fullheight sign-up-wrapper">
       <div className="hero-body">
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-5-tablet is-4-desktop is-3-widescreen">
               <div className="box signup-box">
-                <h1 className="title has-text-centered pear-nyc-title">PEAR NYC</h1>
+                {/* <h1 className="title has-text-centered pear-nyc-title">PEAR NYC</h1> */}
                 <h2 className="subtitle has-text-centered">Sign Up</h2>
                 <div className="buttons is-centered">
                   <button
-                    className={`button ${!isOrgSignUp ? "is-user" : "is-light"}`}
+                    className={`button ${!isOrgSignUp ? "is-user" : "is-light"} normal-font`}
                     onClick={() => setIsOrgSignUp(false)}
                   >
                     User

@@ -26,13 +26,13 @@ export default function LoginPage() {
   if (currentUser !== null) return <Navigate to="/" />;
 
   return (
-    <section className="hero is-fullheight">
+    <section className="hero is-fullheight login-wrapper">
       <div className="hero-body">
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-5-tablet is-4-desktop is-3-widescreen">
               <div className="box login-box">
-                <h1 className="title has-text-centered pear-nyc-title">PEAR NYC</h1>
+                {/* <h1 className="title has-text-centered pear-nyc-title">PEAR NYC</h1> */}
                 <h2 className="subtitle has-text-centered">Login</h2>
                 <div className="buttons is-centered">
                   <button

@@ -59,7 +59,7 @@ const Comment = ({ comment , update }) => {
       <div className="single-comment">
         {/* <p>{recommend && `${recommend.recommend}`}</p> */}
         <h4>
-          {`${author}:`} {comment.edited && <p className="edited">EDITED</p>}
+          {`${author}: `} {recommend && <p className={recommend.recommend ? "recommends" : "not-recommends"}>{recommend.recommend ? "Recommends " : "Doesn't Recommend " }</p>} {comment.edited && <p className="edited">EDITED</p>}
         </h4>
         <div className="no-author normal-font">
           {!editing ? (

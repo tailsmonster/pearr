@@ -217,6 +217,13 @@ li {
       gap:5px;
       h4 {
         display: flex;
+        gap:5px;
+        .recommends {
+          color:#e8b923 ;
+        }
+        .not-recommends {
+          color: rgb(182, 4, 4);
+        }
       }
       .no-author {
         display: flex;

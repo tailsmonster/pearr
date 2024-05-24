@@ -3,6 +3,8 @@
 img {
   width: 80%;
   margin: 1rem auto;
+  box-shadow: rgba(166, 100, 129, 0.2) 0px 8px 24px;
+  border-radius: 10px;
 }
 #about-us-header {
   margin: 0;

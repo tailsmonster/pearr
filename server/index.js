@@ -27,6 +27,8 @@ app.use('/api/programs', programRouter);
 app.use('/api/comments', commentRouter);
 app.use('/api/recommends', recommendRouter);
 
+app.get('/logo', (req,res) => res.sendFile(path.join(__dirname,"./Logo.png")));
+
 // Requests meant for the API will be sent along to the router.
 // For all other requests, send back the index.html file in the dist folder.
 app.get('*', (req, res, next) => {

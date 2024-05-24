@@ -1,12 +1,14 @@
 const knex = require("../knex");
 
 class Comment {
-  
-  constructor(program_id, user_id, body, date) {
+  constructor({id, program_id, user_id, organization_id, body, date, edited}) {
     this.program_id = program_id;
+    this.organization_id = organization_id;
+    this.id = id,
     this.user_id = user_id;
     this.body = body;
     this.date = date;
+    this.edited = edited
   }
 
   static async list() {
@@ -29,13 +31,20 @@ class Comment {
     return comment ? new Comment(comment) : null;
   }
 
-  static async create({ program_id, user_id, body, date }) {
+  static async create({ program_id, user_id, organization_id, body, date }) {
+    // console.log("TeSTING:", {program_id, user_id, organization_id});
     const query = `
-    INSERT INTO comments (program_id, user_id, body, date, edited)
-    VALUES (?, ?, ?, ?, FALSE)
+    INSERT INTO comments (program_id, user_id, organization_id, body, date, edited)
+    VALUES (?, ?, ?, ?, ?, FALSE)
     RETURNING *
     `;
-    const { rows } = await knex.raw(query, [program_id, user_id, body, date]);
+    const { rows } = await knex.raw(query, [
+      program_id,
+      user_id || null,
+      organization_id || null,
+      body,
+      date,
+    ]);
     const comment = rows[0];
     return comment !== null ? new Comment(comment) : null;
   }
@@ -47,24 +56,25 @@ class Comment {
     WHERE id = ?
     RETURNING *
     `;
-    const { rows } = knex.raw(query, [body, id]);
+    const { rows } = await knex.raw(query, [body, id]);
     const comment = rows[0];
     return comment ? new Comment(comment) : null;
   }
 
   static async deleteComment(id) {
+    // console.log(id);
     const query = `
     DELETE FROM comments
     WHERE id = ?
     RETURNING *
     `;
-    const { rows } = knex.raw(query, [id]);
+    const { rows } = await knex.raw(query, [id]);
     const comment = rows[0];
     return comment ? new Comment(comment) : null;
   }
 
   static deleteAll() {
-    return knex('comments').del();
+    return knex("comments").del();
   }
 }
 

@@ -1,3 +1,31 @@
+@import url("https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>"); 
+
+* {
+  margin:0;
+  padding: 0;
+}
+
+.abt-box{
+  background-color: rgb(195, 225, 188);
+  padding: 1% 5%;
+}
+.abt-us-txt{
+  margin-bottom: 5%;
+  font-size: 4rem;
+  text-align: center;
+}
+.abt-text{
+  font-family: "Inter";
+  font-weight: 300;
+  font-style: normal;
+}
+.font{
+  font-family: "Libre Baskerville", serif;
+  /* font-weight: 100; */
+
+  /* font-style: normal; */
+  /* margin-left: 0%; */
+}
 /* body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;

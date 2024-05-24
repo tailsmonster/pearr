@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+.bg-brown {
+  background-color: #452517;
+}
+
+.title-font {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.subtitle-font {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 40px;
+  margin: 20px 10%;
+}
+
+.normal-font {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+#hm-programsUl {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+#hm-programsUl .hm-card {
+  max-width: 300px;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+  margin-left: 5%;
+  padding: 1.1rem;
+  color: white;
+}
+#hm-programsUl .hm-card a {
+  text-decoration: none;
+}
+#hm-programsUl .hm-card {
+  margin-bottom: 20px;
+  margin-left: 5%;
+  padding: 1.1rem;
+  color: white;
+}
+#hm-programsUl .hm-card-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 150px;
+  margin-bottom: 1rem;
+}
+#hm-programsUl .hm-card-title {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 900;
+  color: black;
+}
+#hm-programsUl .hm-card-desc {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  color: black;
+  line-height: 1.25rem;
+  height: 120px;
+  font-size: 0.875rem;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 455;
+}
+#hm-programsUl .action {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #2563EB;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+#hm-programsUl .action span {
+  transition: 0.3s ease;
+}
+#hm-programsUl .action:hover span {
+  transform: translateX(4px);
+}/*# sourceMappingURL=AllProgramsPage.css.map */

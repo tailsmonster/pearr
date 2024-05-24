@@ -1,7 +1,7 @@
-const knex = require('../knex');
-const authUtils = require('../../utils/auth-utils');
-const Recommend = require('./Recommend');
-const Comment = require('./Comment');
+const knex = require("../knex");
+const authUtils = require("../../utils/auth-utils");
+const Recommend = require("./Recommend");
+const Comment = require("./Comment");
 
 class User {
   #passwordHash = null; // a private property
@@ -14,14 +14,13 @@ class User {
     this.id = id;
     this.username = username;
     this.#passwordHash = password_hash;
-    this.pfpUrl = pfp_url || '';
+    this.pfpUrl = pfp_url || "";
   }
 
   // This instance method takes in a plain-text password and returns true if it matches
   // the User instance's hashed password.
-  isValidPassword = async (password) => (
-    authUtils.isValidPassword(password, this.#passwordHash)
-  );
+  isValidPassword = async (password) =>
+    authUtils.isValidPassword(password, this.#passwordHash);
 
   static async list() {
     const query = `SELECT * FROM users`;
@@ -44,26 +43,40 @@ class User {
     return user ? new User(user) : null;
   }
 
-  static async create(username, password, pfp_url = '-1') {
+  static async create(username, password, pfp_url = "-1") {
     // hash the plain-text password using bcrypt before storing it in the database
     const passwordHash = await authUtils.hashPassword(password);
 
     const query = `INSERT INTO users (username, password_hash, pfp_url)
       VALUES (?, ?, ?) RETURNING *`;
-    const { rows } = await knex.raw(query, [username, passwordHash,pfp_url]);
+    const { rows } = await knex.raw(query, [username, passwordHash, pfp_url]);
     const user = rows[0];
     return new User(user);
   }
 
   // this is an instance method that we can use to update
-  static async update(id, username) { // dynamic queries are easier if you add more properties
+  static async update(id, username,password, pfp_url) {
+    // dynamic queries are easier if you add more properties
+    const previousData = await User.find(id);
+
+    if(!previousData) {
+      return null;
+    }
+
     const query = `
       UPDATE users
-      SET username=?
+      SET username=?, password_hash = ?, pfp_url = ?
       WHERE id=?
       RETURNING *
     `;
-    const { rows } = await knex.raw(query, [username, id]);
+    const { rows } = await knex.raw(query, [
+      username || previousData.username,
+
+
+      password ? await authUtils.hashPassword(password) : previousData.password,
+      pfp_url || previousData.pfpUrl,
+      id
+    ]);
     const updatedUser = rows[0];
     return updatedUser ? new User(updatedUser) : null;
   }
@@ -81,7 +94,7 @@ class User {
   }
 
   static deleteAll() {
-    return knex('users').del();
+    return knex("users").del();
   }
 }
 

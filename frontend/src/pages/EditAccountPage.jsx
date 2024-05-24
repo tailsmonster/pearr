@@ -1,31 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
-import { getUser, updateUsername } from '../adapters/user-adapter';
-import { checkForLoggedInUser } from '../adapters/auth-adapter';
-import { getOrganization } from '../adapters/organization-adapter';
+import { getUser, updateUser } from '../adapters/user-adapter';
 import { logUserOut } from '../adapters/auth-adapter';
+import {getOrganization, updateOrganization} from "../adapters/organization-adapter"
+import './EditAccount.css'
 
 export default function EditAccountPage() {
+  const { currentUser, isOrganization, setIsOrganization, setCurrentUser } = useContext(CurrentUserContext);
   const navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [profilePicture, setProfilePicture] = useState('');
   // console.log(currentUser);
-  
-  useEffect(() => {
-    const getAccount = async () => {
-      const [org, id] = await checkForLoggedInUser();
-      if (id === -1) {
-      return navigate("/access-denied");
-      }
-      const account = org ? await getOrganization(id) : getUser(id);
-      setCurrentUser(account);
-      // setUsername(account.username);
-    };
-    getAccount();
-  },[])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,14 +22,27 @@ export default function EditAccountPage() {
       password,
       pfp_url: profilePicture,
     };
-    await updateUsername({ id: currentUser.id, username });
+    if (!isOrganization) {
+    await updateUser(updatedUser);
     const [user] = await getUser(currentUser.id);
     setCurrentUser(user);
-    navigate(`/users/${user.id}`);
+    } else {
+      const [organization] = await updateOrganization(updatedUser);
+      setCurrentUser(organization);
+    }
+    navigate('/edit');
+    setUsername('');
+    setPassword('');
   };
 
+  const logOut = async() => {
+    await logUserOut();
+    setCurrentUser(null)
+    navigate('/');
+  }
+
   return (
-    <section className="section">
+    <section className="section edit-account-wrapper">
       <div className="container">
         <h1 className="title">Edit Account</h1>
         <form onSubmit={handleSubmit}>
@@ -70,6 +70,7 @@ export default function EditAccountPage() {
                 placeholder="Enter your new password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -94,8 +95,8 @@ export default function EditAccountPage() {
             </div>
           </div>
         </form>
+      <button id='logout' onClick={logOut}>Log Out</button>
       </div>
-      <button onClick={logUserOut}>Log Out</button>
     </section>
   );
 }

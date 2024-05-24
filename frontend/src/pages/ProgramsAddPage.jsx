@@ -1,10 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
-import { getOrganization } from '../adapters/organization-adapter';
 import { createProgram } from '../adapters/program-adapter';
-import { getUser } from '../adapters/user-adapter';
-import { checkForLoggedInUser } from '../adapters/auth-adapter';
+import "./ProgramsAddPage.css"
 
 const ProgramsAddPage = () => {
   const navigate = useNavigate();
@@ -25,21 +23,7 @@ const ProgramsAddPage = () => {
   ];
 
   useEffect(() => {
-    const getAccount = async () => {
-      const [org, id] = await checkForLoggedInUser();
-      if (!org && id === -1) {
-        setCurrentUser(null);
-        return navigate('/');
-      }
-      if (!org) {
-        const user = await getUser(id);
-        setCurrentUser(user);
-         return navigate('/');
-      }
-      const organization = await getOrganization(id);
-      setCurrentUser(organization);
-    };
-    getAccount();
+    
   },[])
 
   const handleSubmit = async (e) => {
@@ -49,17 +33,17 @@ const ProgramsAddPage = () => {
       bio: about,
       website_url: url,
       borough,
-      organization_id: currentUser.organizationId,
+      organization_id: currentUser.id,
       img_url: picture,
       color,
     };
     await createProgram(newProgram);
-    navigate('/programs');
+    navigate('/opportunities');
   };
 
   return (
-    <section className="section">
-      <div className="container">
+    <section className="section add-program-wrapper">
+      <div className="container add-program-container">
         <h1 className="title">Add Program</h1>
         <form onSubmit={handleSubmit}>
           <div className="field">

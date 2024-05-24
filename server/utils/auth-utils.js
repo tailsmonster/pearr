@@ -19,8 +19,9 @@ const isValidPassword = async (password, hash) => bcrypt
   .catch((err) => console.error(err.message));
 
 const isAuthorized = (userId, session) => {
-  if (!userId || !session || !session.userId) return false;
-  return Number(userId) === Number(session.userId);
+  // console.log(userId,session.organizationId, session.userId)
+  if (!userId || !session || !(session.userId || session.organizationId)) return false;
+  return Number(userId) === Number(session.userId) || Number(userId) === Number(session.organizationId);
 };
 
 module.exports = {

@@ -1,0 +1,32 @@
+.add-program-wrapper {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 1rem auto;
+  width: 35vh;
+}
+.add-program-wrapper .add-program-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.add-program-wrapper .add-program-container form {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.add-program-wrapper .add-program-container form .control input {
+  margin: 0;
+  display: flex;
+  padding: 2px;
+}
+.add-program-wrapper .add-program-container form .field {
+  display: flex;
+  flex-direction: column;
+}
+.add-program-wrapper .add-program-container form .field .label {
+  align-self: flex-start;
+  justify-self: flex-end;
+}/*# sourceMappingURL=ProgramsAddPage.css.map */

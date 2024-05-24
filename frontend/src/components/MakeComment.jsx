@@ -1,32 +1,50 @@
 import { checkForLoggedInUser } from "../adapters/auth-adapter";
-import { useState } from "react";
-import { createComment } from "../adapters/comment-adapter";
+import { useContext, useState } from "react";
+import {
+  createComment,
+  getAllProgramComments,
+} from "../adapters/comment-adapter";
+import CurrentUserContext from "../contexts/current-user-context";
 
-const MakeComment = ({id}) => {
+const MakeComment = ({ id, setComments }) => {
   const [body, setBody] = useState("");
-  const [isOrganization, setIsOrganization] = useState(false)
+  const {isOrganization, currentUser} = useContext(CurrentUserContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = await checkForLoggedInUser();
-    setIsOrganization(user[0]);
+    const user = currentUser;
     const data = Object.fromEntries(new FormData(e.target));
-    const comment = await createComment(id,user[1],data.body);
-    console.log(comment)
+    // console.log(isOrganization, user)
+    const [comment] = await createComment(
+      id,
+      !isOrganization ? user.id : null,
+      isOrganization ? user.id : null,
+      data.body
+    );
+    // console.log(comment)
+    const [allComments] = await getAllProgramComments(id);
+    setComments([]);
+    setComments(allComments);
+    setBody("");
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div id="make-comment-wrapper">
+      <form id="" onSubmit={handleSubmit}>
         {isOrganization && <p>Official Post:</p>}
-        <label htmlFor="form-make-comment-body">Body: </label>
-        <input
-          type="text"
-          name="body"
-          id="form-make-comment-body"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-        ></input>
-        <button>Create</button>
+        <label className="normal-font" htmlFor="form-make-comment-body">
+          Comment:
+        </label>
+        <div id="comment-input">
+          <input
+            className="normal-font"
+            type="text"
+            name="body"
+            id="form-make-comment-body"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+          ></input>
+          <button className="normal-font">Create</button>
+        </div>
       </form>
     </div>
   );

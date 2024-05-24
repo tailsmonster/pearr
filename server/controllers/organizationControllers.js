@@ -9,8 +9,8 @@ exports.createOrg = async (req, res) => {
 
   const organization = await Organization.create(username, password, pfp_url);
   req.session.organizationId = organization.id;
-  console.log(organization.id);
-  console.log(req.session.organizationId)
+  // console.log(organization.id);
+  // console.log(req.session.organizationId)
 
   res.send(organization);
 };
@@ -31,7 +31,8 @@ exports.showOrganization = async (req, res) => {
 exports.updateOrganization = async (req, res) => {
   const { username, password, pfp_url } = req.body;
   const { id } = req.params;
-
+  console.log(id, req.session)
+  
   if (!isAuthorized(id, req.session)) return res.sendStatus(403);
 
   const updatedOrganization = await Organization.update(id, username, password, pfp_url);
@@ -39,8 +40,8 @@ exports.updateOrganization = async (req, res) => {
   res.send(updatedOrganization);
 };
 
-exports.showOrganizationPrograms = async (req) => {
+exports.showOrganizationPrograms = async (req,res) => {
   const { id } = req.params;
   const programs = await Organization.getProgramsOf(id);
-  return programs;
+  res.send(programs);
 };

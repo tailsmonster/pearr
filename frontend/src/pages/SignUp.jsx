@@ -1,3 +1,4 @@
+// SignUp.jsx
 import { useContext, useState } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/current-user-context";
@@ -23,14 +24,15 @@ export default function SignUpPage() {
 
     let user, error;
     if (isOrgSignUp) {
-      [user,error] = await createOrganization({ username, password, pfp_url: "aig" });
+      setIsOrganization(true);
+      [user, error] = await createOrganization({ username, password, pfp_url: "aig" });
     } else {
-      [user,error] = await createUser({ username, password });
+      setIsOrganization(false);
+      [user, error] = await createUser({ username, password });
     }
     if (error) return setErrorText(error.message);
     setCurrentUser(user);
-    // setIsOrganization(isOrgSignUp);
-    navigate("/");
+    navigate("/opportunities");
   };
 
   const handleChange = (event) => {
@@ -40,23 +42,23 @@ export default function SignUpPage() {
   };
 
   return (
-    <section className="hero is-fullheight">
+    <section className="hero is-fullheight sign-up-wrapper">
       <div className="hero-body">
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-5-tablet is-4-desktop is-3-widescreen">
-              <h1 className="title has-text-centered">PEAR NYC</h1>
-              <div className="box">
+              <div className="box signup-box">
+                {/* <h1 className="title has-text-centered pear-nyc-title">PEAR NYC</h1> */}
                 <h2 className="subtitle has-text-centered">Sign Up</h2>
                 <div className="buttons is-centered">
                   <button
-                    className={`button ${!isOrgSignUp ? "is-user" : ""}`}
+                    className={`button ${!isOrgSignUp ? "is-user" : "is-light"} normal-font`}
                     onClick={() => setIsOrgSignUp(false)}
                   >
                     User
                   </button>
                   <button
-                    className={`button ${isOrgSignUp ? "is-organization" : ""}`}
+                    className={`button ${isOrgSignUp ? "is-organization" : "is-light"}`}
                     onClick={() => setIsOrgSignUp(true)}
                   >
                     Organization
@@ -69,7 +71,7 @@ export default function SignUpPage() {
                 >
                   <div className="field">
                     <label htmlFor="username" className="label">
-                      {isOrgSignUp ? "Organization Name" : "Username"}
+                      {isOrgSignUp ? "Organization Name:" : "Username:"}
                     </label>
                     <div className="control">
                       <input
@@ -80,11 +82,12 @@ export default function SignUpPage() {
                         onChange={handleChange}
                         value={username}
                         className="input"
+                        placeholder={isOrgSignUp ? "Enter organization name" : "Enter username"}
                       />
                     </div>
                   </div>
                   <div className="field">
-                    <label htmlFor="password" className="label">Password</label>
+                    <label htmlFor="password" className="label">Password:</label>
                     <div className="control">
                       <input
                         autoComplete="off"
@@ -94,6 +97,7 @@ export default function SignUpPage() {
                         onChange={handleChange}
                         value={password}
                         className="input"
+                        placeholder="Enter password"
                       />
                     </div>
                   </div>

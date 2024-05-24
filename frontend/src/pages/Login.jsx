@@ -1,6 +1,7 @@
+// Login.jsx
 import { useContext, useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
-import { logUserIn,logOrganizationIn } from "../adapters/auth-adapter";
+import { useNavigate, Navigate, NavLink } from "react-router-dom";
+import { logUserIn, logOrganizationIn } from "../adapters/auth-adapter";
 import CurrentUserContext from "../contexts/current-user-context";
 import "./Login.css";
 
@@ -19,29 +20,29 @@ export default function LoginPage() {
       : await logUserIn(Object.fromEntries(formData));
     if (error) return setErrorText(error.message);
     setCurrentUser(user);
-    navigate("/");
+    navigate("/opportunities");
   };
 
   if (currentUser !== null) return <Navigate to="/" />;
 
   return (
-    <section className="hero is-fullheight">
+    <section className="hero is-fullheight login-wrapper">
       <div className="hero-body">
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-5-tablet is-4-desktop is-3-widescreen">
-              <h1 className="title has-text-centered">PEAR NYC</h1>
-              <div className="box">
+              <div className="box login-box">
+                {/* <h1 className="title has-text-centered pear-nyc-title">PEAR NYC</h1> */}
                 <h2 className="subtitle has-text-centered">Login</h2>
                 <div className="buttons is-centered">
                   <button
-                    className={`button ${!isOrganization ? "is-user" : ""}`}
+                    className={`button ${!isOrganization ? "is-user" : "is-light"}`}
                     onClick={() => setIsOrganization(false)}
                   >
                     User
                   </button>
                   <button
-                    className={`button ${isOrganization ? "is-organization" : ""}`}
+                    className={`button ${isOrganization ? "is-organization" : "is-light"}`}
                     onClick={() => setIsOrganization(true)}
                   >
                     Organization
@@ -50,7 +51,7 @@ export default function LoginPage() {
                 <form onSubmit={handleSubmit} aria-labelledby="login-heading">
                   <div className="field">
                     <label htmlFor="username" className="label">
-                      {isOrganization ? "Organization Name" : "Username"}
+                      {isOrganization ? "Organization Name:" : "Username:"}
                     </label>
                     <div className="control">
                       <input
@@ -59,12 +60,13 @@ export default function LoginPage() {
                         id="username"
                         name="username"
                         className="input"
+                        placeholder={isOrganization ? "Enter organization name" : "Enter username"}
                       />
                     </div>
                   </div>
                   <div className="field">
                     <label htmlFor="password" className="label">
-                      Password
+                      Password:
                     </label>
                     <div className="control">
                       <input
@@ -73,6 +75,7 @@ export default function LoginPage() {
                         id="password"
                         name="password"
                         className="input"
+                        placeholder="Enter password"
                       />
                     </div>
                   </div>
@@ -86,7 +89,7 @@ export default function LoginPage() {
                 </form>
                 {!!errorText && <p className="has-text-danger">{errorText}</p>}
                 <p className="has-text-centered">
-                  New? <a href="/signup">Sign up today!</a>
+                  New? <NavLink to="/signup">Sign up today!</NavLink>
                 </p>
               </div>
             </div>

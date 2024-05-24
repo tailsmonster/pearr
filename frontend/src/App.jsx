@@ -28,23 +28,24 @@ import SiteHeadingAndNav from "./components/SiteHeadingAndNav";
 import { getOrganization } from "./adapters/organization-adapter.js";
 import { getUser } from "./adapters/user-adapter.js";
 import MakeComment from "./components/MakeComment.jsx";
+import EditProgramPage from "./pages/EditProgramPage.jsx";
 
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
   useEffect(() => {
-    const getAccount = async () => {
-      const [org, id] = await checkForLoggedInUser();
-      console.log(org,id)
-      if (id === -1) {
-        return setCurrentUser(null);
-      }
-      if (org) {
-        return setCurrentUser(await getOrganization(id));
-      }
-      return setCurrentUser(await getUser(id))
+    // const getAccount = async () => {
+    //   const [org, id] = await checkForLoggedInUser();
+    //   console.log(org,id)
+    //   if (id === -1) {
+    //     return setCurrentUser(null);
+    //   }
+    //   if (org) {
+    //     return setCurrentUser(await getOrganization(id));
+    //   }
+    //   return setCurrentUser(await getUser(id))
 
-    };
-    getAccount();
+    // };
+    // getAccount();
   }, []);
 
   return (
@@ -72,9 +73,10 @@ export default function App() {
             element={<EditProgramPage />}
           /> */}
           {/* Programs */}
-          <Route path="/programs" element={<AllProgramsPage />} />
-          <Route path="/programs/:id" element={<IndividualProgramPage />} />2
-          <Route path="/programs/add" element={<ProgramsAddPage />} />2
+          <Route path="/opportunities" element={<AllProgramsPage />} />
+          <Route path="/opportunities/:id" element={<IndividualProgramPage />} />2
+          <Route path="/opportunities/:id/edit" element={<EditProgramPage />} />2
+          <Route path="/opportunities/add" element={<ProgramsAddPage />} />2
           {/* Misc */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/access-denied" element={<AccessDeniedPage />} />

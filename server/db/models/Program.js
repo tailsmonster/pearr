@@ -59,17 +59,22 @@ class Program {
     VALUES (?, ?, ?, ?, ?, ?, ?)
     RETURNING *
     `;
-    const { rows } = await knex.raw(query, [
-      name,
-      bio,
-      website_url,
-      borough,
-      organization_id,
-      img_url,
-      color
-    ]);
-    const program = rows[0];
-    return program ? new Program(program) : null;
+    try {
+      const { rows } = await knex.raw(query, [
+        name,
+        bio,
+        website_url,
+        borough,
+        organization_id,
+        img_url,
+        color
+      ]);
+      const program = rows[0];
+      return program ? new Program(program) : null;
+    } catch (e) {
+      console.log(new Error(e));
+      return new Error(e);
+    }
   }
 
   static async update(id, name, bio, website_url, borough, img_url, color) {
@@ -80,17 +85,22 @@ class Program {
     WHERE id = ?
     RETURNING *
     `;
-    const { rows } = await knex.raw(query, [
-      name || oldData.name,
-      bio || oldData.bio,
-      website_url || oldData.websiteUrl,
-      borough || oldData.borough,
-      img_url || oldData.imgUrl,
-      color || oldData.color,
-      id,
-    ]);
-    const program = rows[0];
-    return program ? new Program(program) : null;
+    try {
+
+      const { rows } = await knex.raw(query, [
+        name || oldData.name,
+        bio || oldData.bio,
+        website_url || oldData.websiteUrl,
+        borough || oldData.borough,
+        img_url || oldData.imgUrl,
+        color || oldData.color,
+        id,
+      ]);
+      const program = rows[0];
+      return program ? new Program(program) : null;
+    } catch(e) {
+      return(e);
+    }
   }
 
   static deleteAll() {
@@ -101,8 +111,9 @@ class Program {
     const query = `
     DELETE FROM programs
     WHERE id = ?
+    RETURNING *
     `;
-    const { rows } = knex.raw(query, [id]);
+    const { rows } = await knex.raw(query, [id]);
     const program = rows[0];
     return program ? new Program(program) : null;
   }
@@ -120,9 +131,13 @@ class Program {
     const inTable = await knex.raw("SELECT * FROM programs WHERE id = ?", [id]);
     if (!inTable) return null;
 
-    const query = `SELECT * FROM comments WHERE program_id = ?`;
+    const query = `
+    SELECT * FROM comments 
+    WHERE program_id = ?
+    ORDER BY id DESC`;
     const { rows } = await knex.raw(query, [id]);
-    return rows.map((com) => new Comment(com));
+    // return rows.map((com) => new Comment(com));
+    return rows
   }
 }
 

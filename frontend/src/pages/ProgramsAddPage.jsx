@@ -1,10 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
-import { getOrganization } from '../adapters/organization-adapter';
 import { createProgram } from '../adapters/program-adapter';
-import { getUser } from '../adapters/user-adapter';
-import { checkForLoggedInUser } from '../adapters/auth-adapter';
+import "./ProgramsAddPage.css"
 
 const ProgramsAddPage = () => {
   const navigate = useNavigate();
@@ -44,8 +42,8 @@ const ProgramsAddPage = () => {
   };
 
   return (
-    <section className="section">
-      <div className="container">
+    <section className="section add-program-wrapper">
+      <div className="container add-program-container">
         <h1 className="title">Add Program</h1>
         <form onSubmit={handleSubmit}>
           <div className="field">

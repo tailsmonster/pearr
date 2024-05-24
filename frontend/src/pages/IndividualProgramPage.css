@@ -43,6 +43,7 @@
      object-fit: cover;
   width: 40rem;
   height: 40rem;
+  max-height: 52vh;
   margin: 20px;
   border-radius: 10px;
   box-shadow: rgba(166, 100, 129, 0.2) 0px 8px 24px;

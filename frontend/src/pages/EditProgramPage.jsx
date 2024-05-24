@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
 import { deleteProgram, getProgramById, updateProgram } from '../adapters/program-adapter';
+import "./EditProgramPage.css"
 
 export default function EditProgramPage() {
   const navigate = useNavigate();
@@ -64,8 +65,8 @@ export default function EditProgramPage() {
   }
 
   return (
-    <section className="section">
-      <div className="container">
+    <section className="section edit-program-wrapper">
+      <div className="container edit-program-container">
         <h1 className="title">Edit Program</h1>
         <form onSubmit={handleSubmit}>
           <div className="field">
@@ -161,7 +162,9 @@ export default function EditProgramPage() {
             </div>
           </div>
         </form>
-        <button onClick={handleDelete}>DELETE PROGRAM</button>
+        <div id="delete-container">
+        <button id="program-delete" onClick={handleDelete}>DELETE PROGRAM</button>
+        </div>
       </div>
     </section>
   );

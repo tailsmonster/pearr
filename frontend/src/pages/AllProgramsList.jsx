@@ -95,7 +95,7 @@ const AllProgramsPage = () => {
                           <Link to={`/opportunities/${program.id}`}>
                           <button className="action" type='button'>Learn More?</button>
                           </Link>
-                          {currentUser !== null && isOrganization && program.organizationId === currentUser.id && <NavLink to={`/opportunities/${program.id}/edit`}><button>Edit</button></NavLink>}
+                          {currentUser !== null && isOrganization && program.organizationId === currentUser.id && <NavLink to={`/opportunities/${program.id}/edit`}><button id="edit-program-button">Edit</button></NavLink>}
                           
                         </div>
                       </div>

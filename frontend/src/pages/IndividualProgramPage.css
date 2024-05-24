@@ -184,6 +184,13 @@ li {
 }
 #comments #all-comments .single-comment h4 {
   display: flex;
+  gap: 5px;
+}
+#comments #all-comments .single-comment h4 .recommends {
+  color: #e8b923;
+}
+#comments #all-comments .single-comment h4 .not-recommends {
+  color: rgb(182, 4, 4);
 }
 #comments #all-comments .single-comment .no-author {
   display: flex;

@@ -191,4 +191,8 @@
   border: none;
   outline: none;
   transition: 0.1s ease-in-out;
+}
+
+#edit-program-button {
+  padding: 4.2px;
 }/*# sourceMappingURL=AllProgramsList.css.map */

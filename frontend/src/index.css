@@ -26,6 +26,9 @@
   /* font-style: normal; */
   /* margin-left: 0%; */
 }
+input {
+  padding:3px
+}
 /* body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;

@@ -117,6 +117,7 @@ const IndividualProgramPage = () => {
         </div>
       </section>
       <section id="comments">
+        <h2>Comments:</h2>
         {currentUser !== null && !isOrganization && currentUser.id !== -1 && (
           <MakeComment id={programInfo.id} setComments={setComments} />
         )}

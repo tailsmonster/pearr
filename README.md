@@ -42,7 +42,7 @@ To get started with the project:
 ## 🧾 Acknowledgments
 
 This project is built upon the groundwork and inspiration of the original PEAR project.  
-A special thank you to the original team members: [Cris Martinez](https://github.com/CrisM05), [Allan Ramirez](https://github.com/tailsmonster), and [myself](https://github.com/tailsmonster).
+A special thank you to the original team members: [Cris Martinez](https://github.com/CrisM05), [Allan Ramirez](https://github.com/Allancool9), and [myself](https://github.com/tailsmonster).
 
 ---
 

@@ -1,54 +1,57 @@
-# PEAR
+# pearr
 
-> PEAR is an application that helps low-income families find enrichment programs for their children to support their development and close the achievement and play gap.
+A civic tech platform for discovering community enrichment programs and resources, designed to make exploration, growth, and play more accessible for everyone.
 
-## The NCA Association
+> Originally launched as **PEAR (Parent Experiences and Resources)**, pearr is a creative reimagining of the original concept with a modern tech stack, new design language, and broader audience. This solo rewrite is focused on delivering a more polished and extensible experience.
 
-- **Product Owner**: Nico Aroca
-- **Scrum Master**: Allan Ramirez
-- **Development Team Members**: Cris Martinez, Allan Ramirez, Nico Aroca
+---
 
-## Table of Contents
+## 🛠️ Tech Stack
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-   1. [Installing Dependencies](#installing-dependencies)
-   1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
+**Frontend:** React, TypeScript, SCSS, Tailwind CSS, shadcn/ui (planned)  
+**Mobile:** React Native via Expo (planned)  
+**Backend:** PostgresSQL, Express, Nodemon, Redis (planned), Cloudfare (planned)  
+**Additional Tools (TBD):** API caching, file uploads, JWT user authentication  
 
-## Usage
+---
 
-> Some usage instructions for getting the app up and running locally
+## 🚀 Setup
 
-## Requirements
+To get started with the project:
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+1.  Clone the repository:
+    `git clone https://github.com/tailsmonster/pearr.git`
+2.  Install dependencies:
+    `npm install`
+3.  Run the dev server:
+    `npm run dev`
 
-## Development
+---
 
-### Installing Dependencies
+## 📦 Roadmap
 
-From within the root directory:
+* Scaffold new project structure
+* Integrate Tailwind CSS
+* Set up shadcn/ui or equivalent
+* Build landing page and program directory
+* Add file upload support (e.g., flyers, program brochures)
+* Develop mobile version with React Native (via Expo)
 
-```shgfg
-npm i
+---
 
-```
+## 🧾 Acknowledgments
 
-### Roadmap
+This project is built upon the groundwork and inspiration of the original PEAR project.  
+A special thank you to the original team members: [Cris Martinez](https://github.com/CrisM05), [Allan Ramirez](https://github.com/tailsmonster), and [myself](https://github.com/tailsmonster).
 
-View the project roadmap [here](https://github.com/orgs/NCA-Association/projects/1/views/1).
+---
 
-## Contributing
+## 🔍 Legacy Version
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+The original PEAR project can be found in a separate repository [here](https://github.com/NCA-Association/PEAR).
 
-## Style Guide
+---
 
-This project adheres to the [Airbnb Style Guide](https://github.com/airbnb/javascript).
+## 🧭 License
+
+This project is open-source under the MIT License.

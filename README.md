@@ -1,54 +1,84 @@
-# PEAR
+# 🍐 PEAR 
 
 > PEAR is an application that helps low-income families find enrichment programs for their children to support their development and close the achievement and play gap.
 
-## The NCA Association
+<!-- --- -->
 
-- **Product Owner**: Nico Aroca
-- **Scrum Master**: Allan Ramirez
-- **Development Team Members**: Cris Martinez, Allan Ramirez, Nico Aroca
+## ⚠️ Archived Notice
 
-## Table of Contents
+This repository contains the original code for the PEAR project and is no longer being actively developed or maintained. A complete rewrite of this project is now underway.
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-   1. [Installing Dependencies](#installing-dependencies)
-   1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
+For the latest version, please visit the **pearr** repository: [https://github.com/tailsmonster/pearr](https://github.com/tailsmonster/pearr)
 
-## Usage
+---
 
-> Some usage instructions for getting the app up and running locally
+## 📸 Screenshot
 
-## Requirements
+![PEAR Event Page Screenshot](documentation/screenshot.png)
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
 
-## Development
+---
 
-### Installing Dependencies
+## ✨ The NCA Association
 
-From within the root directory:
+This project was a collaborative effort by:
 
-```shgfg
-npm i
+- [**Nico Aroca**](https://github.com/tailsmonster) - Project Owner
+- [**Cris Martinez**](https://github.com/CrisM05) - Backend Developer
+- [**Allan Ramirez**](https://github.com/alancool6) - Scrum Master
 
+---
+
+## 🛠️ Technical Details 
+
+### Tech Stack:
+**Frontend:** React, SCSS (Sass)  
+**Backend:** PostgresSQL, Express, Knex.js
+
+
+
+### Usage
+
+To run the application locally, follow these steps:
+
+### Requirements
+
+- Node.js (v0.10+)
+- PostgreSQL (v9.1+)
+
+### How to Use
+
+To run the application locally, you will first need to install the dependencies. From within the root directory, you can run the following command:
+```sh
+npm install
+```
+After installation, you can start the development server with:
+```sh
+npm start
 ```
 
-### Roadmap
+---
 
-View the project roadmap [here](https://github.com/orgs/NCA-Association/projects/1/views/1).
+## 📄 Additional Resources 
 
-## Contributing
+- **Scrumboard:** [GitHub Project Board](https://github.com/orgs/NCA-Association/projects/1)
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
-## Style Guide
+- **Press Release:** [PRESS_RELEASE.md](https://github.com/NCA-Association/PEAR/blob/main/PRESS_RELEASE.md)
 
-This project adheres to the [Airbnb Style Guide](https://github.com/airbnb/javascript).
+- **Documentation:** [Project Architecture. Proposal, and Media](https://github.com/NCA-Association/PEAR/tree/main/documentation)
+
+- **Presentation Slides + Recorded Demo:** [Google Slides](https://docs.google.com/presentation/d/1sL9noAtUQ_NCCXL1p4FnQu94JQW4o3V5ShC2L1ttxqs/edit?usp=sharing)
+
+
+---
+
+## 🤝 Contributing 
+
+This project is now considered archived, and we are not accepting new contributions. Please refer to the **pearr** repository for the latest work.
+
+---
+
+## 📜 License 
+
+This project is open-source under the [MIT](LICENSE.md) License.

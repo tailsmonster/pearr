@@ -1,57 +1,80 @@
-# pearr
+# 🍐 PEAR 
 
-A civic tech platform for discovering community enrichment programs and resources, designed to make exploration, growth, and play more accessible for everyone.
+> PEAR is an application that helps low-income families find enrichment programs for their children to support their development and close the achievement and play gap.
 
-> Originally launched as **PEAR (Parent Experiences and Resources)**, pearr is a creative reimagining of the original concept with a modern tech stack, new design language, and broader audience. This solo rewrite is focused on delivering a more polished and extensible experience.
+<!-- --- -->
 
----
+## ⚠️ Archived Notice
 
-## 🛠️ Tech Stack
+This repository contains the original code for the PEAR project and is no longer being actively developed or maintained. A complete rewrite of this project is now underway.
 
-**Frontend:** React, TypeScript, SCSS, Tailwind CSS, shadcn/ui (planned)  
-**Mobile:** React Native via Expo (planned)  
-**Backend:** PostgresSQL, Express, Nodemon, Redis (planned), Cloudfare (planned)  
-**Additional Tools (TBD):** API caching, file uploads, JWT user authentication  
+For the latest version, please visit the **pearr** repository: [https://github.com/tailsmonster/pearr](https://github.com/tailsmonster/pearr)
 
 ---
 
-## 🚀 Setup
+## 📸 Screenshot
 
-To get started with the project:
+![PEAR Event Page Screenshot](documentation/screenshot.png)
 
-1.  Clone the repository:
-    `git clone https://github.com/tailsmonster/pearr.git`
-2.  Install dependencies:
-    `npm install`
-3.  Run the dev server:
-    `npm run dev`
 
 ---
 
-## 📦 Roadmap
+## ✨ The NCA Association
 
-* Scaffold new project structure
-* Integrate Tailwind CSS
-* Set up shadcn/ui or equivalent
-* Build landing page and program directory
-* Add file upload support (e.g., flyers, program brochures)
-* Develop mobile version with React Native (via Expo)
+This project was a collaborative effort by:
 
----
-
-## 🧾 Acknowledgments
-
-This project is built upon the groundwork and inspiration of the original PEAR project.  
-A special thank you to the original team members: [Cris Martinez](https://github.com/CrisM05), [Allan Ramirez](https://github.com/Allancool9), and [myself](https://github.com/tailsmonster).
+- [**Nico Aroca**](https://github.com/tailsmonster) - Project Owner
+- [**Cris Martinez**](https://github.com/CrisM05) - Backend Developer
+- [**Allan Ramirez**](https://github.com/alancool6) - Scrum Master
 
 ---
 
-## 🔍 Legacy Version
+## 🛠️ Technical Details 
 
-The original PEAR project can be found in a separate repository [here](https://github.com/NCA-Association/PEAR).
+### Tech Stack:
+**Frontend:** React, SCSS (Sass)  
+**Backend:** PostgresSQL, Express, Knex.js
+
+
+
+### Usage
+
+To run the application locally, follow these steps:
+
+### Requirements
+
+- Node.js (v0.10+)
+- PostgreSQL (v9.1+)
+
+### How to Use
+
+To run the application locally, you will first need to install the dependencies. From within the root directory, you can run the following command:
+```sh
+npm install
+```
+After installation, you can start the development server with:
+```sh
+npm start
+```
 
 ---
 
-## 🧭 License
+## 🤝 Press Release 
+**PRESS_RELEASE.md:** https://github.com/NCA-Association/PEAR/blob/main/PRESS_RELEASE.md
+
+**Documentation (Project Architecture. Proposal, and Media):** https://github.com/NCA-Association/PEAR/tree/main/documentation
+
+**Presentation Slides + Recorded Demo:** https://docs.google.com/presentation/d/1sL9noAtUQ_NCCXL1p4FnQu94JQW4o3V5ShC2L1ttxqs/edit?usp=sharing
+
+
+---
+
+## 🤝 Contributing 
+
+This project is now considered archived, and we are not accepting new contributions. Please refer to the **pearr** repository for the latest work.
+
+---
+
+## 📜 License 
 
 This project is open-source under the MIT License.

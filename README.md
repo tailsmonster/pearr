@@ -60,6 +60,9 @@ npm start
 ---
 
 ## 🤝 Press Release 
+
+**Scrumboard:** https://github.com/orgs/NCA-Association/projects/1
+
 **PRESS_RELEASE.md:** https://github.com/NCA-Association/PEAR/blob/main/PRESS_RELEASE.md
 
 **Documentation (Project Architecture. Proposal, and Media):** https://github.com/NCA-Association/PEAR/tree/main/documentation
@@ -77,4 +80,4 @@ This project is now considered archived, and we are not accepting new contributi
 
 ## 📜 License 
 
-This project is open-source under the MIT License.
+This project is open-source under the [MIT](LICENSE.md) License.

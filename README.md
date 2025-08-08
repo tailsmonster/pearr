@@ -25,7 +25,7 @@ This project was a collaborative effort by:
 
 - [**Nico Aroca**](https://github.com/tailsmonster) - Project Owner
 - [**Cris Martinez**](https://github.com/CrisM05) - Backend Developer
-- [**Allan Ramirez**](https://github.com/alancool6) - Scrum Master
+- [**Allan Ramirez**](https://github.com/allancool9) - Scrum Master
 
 ---
 

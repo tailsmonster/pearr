@@ -59,15 +59,16 @@ npm start
 
 ---
 
-## 🤝 Press Release 
+## 📄 Additional Resources 
 
-**Scrumboard:** https://github.com/orgs/NCA-Association/projects/1
+- **Scrumboard:** [GitHub Project Board](https://github.com/orgs/NCA-Association/projects/1)
 
-**PRESS_RELEASE.md:** https://github.com/NCA-Association/PEAR/blob/main/PRESS_RELEASE.md
 
-**Documentation (Project Architecture. Proposal, and Media):** https://github.com/NCA-Association/PEAR/tree/main/documentation
+- **Press Release:** [PRESS_RELEASE.md](https://github.com/NCA-Association/PEAR/blob/main/PRESS_RELEASE.md)
 
-**Presentation Slides + Recorded Demo:** https://docs.google.com/presentation/d/1sL9noAtUQ_NCCXL1p4FnQu94JQW4o3V5ShC2L1ttxqs/edit?usp=sharing
+- **Documentation:** [Project Architecture. Proposal, and Media](https://github.com/NCA-Association/PEAR/tree/main/documentation)
+
+- **Presentation Slides + Recorded Demo:** [Google Slides](https://docs.google.com/presentation/d/1sL9noAtUQ_NCCXL1p4FnQu94JQW4o3V5ShC2L1ttxqs/edit?usp=sharing)
 
 
 ---

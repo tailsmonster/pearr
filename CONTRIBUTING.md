@@ -1,11 +1,3 @@
-## ⚠️ Archived Notice
-
-This repository contains the original code for the PEAR project and is no longer being actively developed or maintained. A complete rewrite of this project is now underway.
-
-For contributions, please visit the **pearr** repository: [https://github.com/tailsmonster/pearr](https://github.com/tailsmonster/pearr)
-
-
-
 # How to Contribute to this project
 
 **Table of Contents**

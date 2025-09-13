@@ -8,10 +8,10 @@ A civic tech platform for discovering community enrichment programs and resource
 
 ## 🛠️ Tech Stack
 
-**Frontend:** React, TypeScript, SCSS, Tailwind CSS, shadcn/ui (planned)  
-**Mobile:** React Native via Expo (planned)  
-**Backend:** PostgresSQL, Express, Nodemon, Redis (planned), Cloudfare (planned)  
-**Additional Tools (TBD):** API caching, file uploads, JWT user authentication  
+**Frontend (current):** React, TypeScript, Tailwind CSS, SCSS (legacy styles), shadcn/ui
+**Frontend (planned):** React Native via Expo
+**Backend (current):** Express, PostgreSQL
+**Backend (planned):** Redis (caching), Cloudflare (CDN/proxy), JWT authentication, file uploads
 
 ---
 
@@ -30,13 +30,16 @@ To get started with the project:
 
 ## 📦 Roadmap
 
-* Scaffold new project structure
-* Integrate Tailwind CSS
-* Set up shadcn/ui or equivalent
-* Build landing page and program directory
-* Add file upload support (e.g., flyers, program brochures)
-* Develop mobile version with React Native (via Expo)
-
+### Milestone 1: Core Web App
+- Scaffold project structure
+- Integrate Tailwind + shadcn/ui
+- Build landing page + program directory
+### Milestone 2: Core Features
+- User auth (JWT)
+- File uploads (flyers, banners)
+- API caching / Redis
+- Admin Dashboard (manage programs, users)
+### Milestone
 ---
 
 ## 🧾 Acknowledgments

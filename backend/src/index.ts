@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // test route
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.json({ message: "Hello from pearr backend 🚀" });
 });
 

@@ -8,8 +8,6 @@ A civic tech platform for discovering community enrichment programs and resource
 
 ## 🛠️ Tech Stack
 
-## 🛠️ Tech Stack
-
 **Frontend (current):**  
 - React (TypeScript, Vite)  
 - Tailwind CSS  

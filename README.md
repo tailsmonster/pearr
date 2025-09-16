@@ -8,10 +8,28 @@ A civic tech platform for discovering community enrichment programs and resource
 
 ## 🛠️ Tech Stack
 
-**Frontend (current):** React, TypeScript, Tailwind CSS, SCSS (legacy styles), shadcn/ui
-**Frontend (planned):** React Native via Expo
-**Backend (current):** Express, PostgreSQL
-**Backend (planned):** Redis (caching), Cloudflare (CDN/proxy), JWT authentication, file uploads
+## 🛠️ Tech Stack
+
+**Frontend (current):**  
+- React (TypeScript, Vite)  
+- Tailwind CSS  
+- SCSS (legacy styles)  
+- TanStack Query (server state)  
+- shadcn/ui (planned for UI components)  
+
+**Frontend (planned):**  
+- React Native (via Expo)  
+
+**Backend (current):**  
+- Node.js + Express (TypeScript)  
+- PostgreSQL (with Knex.js for queries/migrations)  
+- dotenv (config)  
+
+**Backend (planned):**  
+- Redis (caching)  
+- Cloudflare (CDN/proxy)  
+- JWT authentication  
+- File uploads  
 
 ---
 
@@ -21,10 +39,17 @@ To get started with the project:
 
 1.  Clone the repository:
     `git clone https://github.com/tailsmonster/pearr.git`
-2.  Install dependencies:
-    `npm install`
-3.  Run the dev server:
-    `npm run dev`
+2.  Install dependencies (both frontend + backend):
+    `cd pearr/frontend && npm install`
+    `cd ../backend && npm install`
+3.  Run the dev servers:
+    ```
+    # in frontend/
+    npm run dev
+    # in backend/
+    npm run dev
+
+    ```
 
 ---
 
@@ -39,7 +64,9 @@ To get started with the project:
 - File uploads (flyers, banners)
 - API caching / Redis
 - Admin Dashboard (manage programs, users)
-### Milestone
+### Milestone 3: Extensions
+- React Native app (via Expo)
+- Cloudflare deployment + caching
 ---
 
 ## 🧾 Acknowledgments

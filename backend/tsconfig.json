@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    /* File Layout */
+    "rootDir": "./src",          // source folder
+    "outDir": "./dist",          // compiled JS goes here
+
+    /* Environment Settings */
+    "target": "ES2022",          // modern JS output
+    "module": "NodeNext",        // ESM modules for Node
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],           // no DOM, just Node
+    "types": ["node"],           // Node.js types
+
+    /* Output Options */
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    /* Strict Typechecking */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Misc */
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
